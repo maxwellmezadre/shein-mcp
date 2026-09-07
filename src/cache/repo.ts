@@ -32,6 +32,33 @@ export type OrderFilters = {
   offset?: number | undefined;
 };
 
+/** One purchased product, folded across every order that contains it. */
+export type ProductRow = {
+  goods_id: string | null;
+  name: string | null;
+  store_name: string | null;
+  cat_id: string | null;
+  image_url: string | null;
+  orders: number;
+  quantity: number;
+  spent_cents: number;
+  min_unit_cents: number;
+  max_unit_cents: number;
+  first_day: string | null;
+  last_day: string | null;
+};
+
+/** One line of a product's purchase history, oldest first. */
+export type ProductPurchaseRow = ItemRow & { placed_day: string | null; placed_at: string | null; status: string };
+
+export type ProductFilters = {
+  store?: string | undefined;
+  catId?: string | undefined;
+  from?: string | undefined;
+  to?: string | undefined;
+  limit?: number | undefined;
+};
+
 export type CacheStats = {
   orders: number;
   items: number;
@@ -257,6 +284,70 @@ export function createCacheRepo(db: Database, now: () => number) {
         // A query fts5 still refuses is an empty result, not a crash.
         return [];
       }
+    },
+
+    /** Purchased products, folded by `goods_id`, most spent first. */
+    listProducts(filters: ProductFilters): ProductRow[] {
+      const where = new Where()
+        .maybe(filters.store, "i.store_name = ?", filters.store)
+        .maybe(filters.catId, "i.cat_id = ?", filters.catId)
+        .maybe(filters.from, "o.placed_day >= ?", filters.from)
+        .maybe(filters.to, "o.placed_day <= ?", filters.to)
+        .add("o.status NOT IN ('unpaid', 'cancelled')");
+      return db
+        .query(
+          `SELECT i.goods_id AS goods_id,
+                  MAX(i.name) AS name,
+                  MAX(i.store_name) AS store_name,
+                  MAX(i.cat_id) AS cat_id,
+                  MAX(i.image_url) AS image_url,
+                  COUNT(DISTINCT i.billno) AS orders,
+                  SUM(i.quantity) AS quantity,
+                  SUM(i.total_cents) AS spent_cents,
+                  MIN(i.unit_cents) AS min_unit_cents,
+                  MAX(i.unit_cents) AS max_unit_cents,
+                  MIN(o.placed_day) AS first_day,
+                  MAX(o.placed_day) AS last_day
+           FROM order_items i JOIN orders o ON o.billno = i.billno
+           ${where.sql()}
+           GROUP BY i.goods_id
+           ORDER BY spent_cents DESC
+           LIMIT ?`,
+        )
+        .all(...where.values, filters.limit ?? 100) as ProductRow[];
+    },
+
+    /** Every purchase of one product, oldest first: the price evolution. */
+    productHistory(goodsId: string): ProductPurchaseRow[] {
+      return db
+        .query(
+          `SELECT i.*, o.placed_day AS placed_day, o.placed_at AS placed_at, o.status AS status
+           FROM order_items i JOIN orders o ON o.billno = i.billno
+           WHERE i.goods_id = ? ORDER BY o.placed_day ASC, i.billno ASC`,
+        )
+        .all(goodsId) as ProductPurchaseRow[];
+    },
+
+    /** Items carrying a refund or return record. */
+    listReturns(filters: { from?: string | undefined; to?: string | undefined; limit?: number | undefined }): ProductPurchaseRow[] {
+      const where = new Where()
+        .add("i.refund_status IS NOT NULL")
+        .maybe(filters.from, "o.placed_day >= ?", filters.from)
+        .maybe(filters.to, "o.placed_day <= ?", filters.to);
+      return db
+        .query(
+          `SELECT i.*, o.placed_day AS placed_day, o.placed_at AS placed_at, o.status AS status
+           FROM order_items i JOIN orders o ON o.billno = i.billno
+           ${where.sql()} ORDER BY o.placed_day DESC LIMIT ?`,
+        )
+        .all(...where.values, filters.limit ?? 100) as ProductPurchaseRow[];
+    },
+
+    /** Orders the user may still return something from. */
+    countReturnable(): number {
+      return (
+        db.query("SELECT COUNT(*) AS n FROM orders WHERE returnable = 1").get() as { n: number }
+      ).n;
     },
 
     getMeta(key: string): string | null {

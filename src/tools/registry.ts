@@ -3,6 +3,7 @@ import { authStatus } from "./auth.js";
 import type { ToolDef } from "./define.js";
 import { login } from "./login.js";
 import { getOrder, listOrders } from "./orders.js";
+import { listProducts, listReturns, productHistory, searchProducts } from "./products.js";
 import { rawGet } from "./raw.js";
 import { sync } from "./sync.js";
 import { trackOrder } from "./tracking.js";
@@ -21,6 +22,11 @@ export const allTools: ToolDef[] = [
   getOrder,
   // Logistics
   trackOrder,
+  // Products
+  searchProducts,
+  listProducts,
+  productHistory,
+  listReturns,
   // Escape hatch
   rawGet,
 ];

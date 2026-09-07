@@ -352,3 +352,138 @@ describe("track_order", () => {
     expect(result.note).toMatch(/enviad|rastre/i);
   });
 });
+
+describe("search_products", () => {
+  test("finds a purchased item without accents and without the network", async () => {
+    const { ctx, fetch } = await seeded();
+    const before = fetch.calls.length;
+    const name = (DETAIL_FIXTURE.info.orderGoodsList as Array<{ product: { goods_name: string } }>)[0]
+      ?.product.goods_name as string;
+    const word = name.split(" ")[0] as string;
+    const result = (await call("search_products", { query: word.toLowerCase() }, ctx)) as {
+      total: number;
+      items: Array<{ name: string; unitPrice: number; billno: string }>;
+    };
+    expect(fetch.calls.length).toBe(before);
+    expect(result.total).toBeGreaterThan(0);
+    expect(result.items[0]?.name).toBe(name);
+    expect(result.items[0]?.unitPrice).toBe(34.99);
+  });
+
+  test("an empty cache says to sync instead of answering nothing", async () => {
+    const { ctx } = context([]);
+    const result = (await call("search_products", { query: "conjunto" }, ctx)) as { total: number; note?: string };
+    expect(result.total).toBe(0);
+    expect(result.note).toMatch(/sync/);
+  });
+});
+
+describe("list_products", () => {
+  test("folds the same product across orders, biggest spend first", async () => {
+    const { ctx, fetch } = await seeded();
+    const before = fetch.calls.length;
+    const result = (await call("list_products", {}, ctx)) as {
+      total: number;
+      products: Array<{ goodsId: string; orders: number; quantity: number; spent: number; minUnitPrice: number }>;
+    };
+    expect(fetch.calls.length).toBe(before);
+    expect(result.total).toBeGreaterThan(0);
+    // Every order in the fixture carries the same two items, so each product
+    // was bought in as many orders as there are orders.
+    expect(result.products[0]?.orders).toBe(LIST_FIXTURE.info.order_list.length);
+    expect(result.products[0]?.quantity).toBe(LIST_FIXTURE.info.order_list.length);
+    const spends = result.products.map((product) => product.spent);
+    expect([...spends].sort((a, b) => b - a)).toEqual(spends);
+    // Spent is the sum of the line totals, in decimals.
+    expect(result.products[0]?.spent).toBeCloseTo(34.99 * LIST_FIXTURE.info.order_list.length, 2);
+  });
+
+  test("filters by store and by period", async () => {
+    const { ctx } = await seeded();
+    const store = ((await call("list_products", {}, ctx)) as { products: Array<{ store: string }> }).products[0]
+      ?.store as string;
+    expect(((await call("list_products", { store }, ctx)) as { total: number }).total).toBeGreaterThan(0);
+    expect(((await call("list_products", { store: "Loja Que Nao Existe" }, ctx)) as { total: number }).total).toBe(0);
+    expect(((await call("list_products", { from: "2030-01-01" }, ctx)) as { total: number }).total).toBe(0);
+  });
+});
+
+describe("product_history", () => {
+  test("lists every purchase of a product, oldest first, with the price evolution", async () => {
+    const { ctx } = await seeded();
+    const goodsId = ((await call("list_products", {}, ctx)) as { products: Array<{ goodsId: string }> })
+      .products[0]?.goodsId as string;
+    const result = (await call("product_history", { product: goodsId }, ctx)) as {
+      goodsId: string;
+      timesBought: number;
+      unitsBought: number;
+      spent: number;
+      firstUnitPrice: number;
+      lastUnitPrice: number;
+      purchases: Array<{ placedAt: string; unitPrice: number }>;
+    };
+    expect(result.goodsId).toBe(goodsId);
+    expect(result.timesBought).toBe(LIST_FIXTURE.info.order_list.length);
+    expect(result.unitsBought).toBe(LIST_FIXTURE.info.order_list.length);
+    expect(result.firstUnitPrice).toBe(34.99);
+    expect(result.lastUnitPrice).toBe(34.99);
+    const dates = result.purchases.map((purchase) => purchase.placedAt);
+    expect([...dates].sort()).toEqual(dates);
+  });
+
+  test("resolves a product by name when the caller does not know the id", async () => {
+    const { ctx } = await seeded();
+    const name = (DETAIL_FIXTURE.info.orderGoodsList as Array<{ product: { goods_name: string } }>)[0]
+      ?.product.goods_name as string;
+    const result = (await call("product_history", { product: name.split(" ")[0] as string }, ctx)) as {
+      goodsId: string | null;
+      total: number;
+    };
+    expect(result.goodsId).toBeTruthy();
+    expect(result.total).toBeGreaterThan(0);
+  });
+
+  test("says so when nothing matches instead of inventing a product", async () => {
+    const { ctx } = await seeded();
+    const result = (await call("product_history", { product: "zzzznaoexiste" }, ctx)) as {
+      total: number;
+      note?: string;
+    };
+    expect(result.total).toBe(0);
+    expect(result.note).toMatch(/Nenhum produto/);
+  });
+});
+
+describe("list_returns", () => {
+  test("reports honestly that nothing is recorded, and how many orders still accept one", async () => {
+    const { ctx, fetch } = await seeded();
+    const before = fetch.calls.length;
+    const result = (await call("list_returns", {}, ctx)) as {
+      total: number;
+      returnableOrders: number;
+      note?: string;
+    };
+    expect(fetch.calls.length).toBe(before);
+    expect(result.total).toBe(0);
+    expect(result.returnableOrders).toBeGreaterThan(0);
+    // The note must not let a model conclude "the user never returned anything".
+    expect(result.note).toMatch(/não mapeou|nao mapeou/i);
+  });
+
+  test("lists an item once the order detail carries a refund record", async () => {
+    const { ctx } = await seeded();
+    const order = ctx.cache().getOrder(FIRST_BILLNO);
+    const refunded = {
+      ...(order as NonNullable<typeof order>),
+      items: [{ ...(order as NonNullable<typeof order>).items[0]!, refundStatus: "refund_pending" }],
+    };
+    ctx.cache().upsertDetail(refunded, "{}", 1);
+    const result = (await call("list_returns", {}, ctx)) as {
+      total: number;
+      returns: Array<{ billno: string; refundStatus: string }>;
+    };
+    expect(result.total).toBe(1);
+    expect(result.returns[0]?.billno).toBe(FIRST_BILLNO);
+    expect(result.returns[0]?.refundStatus).toBe("refund_pending");
+  });
+});
