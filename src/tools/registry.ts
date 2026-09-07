@@ -1,6 +1,7 @@
 import type { Config } from "../config.js";
 import { authStatus } from "./auth.js";
 import type { ToolDef } from "./define.js";
+import { login } from "./login.js";
 import { rawGet } from "./raw.js";
 
 // Flat registry shared by the MCP server and the CLI: the two surfaces cannot
@@ -9,6 +10,7 @@ import { rawGet } from "./raw.js";
 export const allTools: ToolDef[] = [
   // Session and diagnostics
   authStatus,
+  login,
   // Escape hatch
   rawGet,
 ];
