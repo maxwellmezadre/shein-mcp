@@ -1,6 +1,9 @@
 import type { Config } from "../config.js";
+import { spendingSummary } from "./analytics.js";
 import { authStatus } from "./auth.js";
 import type { ToolDef } from "./define.js";
+import { doctor } from "./doctor.js";
+import { exportData } from "./export.js";
 import { login } from "./login.js";
 import { getOrder, listOrders } from "./orders.js";
 import { listProducts, listReturns, productHistory, searchProducts } from "./products.js";
@@ -15,6 +18,7 @@ export const allTools: ToolDef[] = [
   // Session and diagnostics
   authStatus,
   login,
+  doctor,
   // Cache
   sync,
   // Orders
@@ -27,6 +31,9 @@ export const allTools: ToolDef[] = [
   listProducts,
   productHistory,
   listReturns,
+  // Analytics
+  spendingSummary,
+  exportData,
   // Escape hatch
   rawGet,
 ];

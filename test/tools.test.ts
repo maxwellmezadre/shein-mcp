@@ -1,5 +1,6 @@
-import { describe, expect, test } from "bun:test";
-import { readFileSync } from "node:fs";
+import { afterAll, describe, expect, test } from "bun:test";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { openCache } from "../src/cache/db.js";
 import { loadConfig } from "../src/config.js";
@@ -22,6 +23,11 @@ import {
   silentLogger,
 } from "./helpers.js";
 
+const exportDirs: string[] = [];
+afterAll(() => {
+  for (const dir of exportDirs.splice(0)) rmSync(dir, { recursive: true, force: true });
+});
+
 export function context(
   script: Parameters<typeof scriptedFetch>[0],
   session: ReturnType<typeof sessionData> | null = sessionData({}, ".acme.test"),
@@ -29,8 +35,11 @@ export function context(
 ): { ctx: Ctx; fetch: ScriptedFetch } {
   const clock = fakeClock();
   const fetch = scriptedFetch(script, fallback);
+  const exportDir = mkdtempSync(join(tmpdir(), "shein-export-"));
+  exportDirs.push(exportDir);
   const config = loadConfig({
     SHEIN_CONFIG_DIR: "/nonexistent/shein-mcp-test",
+    SHEIN_EXPORT_DIR: exportDir,
     SHEIN_BASE_URL: "https://br.acme.test",
     SHEIN_TRANSPORT: "fetch",
     SHEIN_MIN_INTERVAL_MS: "0",
@@ -231,10 +240,14 @@ async function seeded(options: { track?: unknown } = {}) {
       bffOk({ order_list: [], sum: 0 }),
     ],
     undefined,
-    (url: string) =>
-      url.includes("/orders/track")
-        ? htmlResponse(`<html><script>var gbOrdersTrackSsrData = ${JSON.stringify(track)}</script></html>`)
-        : bffOk({ ...DETAIL_FIXTURE.info, billno: new URL(url).searchParams.get("billno") }),
+    (url: string) => {
+      if (url.includes("/orders/track")) {
+        return htmlResponse(`<html><script>var gbOrdersTrackSsrData = ${JSON.stringify(track)}</script></html>`);
+      }
+      if (url.includes("get_order_archive_list")) return bffOk({ order_list: [], sum: 0 });
+      if (url.includes("/order/list")) return bffOk({ ...LIST_FIXTURE.info, sum: LIST_FIXTURE.info.order_list.length });
+      return bffOk({ ...DETAIL_FIXTURE.info, billno: new URL(url).searchParams.get("billno") });
+    },
   );
   await call("sync", { mode: "full" }, ctx);
   return { ctx, fetch };
@@ -485,5 +498,146 @@ describe("list_returns", () => {
     expect(result.total).toBe(1);
     expect(result.returns[0]?.billno).toBe(FIRST_BILLNO);
     expect(result.returns[0]?.refundStatus).toBe("refund_pending");
+  });
+});
+
+describe("spending_summary", () => {
+  test("groups by month and the rows add up to the grand total", async () => {
+    const { ctx, fetch } = await seeded();
+    const before = fetch.calls.length;
+    const result = (await call("spending_summary", { group_by: "month" }, ctx)) as {
+      rows: Array<{ key: string; total: number; orders: number }>;
+      grandTotal: number;
+      currency: string;
+      note: string;
+    };
+    expect(fetch.calls.length).toBe(before);
+    const sum = result.rows.reduce((total, row) => total + row.total, 0);
+    expect(Math.round(sum * 100)).toBe(Math.round(result.grandTotal * 100));
+    expect(result.rows[0]?.key).toMatch(/^\d{4}-\d{2}$/);
+    expect(result.currency).toBe("BRL");
+    expect(result.note).toBeTruthy();
+  });
+
+  test("leaves unpaid and cancelled orders out of the total", async () => {
+    const { ctx } = await seeded();
+    const paid = (await call("spending_summary", { group_by: "year" }, ctx)) as { grandTotal: number };
+    const order = ctx.cache().getOrder(FIRST_BILLNO);
+    ctx.cache().upsertDetail({ ...(order as NonNullable<typeof order>), status: "unpaid" }, "{}", 1);
+    const after = (await call("spending_summary", { group_by: "year" }, ctx)) as { grandTotal: number };
+    expect(after.grandTotal).toBeLessThan(paid.grandTotal);
+  });
+
+  test("breakdown says where the money went, using the rows that add up", async () => {
+    const { ctx } = await seeded();
+    const result = (await call("spending_summary", { group_by: "breakdown" }, ctx)) as {
+      rows: Array<{ key: string; total: number }>;
+      grandTotal: number;
+    };
+    expect(result.rows.map((row) => row.key)).toContain("newSubTotal");
+    const sum = result.rows.reduce((total, row) => total + row.total, 0);
+    expect(Math.round(sum * 100)).toBe(Math.round(result.grandTotal * 100));
+  });
+
+  test("groups by store and by payment method too", async () => {
+    const { ctx } = await seeded();
+    for (const group of ["store", "payment"] as const) {
+      const result = (await call("spending_summary", { group_by: group }, ctx)) as {
+        rows: Array<{ key: string; total: number }>;
+      };
+      expect(result.rows.length).toBeGreaterThan(0);
+      expect(result.rows[0]?.total).toBeGreaterThan(0);
+    }
+  });
+});
+
+describe("export", () => {
+  test("writes inside the export dir and reports the path", async () => {
+    const { ctx } = await seeded();
+    const result = (await call("export", { format: "csv", scope: "orders" }, ctx)) as {
+      path: string;
+      rows: number;
+    };
+    expect(result.path.startsWith(ctx.config.exportDir)).toBe(true);
+    expect(result.rows).toBe(LIST_FIXTURE.info.order_list.length);
+    const csv = readFileSync(result.path, "utf8");
+    expect(csv.split("\n")[0]).toContain("billno");
+    // Money is written as decimals, so a spreadsheet reads it as money.
+    expect(csv).toContain("69.98");
+  });
+
+  test("a filename cannot escape the export dir", async () => {
+    const { ctx } = await seeded();
+    for (const filename of ["../escape.csv", "/etc/passwd", "..%2Fx", "sub/dir.csv"]) {
+      const result = (await call("export", { format: "csv", scope: "orders", filename }, ctx)) as { path: string };
+      expect(result.path.startsWith(`${ctx.config.exportDir}/`)).toBe(true);
+      expect(result.path).not.toContain("..");
+    }
+  });
+
+  test("exports the items too, as json when asked", async () => {
+    const { ctx } = await seeded();
+    const result = (await call("export", { format: "json", scope: "items" }, ctx)) as { path: string; rows: number };
+    const parsed = JSON.parse(readFileSync(result.path, "utf8")) as Array<{ name: string }>;
+    expect(parsed).toHaveLength(result.rows);
+    expect(parsed[0]?.name).toBeTruthy();
+  });
+});
+
+describe("doctor", () => {
+  test("without a session it reports every layer as skipped and spends nothing", async () => {
+    const { ctx, fetch } = context([], null);
+    const report = (await call("doctor", {}, ctx)) as {
+      ok: boolean;
+      checks: Array<{ name: string; ok: boolean; detail: string }>;
+      hint?: string;
+    };
+    expect(fetch.calls).toHaveLength(0);
+    expect(report.ok).toBe(false);
+    expect(report.checks.map((check) => check.name)).toEqual([
+      "session",
+      "order_list",
+      "order_archive",
+      "order_detail",
+      "order_track",
+      "cache",
+    ]);
+    expect(report.checks[1]?.detail).toMatch(/sess/i);
+    expect(report.hint).toMatch(/shein login/);
+  });
+
+  test("with a working session every layer passes and the cache is described", async () => {
+    const { ctx } = await seeded();
+    const report = (await call("doctor", {}, ctx)) as {
+      ok: boolean;
+      checks: Array<{ name: string; ok: boolean; detail: string }>;
+    };
+    expect(report.ok).toBe(true);
+    expect(report.checks.every((check) => check.ok)).toBe(true);
+    expect(report.checks.find((check) => check.name === "cache")?.detail).toMatch(/pedido/);
+  });
+
+  test("a broken layer is named, and the ones after it still run", async () => {
+    const { ctx } = await seeded();
+    // The detail endpoint starts answering garbage; every other layer is fine.
+    const broken = context([], undefined, (url: string) => {
+      if (url.includes("get_order_detail")) return htmlResponse("<html>oops</html>");
+      if (url.includes("/orders/track")) {
+        return htmlResponse(`<html><script>var gbOrdersTrackSsrData = ${JSON.stringify(TRACK_FIXTURE)}</script></html>`);
+      }
+      if (url.includes("get_order_archive_list")) return bffOk({ order_list: [], sum: 0 });
+      return bffOk({ ...LIST_FIXTURE.info, sum: LIST_FIXTURE.info.order_list.length });
+    });
+    const report = (await call("doctor", {}, broken.ctx)) as {
+      ok: boolean;
+      checks: Array<{ name: string; ok: boolean }>;
+    };
+    expect(report.ok).toBe(false);
+    expect(report.checks.find((check) => check.name === "order_detail")?.ok).toBe(false);
+    // The layers before and after it still ran and still report their own state.
+    expect(report.checks.find((check) => check.name === "order_list")?.ok).toBe(true);
+    expect(report.checks.find((check) => check.name === "order_track")?.ok).toBe(true);
+    expect(report.checks.find((check) => check.name === "cache")?.ok).toBe(true);
+    void ctx;
   });
 });

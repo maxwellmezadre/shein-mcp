@@ -59,6 +59,9 @@ export type ProductFilters = {
   limit?: number | undefined;
 };
 
+export type SpendingGroup = "month" | "year" | "store" | "payment" | "breakdown";
+export type SpendingRow = { key: string; total_cents: number; orders: number };
+
 export type CacheStats = {
   orders: number;
   items: number;
@@ -348,6 +351,88 @@ export function createCacheRepo(db: Database, now: () => number) {
       return (
         db.query("SELECT COUNT(*) AS n FROM orders WHERE returnable = 1").get() as { n: number }
       ).n;
+    },
+
+    /**
+     * Totals by month, year, store, payment method, or by price-line type.
+     * Unpaid and cancelled orders are never counted: they are not spending.
+     */
+    spendingBy(group: SpendingGroup, filters: { from?: string | undefined; to?: string | undefined }): SpendingRow[] {
+      const where = new Where()
+        .add("o.status NOT IN ('unpaid', 'cancelled')")
+        .maybe(filters.from, "o.placed_day >= ?", filters.from)
+        .maybe(filters.to, "o.placed_day <= ?", filters.to);
+
+      if (group === "breakdown") {
+        // The rows that add up to the total, folded by type across orders.
+        return db
+          .query(
+            `SELECT p.type AS key, SUM(p.cents) AS total_cents, COUNT(DISTINCT p.billno) AS orders
+             FROM order_price_lines p JOIN orders o ON o.billno = p.billno
+             ${where.sql()} GROUP BY p.type HAVING total_cents <> 0 ORDER BY total_cents DESC`,
+          )
+          .all(...where.values) as SpendingRow[];
+      }
+      if (group === "store") {
+        // A store's share is the sum of ITS lines, not of the whole order.
+        return db
+          .query(
+            `SELECT COALESCE(i.store_name, '(sem loja)') AS key, SUM(i.total_cents) AS total_cents,
+                    COUNT(DISTINCT i.billno) AS orders
+             FROM order_items i JOIN orders o ON o.billno = i.billno
+             ${where.sql()} GROUP BY key ORDER BY total_cents DESC`,
+          )
+          .all(...where.values) as SpendingRow[];
+      }
+      const key =
+        group === "month"
+          ? "substr(o.placed_day, 1, 7)"
+          : group === "year"
+            ? "substr(o.placed_day, 1, 4)"
+            : "COALESCE(o.payment_method, '(sem método)')";
+      const order = group === "payment" ? "total_cents DESC" : "key DESC";
+      return db
+        .query(
+          `SELECT ${key} AS key, SUM(o.total_cents) AS total_cents, COUNT(*) AS orders
+           FROM orders o ${where.sql()} GROUP BY key ORDER BY ${order}`,
+        )
+        .all(...where.values) as SpendingRow[];
+    },
+
+    /** What the grand total of a spending report is measured against. */
+    spentTotal(filters: { from?: string | undefined; to?: string | undefined }): { cents: number; orders: number } {
+      const where = new Where()
+        .add("status NOT IN ('unpaid', 'cancelled')")
+        .maybe(filters.from, "placed_day >= ?", filters.from)
+        .maybe(filters.to, "placed_day <= ?", filters.to);
+      const row = db
+        .query(`SELECT COALESCE(SUM(total_cents), 0) AS cents, COUNT(*) AS orders FROM orders ${where.sql()}`)
+        .get(...where.values) as { cents: number; orders: number };
+      return row;
+    },
+
+    /** Flat rows for `export`, joined the way a spreadsheet wants them. */
+    exportOrders(): Array<Record<string, unknown>> {
+      return db
+        .query(
+          `SELECT billno, checkout_id, placed_at, paid_at, status, status_label, currency,
+                  total_cents, subtotal_cents, saved_cents, shipping_cents, tax_cents,
+                  installment_fee_cents, payment_method, payment_title, goods_count, package_count, archived
+           FROM orders ORDER BY placed_day DESC, billno DESC`,
+        )
+        .all() as Array<Record<string, unknown>>;
+    },
+
+    exportItems(): Array<Record<string, unknown>> {
+      return db
+        .query(
+          `SELECT i.billno, o.placed_at, o.status, i.goods_id, i.name, i.attrs, i.quantity,
+                  i.unit_cents, i.total_cents, i.retail_unit_cents, i.store_name, i.mall,
+                  i.package_no, i.tracking_number
+           FROM order_items i JOIN orders o ON o.billno = i.billno
+           ORDER BY o.placed_day DESC, i.billno DESC, i.position`,
+        )
+        .all() as Array<Record<string, unknown>>;
     },
 
     getMeta(key: string): string | null {
