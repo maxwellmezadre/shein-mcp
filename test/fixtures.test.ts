@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 // The repository is public and these fixtures come from a real account. This
@@ -24,13 +24,30 @@ describe("committed fixtures", () => {
   });
 
   test("carry no personal data", () => {
-    // e-mail, Brazilian post code, CPF and phone — the placeholders are exempt.
-    expect(blob).not.toMatch(/[A-Za-z0-9._%+-]+@(?!exemplo\.test)[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
-    expect(blob).not.toMatch(/\b\d{5}-\d{3}\b(?<!00000-000)/);
-    expect(blob).not.toMatch(/\b\d{3}\.\d{3}\.\d{3}-\d{2}\b(?<!000\.000\.000-00)/);
-    for (const marker of ["Exemplo", "Cidade Exemplo", "Exemplo", "sessionID_shein", "armorToken"]) {
-      expect(blob).not.toContain(marker);
+    // Patterns, not names: a guard that spells out the author's street to
+    // check that it is absent has published the street. The real values live
+    // in task/anonymize.secrets, which is gitignored and read below.
+    expect(blob).not.toMatch(/[A-Za-z0-9._%+-]+@(?!exemplo\.test)[A-Za-z0-9.-]+\.[A-Za-z]{2,}/); // e-mail
+    expect(blob).not.toMatch(/\b\d{5}-\d{3}\b(?<!00000-000)/); // CEP
+    expect(blob).not.toMatch(/\b\d{3}\.\d{3}\.\d{3}-\d{2}\b(?<!000\.000\.000-00)/); // CPF
+    expect(blob).not.toMatch(/\bRua (?!Exemplo)\p{Lu}/u); // a street that is not the placeholder
+    for (const marker of ["sessionID_shein", "armorToken", "smdeviceid"]) {
+      expect(blob).not.toContain(marker); // session and anti-bot markers
     }
+  });
+
+  test("carry none of the values the anonymiser was told to erase", () => {
+    // The private list of real strings (name, city, street…) lives outside the
+    // repository. When it is here, every one of them must be absent; when it is
+    // not, the patterns above are the guard.
+    const secretsFile = join(import.meta.dir, "..", "task", "anonymize.secrets");
+    if (!existsSync(secretsFile)) return;
+    const secrets = readFileSync(secretsFile, "utf8")
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line.length >= 4);
+    expect(secrets.length).toBeGreaterThan(0);
+    for (const secret of secrets) expect(blob.includes(secret)).toBe(false);
   });
 
   test("use the placeholder identity everywhere an address appears", () => {
