@@ -42,7 +42,10 @@ MCP `shein` (`mcp__shein__*`), 14 tools. Referência completa de parâmetros em
 9. **Pedido arquivado** (mais de um ano) responde com os valores da listagem,
    sem breakdown e sem nome de item — a Shein não manda mais que isso. Diga
    isso em vez de inventar.
-10. **Bloqueio anti-bot: pare.** Se `auth_status` disser `breaker: tripped` ou
+10. **Devoluções:** `list_returns` sozinho lê o cache. Para afirmar que não
+    houve nenhuma devolução, use `verify: true` — ele lê a aba do próprio site
+    (1 requisição). Sem isso, diga apenas que não há nada registrado no cache.
+11. **Bloqueio anti-bot: pare.** Se `auth_status` disser `breaker: tripped` ou
     vier um `cooldownUntil`, não tente de novo: peça ao usuário para abrir
     `br.shein.com`, resolver a verificação e refazer o login.
 
@@ -60,7 +63,7 @@ MCP `shein` (`mcp__shein__*`), 14 tools. Referência completa de parâmetros em
 | `search_products` | `shein search <termo>` | Busca nos produtos comprados |
 | `list_products` | `shein products` | Agregado por produto |
 | `product_history` | `shein product-history <produto>` | Cada compra e a evolução do preço |
-| `list_returns` | `shein returns` | Devoluções registradas no pedido |
+| `list_returns` | `shein returns [--verify]` | Devoluções; `verify` confere na aba do site |
 | `spending_summary` | `shein spending --group-by …` | month, year, store, payment, breakdown |
 | `export` | `shein export --format csv` | CSV/JSON em `SHEIN_EXPORT_DIR` |
 | `raw_get` | `shein raw <path>` | Redescoberta; só leitura |

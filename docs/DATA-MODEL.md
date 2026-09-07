@@ -72,7 +72,30 @@ Cada evento tem `at` (ISO), `description` (o texto do site, sem HTML) e
 
 ## Situação
 
-O `orderStatus` da Shein é um número sem significado público. Os códigos vistos
-numa conta real: `3` (não pago), `5` (entregue/avaliar), `10` (enviado). O enum
-é **aberto**: um código desconhecido é lido pelos sinais em volta (pagou? tem
-pacote? foi assinado?) e o código cru vai junto na resposta.
+O `orderStatus` da Shein é um número sem significado público, e o rótulo que
+ela manda é **a última coisa que aconteceu**, não o estado atual: um pedido
+entregue há meses continua com `orderStatus: 10` e o rótulo "Enviado".
+
+Por isso a situação é lida por **sinais**, não pelo código:
+
+```
+nunca pago (pay_time "0")
+  └─ janela de pagamento expirou → cancelled
+  └─ ainda dentro da janela      → unpaid
+pago
+  └─ algum pacote assinado       → delivered
+  └─ código 5 (aba "Avaliar")    → delivered
+  └─ tem pacote                  → shipped
+  └─ nada disso                  → processing
+```
+
+Isso foi conferido contra as abas do próprio site (2026-09-07): naquela conta,
+a Shein mostrava **0 em "Não pago", 0 em "Enviado" e 9 em "Avaliar"** entre 20
+pedidos. Ler o código `3` como "não pago" ou o `10` como "enviado" teria
+contradito o site em 11 deles.
+
+O código cru (`statusCode`) e o rótulo (`statusLabel`) vão sempre junto na
+resposta, e o enum é aberto: um código novo é lido pelos mesmos sinais.
+
+Se precisar da verdade do site sobre uma aba específica, ela está em
+`/user/orders/list?status_type=N` — o JSON ignora esse parâmetro, o SSR não.

@@ -9,8 +9,12 @@ import type { RawOrderDetail, RawOrderListItem } from "../shein/types.js";
 // again". Nothing is ever lost between chunks — each order is committed as it
 // arrives.
 
-/** Bump when a parser changes what it extracts; the next sync reparses the cache. */
-export const PARSER_VERSION = 1;
+/**
+ * Bump when a parser changes what it extracts; the next sync reparses the cache.
+ * 2: status is read from the signals (paid, expiry, parcel signed) instead of
+ *    from Shein's code, after the site's own tabs contradicted the code table.
+ */
+export const PARSER_VERSION = 2;
 
 export const META = {
   cursor: "sync.cursor",

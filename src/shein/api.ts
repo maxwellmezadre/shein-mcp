@@ -1,6 +1,6 @@
 import { ParseError, SheinApiError } from "../core/errors.js";
 import type { Http, RequestKind } from "../core/http.js";
-import { extractTrackSsrData } from "./gbdata.js";
+import { extractGbRawData, extractTrackSsrData } from "./gbdata.js";
 import type { BffEnvelope, RawOrderDetail, RawOrderListPage, RawTrackSsrData } from "./types.js";
 
 // Typed wrappers over the endpoints catalogued in task/PRD.md ("Descobertas").
@@ -28,6 +28,8 @@ export const ENDPOINTS = {
   detail: "/bff-api/order/get_order_detail",
   /** HTML page whose SSR blob carries the tracking timeline. */
   track: "/orders/track",
+  /** HTML page whose SSR blob is the only surface that honours `status_type`. */
+  page: "/user/orders/list",
 } as const;
 
 /**
@@ -44,6 +46,12 @@ export type PageParams = { page: number; limit: number };
 
 export type SheinApi = {
   listOrders(params: ListOrdersParams): Promise<RawOrderListPage>;
+  /**
+   * The same listing, read from the SSR page instead of the JSON API. Costs a
+   * ~1 MB download, and is the ONLY way to filter by tab: the JSON endpoint
+   * ignores `status_type` and answers the same page for every value.
+   */
+  listOrdersPage(params: { page: number; statusType: number }): Promise<RawOrderListPage>;
   /** Orders older than the window the main list shows (about a year). */
   listArchivedOrders(params: PageParams): Promise<RawOrderListPage>;
   getOrderDetail(billno: string): Promise<RawOrderDetail>;
@@ -111,6 +119,18 @@ export function createSheinApi(http: Http, opts: SheinApiOptions): SheinApi {
       callJson<RawOrderListPage>(ENDPOINTS.archive, { page, limit }, "order.archive"),
 
     getOrderDetail: (billno) => callJson<RawOrderDetail>(ENDPOINTS.detail, { billno }, "order.detail"),
+
+    async listOrdersPage({ page, statusType }) {
+      const response = await http.send({
+        url: buildUrl(opts.baseUrl, ENDPOINTS.page, { page, status_type: statusType }),
+        method: "GET",
+        kind: "html",
+        label: "orders.page",
+      });
+      const data = extractGbRawData(response.body);
+      if (!data) throw new ParseError("A página de pedidos veio sem o bloco `gbRawData`.");
+      return data as RawOrderListPage;
+    },
 
     async getTracking(billno) {
       const response = await http.send({

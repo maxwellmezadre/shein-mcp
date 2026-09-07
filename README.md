@@ -139,7 +139,7 @@ São 14, iguais no MCP e no CLI. Referência gerada:
 | `search_products` | `shein search <termo>` | 0 |
 | `list_products` | `shein products` | 0 |
 | `product_history` | `shein product-history <produto>` | 0 |
-| `list_returns` | `shein returns` | 0 |
+| `list_returns` | `shein returns [--verify]` | 0 (1 com `--verify`) |
 | `spending_summary` | `shein spending` | 0 |
 | `export` | `shein export` | 0 |
 | `raw_get` | `shein raw <path>` | 1 |
@@ -159,6 +159,9 @@ Duas regras vieram da conta real e são a espinha do projeto:
   da Shein e **não** formam uma equação.
 - O rastreio mora em `packageMap`, não em `trackInfo`: em 8 de 21 páginas o
   segundo simplesmente não existe.
+- A situação do pedido é lida pelos **sinais** (pagou? expirou? o pacote foi
+  assinado?), não pelo código da Shein — o rótulo dela é a última coisa que
+  aconteceu, não o estado de agora.
 
 O que a API **não** tem: o número de parcelas (só a taxa). Está documentado em
 [`docs/DATA-MODEL.md`](docs/DATA-MODEL.md) para ninguém inventar esse número.

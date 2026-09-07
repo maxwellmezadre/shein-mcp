@@ -16,7 +16,7 @@ depois do subcomando) e imprime exatamente o que o cliente MCP receberia.
 | `shein search <termo>` | `--limit <n>` | Busca nos produtos comprados |
 | `shein products` | `--store` `--category` `--from` `--to` `--limit` | Agregado por produto |
 | `shein product-history <produto>` | | Cada compra e a evolução do preço |
-| `shein returns` | `--from` `--to` `--limit` | Devoluções registradas |
+| `shein returns` | `--verify` `--from` `--to` `--limit` | Devoluções; `--verify` lê a aba do site |
 | `shein spending` | `--group-by` `--from` `--to` | month \| year \| store \| payment \| breakdown |
 | `shein export` | `--format` `--scope` `--out` | CSV ou JSON no diretório de exportação |
 | `shein raw <path>` | `--query k=v` `--kind` `--max-bytes` | GET autenticado (redescoberta) |

@@ -17,7 +17,7 @@ São 14 tools. As marcadas como somente leitura continuam disponíveis com
 | [`search_products`](#searchproducts) | sim | Busca entre os produtos que o usuário JÁ COMPROU na Shein (não é busca no catálogo). |
 | [`list_products`](#listproducts) | sim | Lista os produtos comprados agregados por produto: quantas vezes, quantas unidades, quanto foi gasto no total e o preço unitário mínimo e máximo. |
 | [`product_history`](#producthistory) | sim | Todas as compras de um produto, da mais antiga para a mais nova, com a evolução do preço unitário. |
-| [`list_returns`](#listreturns) | sim | Lista os itens com devolução ou reembolso registrados no detalhe do pedido. |
+| [`list_returns`](#listreturns) | sim | Lista as devoluções e reembolsos: por padrão os itens que o detalhe do pedido marca, do cache e sem rede. |
 | [`spending_summary`](#spendingsummary) | sim | Quanto o usuário gastou na Shein, agrupado por mês, ano, loja, meio de pagamento ou componente do preço. |
 | [`export`](#export) | não | Exporta o cache para um arquivo CSV ou JSON, com os pedidos ou os itens. |
 | [`raw_get`](#rawget) | sim | Faz um GET autenticado em uma superfície de pedidos da Shein (bff-api/order/*, leituras de bff-api/order-api/order/*, páginas SSR /user/orders/* e /orders/track), com o mesmo limite de taxa das outras tools. |
@@ -122,10 +122,11 @@ Todas as compras de um produto, da mais antiga para a mais nova, com a evoluçã
 
 ## list_returns
 
-Lista os itens com devolução ou reembolso registrados no detalhe do pedido. A Shein não expõe um histórico de devoluções que este projeto consiga ler, então aqui aparece só o que vem no pedido — se estiver vazio, não significa que nunca houve devolução. Não usa a rede.
+Lista as devoluções e reembolsos: por padrão os itens que o detalhe do pedido marca, do cache e sem rede. Com verify=true gasta 1 requisição e lê a aba 'Devolução/Reembolso' do próprio site, que é a única superfície que filtra de verdade — é assim que dá para afirmar que não houve nenhuma devolução, em vez de só não ter achado.
 
 | Parâmetro | Tipo | Obrigatório | Descrição |
 | --- | --- | --- | --- |
+| `verify` | boolean | não | Confere na aba de devoluções do site (1 requisição) |
 | `from` | string | não | Início do período, YYYY-MM-DD (inclusivo) |
 | `to` | string | não | Fim do período, YYYY-MM-DD (inclusivo) |
 | `limit` | integer | não | Máximo de itens (default 50) |

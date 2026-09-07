@@ -76,7 +76,18 @@ que executa as mesmas requisições dentro de um Chrome headless com a sua
 sessão — a assinatura é do próprio site. Com `auto` (o padrão), essa troca
 acontece sozinha na primeira negativa.
 
-## 6. Se a resposta mudar de forma
+## 6. Se precisar filtrar por aba
+
+O JSON ignora `status_type`. Quem filtra é a página:
+
+```sh
+shein raw /user/orders/list --query status_type=4 --kind html --max-bytes 2000
+```
+
+`status_type`: 0 todos, 1 não pago, 2 processando, 3 enviado, 5 avaliar,
+4 devolução/reembolso.
+
+## 7. Se a resposta mudar de forma
 
 Mude `src/domain/normalize.ts` — é o único arquivo que conhece nomes de campo
 da Shein — e escreva o teste antes, sobre o fixture novo. `test/normalize.test.ts`

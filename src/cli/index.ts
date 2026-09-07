@@ -198,9 +198,11 @@ export async function runCli(argv: string[], version: string): Promise<void> {
     "returns",
     "Itens com devolução ou reembolso registrados",
     "list_returns",
-    (options) => drop({ from: day(options.from), to: day(options.to), limit: num(options.limit) }),
+    (options) =>
+      drop({ verify: options.verify, from: day(options.from), to: day(options.to), limit: num(options.limit) }),
     (cmd) =>
       cmd
+        .option("--verify", "Confere na aba de devoluções do site (1 requisição)")
         .option("--from <YYYY-MM-DD>", "Início do período")
         .option("--to <YYYY-MM-DD>", "Fim do período")
         .option("--limit <n>", "Máximo de itens"),

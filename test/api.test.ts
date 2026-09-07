@@ -104,6 +104,31 @@ describe("envelope", () => {
   });
 });
 
+describe("SSR order page", () => {
+  const ssr = (data: unknown) =>
+    htmlResponse(`<html><script nonce="x">var gbRawData = ${JSON.stringify(data)};\nwindow.x=1;</script></html>`);
+
+  test("reads the page's own blob, which is the ONLY surface that honours the tab", async () => {
+    // The JSON endpoint ignores `status_type` — every tab answers the same
+    // page. The SSR page does not: that is how "did I return anything" is
+    // answerable at all (verified against the live site 2026-09-07).
+    const { api, fetch } = setup([ssr({ order_list: [], sum: 0, status_type: "4" })]);
+    const page = await api.listOrdersPage({ page: 1, statusType: 4 });
+    expect(page.sum).toBe(0);
+    expect(page.order_list).toEqual([]);
+    const u = url(fetch);
+    expect(u.pathname).toBe("/user/orders/list");
+    expect(u.searchParams.get("status_type")).toBe("4");
+    expect(u.searchParams.get("page")).toBe("1");
+    expect(fetch.calls[0]?.init.headers.accept).toContain("text/html");
+  });
+
+  test("a page without the blob is a ParseError, not an empty result", async () => {
+    const { api } = setup([htmlResponse("<html>sem dados</html>")]);
+    await expect(api.listOrdersPage({ page: 1, statusType: 4 })).rejects.toThrow(ParseError);
+  });
+});
+
 describe("tracking page", () => {
   const trackHtml = (blob: string) =>
     `<html><script>\n  gbCommonInfo.pageType = 'trackNew'\n  var gbOrdersTrackSsrData = ${blob}\n</script></html>`;

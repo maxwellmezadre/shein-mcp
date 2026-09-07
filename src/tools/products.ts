@@ -151,31 +151,61 @@ export const productHistory = defineTool({
   },
 });
 
+/** The "Devolução/Reembolso" tab of the orders page (`orderStatusList[].id`). */
+const RETURNS_TAB = 4;
+
 export const listReturns = defineTool({
   name: "list_returns",
   description:
-    "Lista os itens com devolução ou reembolso registrados no detalhe do pedido. A Shein não expõe " +
-    "um histórico de devoluções que este projeto consiga ler, então aqui aparece só o que vem no " +
-    "pedido — se estiver vazio, não significa que nunca houve devolução. Não usa a rede.",
+    "Lista as devoluções e reembolsos: por padrão os itens que o detalhe do pedido marca, do cache e " +
+    "sem rede. Com verify=true gasta 1 requisição e lê a aba 'Devolução/Reembolso' do próprio site, " +
+    "que é a única superfície que filtra de verdade — é assim que dá para afirmar que não houve " +
+    "nenhuma devolução, em vez de só não ter achado.",
   readOnly: true,
   input: Type.Object({
+    verify: Type.Optional(
+      Type.Boolean({ description: "Confere na aba de devoluções do site (1 requisição)" }),
+    ),
     from: dayField("Início do período, YYYY-MM-DD (inclusivo)"),
     to: dayField("Fim do período, YYYY-MM-DD (inclusivo)"),
     limit: limitField(200, 50),
   }),
-  run: (args, ctx) => {
+  run: async (args, ctx) => {
     const cache = ctx.cache();
     const rows = cache.listReturns({ from: args.from, to: args.to, limit: args.limit ?? 50 });
-    return compactObject({
+    const fromCache = {
       total: rows.length,
       returns: rows.map((row) => ({ ...purchaseOf(row), refundStatus: row.refund_status })),
       returnableOrders: cache.countReturnable(),
+    };
+
+    if (!args.verify) {
+      return compactObject({
+        ...fromCache,
+        note:
+          rows.length === 0
+            ? "Nenhuma devolução registrada no cache. Isso é o que o detalhe dos pedidos carrega — " +
+              "para conferir na aba de devoluções do próprio site, chame de novo com verify=true."
+            : undefined,
+      });
+    }
+
+    // The JSON endpoint ignores `status_type`; only the SSR page filters.
+    const page = await ctx.http.serial(() => ctx.api.listOrdersPage({ page: 1, statusType: RETURNS_TAB }));
+    const orders = page.order_list ?? [];
+    const siteReturns = Number(page.sum ?? orders.length);
+    return compactObject({
+      ...fromCache,
+      siteReturns,
+      siteOrders: orders.map((order) => ({
+        billno: order.billno,
+        placedAt: order.addTime,
+        total: order.totalPrice,
+      })),
       note:
-        rows.length === 0
-          ? "Nenhum item com devolução registrada no cache. O histórico de devoluções da Shein fica " +
-            "em uma API que este projeto ainda não mapeou (docs/REDISCOVERY.md); veja `returnableOrders` " +
-            "para os pedidos que ainda aceitam devolução."
-          : undefined,
+        siteReturns === 0
+          ? "Nenhuma devolução: a aba 'Devolução/Reembolso' do site está vazia para esta conta."
+          : `A Shein lista ${siteReturns} pedido(s) em devolução/reembolso.`,
     });
   },
 });

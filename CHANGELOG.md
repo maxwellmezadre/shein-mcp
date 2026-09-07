@@ -31,12 +31,16 @@ Primeira versão.
 
 - O **número de parcelas não existe** na API da Shein; só a taxa
   (`installmentFee`). Ver [`docs/DATA-MODEL.md`](docs/DATA-MODEL.md).
-- `limit` satura em 20 e `status_type` é ignorado pelo servidor: filtrar por
-  situação é trabalho do cache.
+- `limit` satura em 20. `status_type` é ignorado pelo endpoint JSON, mas
+  **respeitado pela página SSR** — é por lá que `list_returns --verify` confere
+  a aba de devoluções.
+- A situação do pedido é lida pelos sinais (pago, expiração, pacote assinado),
+  não pelo código da Shein: conferido contra as abas do próprio site.
 - O total confiável é a soma de `sorted_price` com `show:"1"` — os campos
   nomeados não formam uma equação.
-- O histórico de devoluções continua sem mapear; `list_returns` responde pelo
-  que o detalhe do pedido carrega e diz isso na resposta.
+- O endpoint JSON de devoluções continua sem mapear, mas não faz falta: a aba
+  "Devolução/Reembolso" do site é `/user/orders/list?status_type=4`, e é o que
+  `list_returns --verify` usa.
 
 [Unreleased]: https://github.com/maxwellmezadre/shein-mcp/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/maxwellmezadre/shein-mcp/releases/tag/v0.1.0

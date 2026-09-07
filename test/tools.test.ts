@@ -244,6 +244,13 @@ async function seeded(options: { track?: unknown } = {}) {
       if (url.includes("/orders/track")) {
         return htmlResponse(`<html><script>var gbOrdersTrackSsrData = ${JSON.stringify(track)}</script></html>`);
       }
+      // The SSR page first: `/user/orders/list` also contains `/order/list`,
+      // and it is the surface that honours the tab.
+      if (url.includes("/user/orders/list")) {
+        const statusType = new URL(url).searchParams.get("status_type");
+        const page = statusType === "0" ? LIST_FIXTURE.info : { order_list: [], sum: 0, status_type: statusType };
+        return htmlResponse(`<html><script>var gbRawData = ${JSON.stringify(page)};</script></html>`);
+      }
       if (url.includes("get_order_archive_list")) return bffOk({ order_list: [], sum: 0 });
       if (url.includes("/order/list")) return bffOk({ ...LIST_FIXTURE.info, sum: LIST_FIXTURE.info.order_list.length });
       return bffOk({ ...DETAIL_FIXTURE.info, billno: new URL(url).searchParams.get("billno") });
@@ -506,8 +513,26 @@ describe("list_returns", () => {
     expect(fetch.calls.length).toBe(before);
     expect(result.total).toBe(0);
     expect(result.returnableOrders).toBeGreaterThan(0);
-    // The note must not let a model conclude "the user never returned anything".
-    expect(result.note).toMatch(/não mapeou|nao mapeou/i);
+    // Without `verify` the tool must not claim the user never returned anything.
+    expect(result.note).toMatch(/verify/i);
+  });
+
+  test("verify checks the site's own Returns tab, which is the only surface that filters", async () => {
+    const { ctx, fetch } = await seeded();
+    const before = fetch.calls.length;
+    const result = (await call("list_returns", { verify: true }, ctx)) as {
+      total: number;
+      siteReturns: number;
+      note?: string;
+    };
+    // Exactly one request, to the SSR page, with the Returns tab selected.
+    expect(fetch.calls.length).toBe(before + 1);
+    const url = new URL(fetch.calls[before]?.url as string);
+    expect(url.pathname).toBe("/user/orders/list");
+    expect(url.searchParams.get("status_type")).toBe("4");
+    // The fixture account has none, and now that is a checked fact.
+    expect(result.siteReturns).toBe(0);
+    expect(result.note).toMatch(/nenhuma devolu/i);
   });
 
   test("lists an item once the order detail carries a refund record", async () => {

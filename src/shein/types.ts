@@ -111,6 +111,8 @@ export type RawOrderListItem = {
   payment_method?: string;
   payment_type?: number | string;
   isCanReturn?: string | number;
+  /** When an unpaid order stops being payable; past it, the site drops it. */
+  order_expire_time?: number | string;
   is_multi_mall?: boolean;
   mall_list?: RawMall[];
   orderGoodsList?: RawOrderGoods[];
