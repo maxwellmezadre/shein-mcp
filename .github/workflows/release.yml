@@ -31,9 +31,24 @@ jobs:
           package-manager-cache: false
       - run: bun install --frozen-lockfile
       - run: bun run build:dist
+      # A primeira versão de um pacote novo NÃO pode sair por OIDC: o npm exige
+      # que o pacote exista para você configurar o trusted publisher, e exige o
+      # trusted publisher para publicar (npm/cli#8544). Ela é publicada à mão, e
+      # este passo então pularia a tag correspondente em vez de falhar.
+      - id: published
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          NAME=$(node -p "require('./package.json').name")
+          if npm view "$NAME@$VERSION" version >/dev/null 2>&1; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "$NAME@$VERSION já está no npm; nada a publicar."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
       # Sem NODE_AUTH_TOKEN: a credencial é um token OIDC de vida curta emitido
       # na hora do publish, e a provenance sai automática.
-      - run: npm publish --access public
+      - if: steps.published.outputs.skip == 'false'
+        run: npm publish --access public
 
   binaries:
     needs: verify

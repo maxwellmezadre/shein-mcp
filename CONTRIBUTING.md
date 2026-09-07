@@ -47,6 +47,18 @@ sessão, banco) são injetados — veja `test/helpers.ts`.
 - Testes que precisam da conta real ficam em `test/integration/` e
   `test/local/`, e se auto-ignoram quando a sessão ou as capturas não existem.
 
+## Publicando
+
+A tag `vX.Y.Z` dispara o release: binários para Linux, macOS e Windows, e o
+publish no npm por OIDC (trusted publishing, sem token).
+
+Uma ressalva do npm: **a primeira versão de um pacote novo não sai por OIDC.**
+O npmjs exige que o pacote exista para você configurar o trusted publisher, e
+exige o trusted publisher para publicar ([npm/cli#8544](https://github.com/npm/cli/issues/8544)).
+Então a `0.1.0` foi publicada à mão (`npm publish --access public --otp=…`) e o
+trusted publisher foi configurado depois. O workflow pula a publicação quando a
+versão já está no registro, em vez de falhar.
+
 ## Dado pessoal
 
 O repositório é público. `test/fixtures.test.ts` falha se e-mail, CEP, CPF ou
