@@ -112,7 +112,8 @@ export const productHistory = defineTool({
   description:
     "Todas as compras de um produto, da mais antiga para a mais nova, com a evolução do preço " +
     "unitário. Aceita o goods_id ou palavras do nome (nesse caso usa o produto mais comprado que " +
-    "casar). Responde do cache, sem rede.",
+    "casar). Pedidos não pagos e cancelados aparecem na lista, mas não entram no total gasto. " +
+    "Responde do cache, sem rede.",
   readOnly: true,
   input: Type.Object({
     product: Type.String({ minLength: 1, description: "goods_id da Shein ou palavras do nome do produto" }),
@@ -131,14 +132,18 @@ export const productHistory = defineTool({
       return { product: query, total: 0, note: `Nenhum produto comprado casa com "${query}".` };
     }
     const rows = cache.productHistory(goodsId);
-    const prices = rows.map((row) => row.unit_cents).filter((cents) => cents > 0);
+    // An order that was never paid (or was cancelled) is still worth showing —
+    // the user did try to buy it — but it is not money they spent.
+    const bought = rows.filter((row) => row.status !== "unpaid" && row.status !== "cancelled");
+    const prices = bought.map((row) => row.unit_cents).filter((cents) => cents > 0);
     return compactObject({
       goodsId,
       name: rows[0]?.name ?? null,
       total: rows.length,
-      timesBought: new Set(rows.map((row) => row.billno)).size,
-      unitsBought: rows.reduce((sum, row) => sum + row.quantity, 0),
-      spent: toDecimal(rows.reduce((sum, row) => sum + row.total_cents, 0)),
+      timesBought: new Set(bought.map((row) => row.billno)).size,
+      unitsBought: bought.reduce((sum, row) => sum + row.quantity, 0),
+      spent: toDecimal(bought.reduce((sum, row) => sum + row.total_cents, 0)),
+      attempts: rows.length - bought.length || undefined,
       firstUnitPrice: prices.length > 0 ? toDecimal(prices[0] as number) : undefined,
       lastUnitPrice: prices.length > 0 ? toDecimal(prices[prices.length - 1] as number) : undefined,
       purchases: rows.map(purchaseOf),

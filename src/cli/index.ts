@@ -45,7 +45,9 @@ export async function runCli(argv: string[], version: string): Promise<void> {
     build: (options: Options, ...args: string[]) => Record<string, unknown> = () => ({}),
     configure: (cmd: Command) => Command = (cmd) => cmd,
   ): void => {
-    const cmd = program.command(signature).description(description);
+    // `--json` is accepted on every command as well as before it: a user who
+    // types `shein orders --json` should not have to learn where it goes.
+    const cmd = program.command(signature).description(description).option("--json", "Imprime o resultado como JSON");
     configure(cmd).action(async (...actionArgs: unknown[]) => {
       // commander hands the positionals first, then the options, then itself.
       const positionals = actionArgs.slice(0, -2) as string[];

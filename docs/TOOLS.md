@@ -114,7 +114,7 @@ Lista os produtos comprados agregados por produto: quantas vezes, quantas unidad
 
 ## product_history
 
-Todas as compras de um produto, da mais antiga para a mais nova, com a evolução do preço unitário. Aceita o goods_id ou palavras do nome (nesse caso usa o produto mais comprado que casar). Responde do cache, sem rede.
+Todas as compras de um produto, da mais antiga para a mais nova, com a evolução do preço unitário. Aceita o goods_id ou palavras do nome (nesse caso usa o produto mais comprado que casar). Pedidos não pagos e cancelados aparecem na lista, mas não entram no total gasto. Responde do cache, sem rede.
 
 | Parâmetro | Tipo | Obrigatório | Descrição |
 | --- | --- | --- | --- |

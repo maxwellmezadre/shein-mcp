@@ -61,6 +61,15 @@ export const spendingSummary = defineTool({
         orders: row.orders,
       })),
       note: NOTES[group],
+      // The parts never cover the whole when an order has no breakdown stored
+      // (an archived order answers its detail with an empty shell), or when a
+      // component is not an item. Saying so beats letting a reader infer it.
+      gapNote:
+        partial && rowsTotal !== spent.cents
+          ? `A soma das linhas (${toDecimal(rowsTotal)}) é menor que o total dos pedidos ` +
+            `(${toDecimal(spent.cents)}): a diferença são pedidos sem esse detalhe salvo ` +
+            "(arquivados) e componentes que não são itens."
+          : undefined,
       hint: spent.orders === 0 ? "O cache está vazio. Rode `sync` para baixar o histórico." : undefined,
     });
   },

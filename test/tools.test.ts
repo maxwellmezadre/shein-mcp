@@ -444,6 +444,33 @@ describe("product_history", () => {
     expect([...dates].sort()).toEqual(dates);
   });
 
+  test("an unpaid attempt is listed but never counted as money spent", async () => {
+    const { ctx } = await seeded();
+    const goodsId = ((await call("list_products", {}, ctx)) as { products: Array<{ goodsId: string }> })
+      .products[0]?.goodsId as string;
+    const paid = (await call("product_history", { product: goodsId }, ctx)) as {
+      timesBought: number;
+      spent: number;
+    };
+    // One of the orders holding this product was never paid for.
+    const order = ctx.cache().getOrder(FIRST_BILLNO);
+    ctx.cache().upsertDetail({ ...(order as NonNullable<typeof order>), status: "unpaid" }, "{}", 1);
+    const after = (await call("product_history", { product: goodsId }, ctx)) as {
+      total: number;
+      timesBought: number;
+      spent: number;
+      attempts: number;
+      purchases: Array<{ status: string }>;
+    };
+    // Still listed, so the user can see the attempt…
+    expect(after.total).toBe(paid.timesBought);
+    expect(after.purchases.some((purchase) => purchase.status === "unpaid")).toBe(true);
+    // …but it is not money they spent.
+    expect(after.timesBought).toBe(paid.timesBought - 1);
+    expect(after.spent).toBeLessThan(paid.spent);
+    expect(after.attempts).toBe(1);
+  });
+
   test("resolves a product by name when the caller does not know the id", async () => {
     const { ctx } = await seeded();
     const name = (DETAIL_FIXTURE.info.orderGoodsList as Array<{ product: { goods_name: string } }>)[0]
