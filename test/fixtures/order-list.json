@@ -1,0 +1,1373 @@
+{
+  "code": "0",
+  "msg": "ok",
+  "info": {
+    "resellOrdersUrl": null,
+    "carrierBlacklistUrl": "https://api-shein.shein.com/h5/orders/logisticsBlacklist",
+    "order_list": [
+      {
+        "shippingPrice": {
+          "amount": "0.00",
+          "amountWithSymbol": "R$0,00",
+          "usdAmount": "0.00",
+          "usdAmountWithSymbol": "US$0.00",
+          "priceShowStyle": "0"
+        },
+        "totalDiscountNew": {
+          "amount": "40.0",
+          "amountWithSymbol": "R$40,00",
+          "usdAmount": "7.8",
+          "usdAmountWithSymbol": "$7.80",
+          "priceShowStyle": "40"
+        },
+        "shippingCountryId": "30",
+        "isSharepay": 0,
+        "hasOnTimeInsuranceType": true,
+        "payOrder": true,
+        "insurance_type": "0",
+        "order_insurance_res_list": [
+          {
+            "insurance_fee": "0.00",
+            "insurance_fee_usd": "0.00",
+            "insurance_type": "4"
+          },
+          {
+            "insurance_fee": "0.00",
+            "insurance_fee_usd": "0.00",
+            "insurance_type": "0"
+          }
+        ],
+        "returnEffect": {
+          "title": null,
+          "desc": "​Eco de cabo: Omega de {0}",
+          "descFillTime": "1789478763",
+          "style": "normal"
+        },
+        "can_add_purchase": "0",
+        "ocb_payment_no": "PN820506538656747079",
+        "merge_buy_billno": "",
+        "merge_buy_tag": "0",
+        "could_ocb_order": "0",
+        "relationBillno": "USH0687288032342760",
+        "order_type": "1",
+        "order_package_info_list": [
+          {
+            "deliveryTime": "1787283886",
+            "signed_time": "1787664363",
+            "packageNo": "CBG65187729556288",
+            "operationProcess": 0,
+            "wrapStatus": 0,
+            "forwardStatus": 0,
+            "status": 54,
+            "package_node_time_info": null,
+            "transport_info": {
+              "relation_id": null,
+              "type": "0",
+              "days_delivery_flag": "0",
+              "transport_time_type": "1",
+              "coefficient": "",
+              "transport_time": "1787164708-1788115108",
+              "sub_transport_time": "5-16",
+              "transport_date_type": "0",
+              "title": null,
+              "origin_shipping_desc": null,
+              "origin_delivery_desc": null,
+              "supple_desc": null,
+              "delivery_day_percent_desc": null,
+              "summary_time": null,
+              "summary_time_percentage": null,
+              "time_detail_list": null,
+              "express_time_type_id": "0",
+              "is_change_flag": null
+            },
+            "reject_reason_id": null,
+            "packageCombinedFlag": "1",
+            "confluence_pkg_status": "0",
+            "package_initial_transport_time": {
+              "type": "5",
+              "transport_time_type": "1",
+              "transport_time": "4-7",
+              "sub_transport_time": "1787281199-1787713199",
+              "transport_date_type": "1"
+            },
+            "is_abnormal_delivery": "N",
+            "confluence_batch_no": ""
+          }
+        ],
+        "is_have_invoice": "0",
+        "invoiceUrl": "",
+        "show_bar_code": "0",
+        "show_mutil_package": 0,
+        "track_h5_link": "https://api-shein.shein.com/h5/orders/track?app=shein&iconColor=white&device_type=pc&language=pt-br&site_uid=br&region=br&type=immersive&billno=GSH751968624404&show_actionbar=false",
+        "orderGoodsList": [
+          {
+            "is_prime_goods": "0",
+            "status": "54",
+            "goods_name": "Vega delta jade",
+            "goods_sn": "si8054546734254640",
+            "goods_attr": "Vinho/GG",
+            "quantity": "1",
+            "goods_count": "1",
+            "goods_id": 15457085,
+            "goods_img": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/d0/1706547725a3fd10e4143db0e732434b1b9d15bea4_thumbnail_220x293.jpg",
+            "reference_number": "CBG65187729556288",
+            "package_split": 0,
+            "pre_assign_status": "DEFAULT",
+            "goods_pkg_rel_list": [
+              {
+                "package_no": "CBG65187729556288",
+                "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                "shipping_no": "8338890891011"
+              }
+            ],
+            "cat_id": "2270",
+            "sku_attrs_contact_str": "Vinho/GG",
+            "store_code": "4365665480",
+            "store_name": "Pixel E Fenix rubi",
+            "business_model": "1",
+            "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+            "mall_code": "2",
+            "goods_sn_relation_goods_list": [
+              {
+                "combined_flag": 0,
+                "price_tag": 0,
+                "is_cod_order_can_part_cancel": 0,
+                "is_common_order_can_part_refund": "0",
+                "id": "9693631388695305",
+                "is_syn_ops": "Y",
+                "inventory_shortage": "0",
+                "status": "54",
+                "tags": "",
+                "comb_pack_truck_tag": "0"
+              }
+            ]
+          },
+          {
+            "is_prime_goods": "0",
+            "status": "54",
+            "goods_name": "Vega delta jade",
+            "goods_sn": "si5722937464193957",
+            "goods_attr": "Azul/GG",
+            "quantity": "1",
+            "goods_count": "1",
+            "goods_id": 15456503,
+            "goods_img": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/c1/01768967157790bccb59cf99bab384d90eff6afa45_thumbnail_220x293.jpg",
+            "reference_number": "CBG65187729556288",
+            "package_split": 0,
+            "pre_assign_status": "DEFAULT",
+            "goods_pkg_rel_list": [
+              {
+                "package_no": "CBG65187729556288",
+                "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                "shipping_no": "8338890891011"
+              }
+            ],
+            "cat_id": "2270",
+            "sku_attrs_contact_str": "Azul/GG",
+            "store_code": "4365665480",
+            "store_name": "Pixel E Fenix rubi",
+            "business_model": "1",
+            "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+            "mall_code": "2",
+            "goods_sn_relation_goods_list": [
+              {
+                "combined_flag": 0,
+                "price_tag": 0,
+                "is_cod_order_can_part_cancel": 0,
+                "is_common_order_can_part_refund": "0",
+                "id": "7733738732857776",
+                "is_syn_ops": "Y",
+                "inventory_shortage": "0",
+                "status": "54",
+                "tags": "",
+                "comb_pack_truck_tag": "0"
+              }
+            ]
+          }
+        ],
+        "orderGoodsListByMall": [
+          {
+            "mall_name": "Envio Nacional",
+            "mall_name_tip": null,
+            "mall_code": "2",
+            "shipping_method": "expedited_shipping",
+            "siteUid": "iosshbr",
+            "handling_desc": null,
+            "goods_quality": 2,
+            "orderGoodsListByStore": [
+              {
+                "store_trend_logo": "",
+                "store_code": "4365665480",
+                "store_name": "Pixel E Fenix rubi",
+                "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+                "store_icon": "https://img.ltwebstatic.com/images3_ccc/2024/07/04/02/1720093868a123858c2d379709122a14a3bad8fabd.png",
+                "business_model": "1",
+                "storeRouting": "/store/home?data=%7B%22store_code%22%3A%540867880730%22%2C%22page_from%22%3A%22PageOrderList%22%2C%22top_goods_id%22%3Anull%2C%22main_goods_id%22%3A%2215456503%2C15457085%22%2C%22store_scene%22%3A%22order%22%2C%22cate_ids%22%3A%222270%22%2C%22main_cate_id%22%3A%222270%22%2C%22goods_ids%22%3A%2215456503%2C15457085%22%7D",
+                "goodList": [
+                  {
+                    "is_prime_goods": "0",
+                    "status": "54",
+                    "goods_name": "Vega delta jade",
+                    "goods_sn": "si8054546734254640",
+                    "goods_attr": "Vinho/GG",
+                    "quantity": "1",
+                    "goods_count": "1",
+                    "goods_id": 15457085,
+                    "goods_img": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/d0/1706547725a3fd10e4143db0e732434b1b9d15bea4_thumbnail_220x293.jpg",
+                    "reference_number": "CBG65187729556288",
+                    "package_split": 0,
+                    "pre_assign_status": "DEFAULT",
+                    "goods_pkg_rel_list": [
+                      {
+                        "package_no": "CBG65187729556288",
+                        "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                        "shipping_no": "8338890891011"
+                      }
+                    ],
+                    "cat_id": "2270",
+                    "sku_attrs_contact_str": "Vinho/GG",
+                    "store_code": "4365665480",
+                    "store_name": "Pixel E Fenix rubi",
+                    "business_model": "1",
+                    "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+                    "mall_code": "2",
+                    "goods_sn_relation_goods_list": [
+                      {
+                        "combined_flag": 0,
+                        "price_tag": 0,
+                        "is_cod_order_can_part_cancel": 0,
+                        "is_common_order_can_part_refund": "0",
+                        "id": "9693631388695305",
+                        "is_syn_ops": "Y",
+                        "inventory_shortage": "0",
+                        "status": "54",
+                        "tags": "",
+                        "comb_pack_truck_tag": "0"
+                      }
+                    ]
+                  },
+                  {
+                    "is_prime_goods": "0",
+                    "status": "54",
+                    "goods_name": "Vega delta jade",
+                    "goods_sn": "si5722937464193957",
+                    "goods_attr": "Azul/GG",
+                    "quantity": "1",
+                    "goods_count": "1",
+                    "goods_id": 15456503,
+                    "goods_img": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/c1/01768967157790bccb59cf99bab384d90eff6afa45_thumbnail_220x293.jpg",
+                    "reference_number": "CBG65187729556288",
+                    "package_split": 0,
+                    "pre_assign_status": "DEFAULT",
+                    "goods_pkg_rel_list": [
+                      {
+                        "package_no": "CBG65187729556288",
+                        "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                        "shipping_no": "8338890891011"
+                      }
+                    ],
+                    "cat_id": "2270",
+                    "sku_attrs_contact_str": "Azul/GG",
+                    "store_code": "4365665480",
+                    "store_name": "Pixel E Fenix rubi",
+                    "business_model": "1",
+                    "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+                    "mall_code": "2",
+                    "goods_sn_relation_goods_list": [
+                      {
+                        "combined_flag": 0,
+                        "price_tag": 0,
+                        "is_cod_order_can_part_cancel": 0,
+                        "is_common_order_can_part_refund": "0",
+                        "id": "7733738732857776",
+                        "is_syn_ops": "Y",
+                        "inventory_shortage": "0",
+                        "status": "54",
+                        "tags": "",
+                        "comb_pack_truck_tag": "0"
+                      }
+                    ]
+                  }
+                ],
+                "goods_quality": 0,
+                "mall_code": "2",
+                "store_label_display": null
+              }
+            ]
+          }
+        ],
+        "show_new_good_list": "1",
+        "order_goods_model": "1",
+        "quatity": 2,
+        "addTime": 1786732708,
+        "totalPrice": "R$69,98",
+        "isCanBeHiddenByUser": 1,
+        "confirmDeliveryBonusPoints": 0,
+        "isCanComment": 1,
+        "confirmDeliveryMsg": "",
+        "orderStatus": 5,
+        "status": "6",
+        "canRepurchase": 1,
+        "marketing_type": "0",
+        "isPaid": "0",
+        "performance_system": "ops",
+        "isCanConfirmDelivery": "0",
+        "pay_time": "1786732759",
+        "site_from": "iosshbr",
+        "isReadOnly": 0,
+        "isCommonOrderCanRefund": 0,
+        "isCanRevokeByUser": 0,
+        "remark_user": "",
+        "billno": "GSH751968624404",
+        "tel_reservation": 1,
+        "payment_method": "adyen-brcardinstallment",
+        "returnItemWebUrl": "",
+        "newReturnItemWebUrl": "https://api-shein.shein.com/h5/user/order_return/GSH751968624404",
+        "isCanReturn": "1",
+        "return_and_refund_info": {
+          "button_text": "Devolução e Reembolso",
+          "popup_title": "Selecione o tipo de reembolso",
+          "return_info": {
+            "button_text": "(Combinar) Devolver e receber um reembolso",
+            "button_desc": "Após receber os produtos, você pode solicitar devolução e reembolso. O vendedor processará seu reembolso assim que os itens devolvidos forem recebidos."
+          },
+          "refund_info": {
+            "button_text": "Pacote entregue, não recebido",
+            "button_desc": "Se o rastreamento indicar que a entrega foi concluída, mas você ainda não tiver recebido o seu pacote, por favor informe isso por meio desta opção. Se apenas parte dos itens estiver faltando, entre em contato com o atendimento ao cliente para verificação.",
+            "button_text_for_single": "Pacote entregue, não recebido",
+            "button_url": "https://api-shein.shein.com/h5/orders/refundApplication?billno=GSH751968624404&pageFrom=orderList"
+          }
+        },
+        "returnButtonIsGray": "0",
+        "shippingaddr_info": {
+          "shipping_sex": "",
+          "shipping_firstname": "Comprador Exemplo",
+          "shipping_lastname": "",
+          "shipping_telephone": "11999999999",
+          "shipping_province": "Estado Exemplo",
+          "shipping_city": "Cidade Exemplo",
+          "shipping_address_1": "Rua Exemplo, 123",
+          "shipping_address_2": "Complemento Exemplo",
+          "shipping_postcode": "00000-000",
+          "tax_number": "000.000.000-00",
+          "shipping_country_id": "30",
+          "shipping_country_name": "Brazil",
+          "shipping_method": "Taxa Mínima de Envio",
+          "shipping_state_id": "1559066",
+          "shipping_city_id": "2065696",
+          "shipping_district_id": "Bairro Exemplo",
+          "shipping_father_name": "",
+          "nationalId": "",
+          "district": "Bairro Exemplo",
+          "street": "123",
+          "birthday": "",
+          "subsidiary": {
+            "issue_place": "",
+            "store_id": "",
+            "multi_package": null,
+            "address_type": "Rua Exemplo, 123",
+            "issue_date": "",
+            "father_name": "",
+            "passport_number": "",
+            "transport_type": "expedited_shipping",
+            "store_name": "",
+            "store_type": "0",
+            "middle_name": "",
+            "english_name": ""
+          },
+          "backupTelephone": "",
+          "isOrderShippingAddressEditable": 0,
+          "shipping_country_code": "BR",
+          "is_shop_transit": "0",
+          "enable_check_multi_edit": 0,
+          "company": "",
+          "store_code_list": null,
+          "short_address": ""
+        },
+        "editAddressInfo": {
+          "storeCodeList": [
+            "4365665480"
+          ]
+        },
+        "addressSyncInfo": {
+          "enableAddressSyncPopup": 1,
+          "userSyncPopupText": "Deseja atualizar esta modificação para o endereço original ou adicionar um novo endereço ao seu livro de endereços?",
+          "userSyncPopupCloseTip": "Se você não precisa de ambos, pode clicar em \"×\" para fechar."
+        },
+        "billaddr_info": {
+          "email": "comprador@exemplo.test",
+          "sex": null,
+          "firstname": null,
+          "lastname": null,
+          "address_1": null,
+          "address_2": null,
+          "city": null,
+          "country_name": null,
+          "province": null,
+          "postcode": null,
+          "country_id": null,
+          "telephone": null,
+          "district": null
+        },
+        "order_expire_time": 1786747108,
+        "reference_number": "CBG65187729556288",
+        "payment_type": 7,
+        "orderGoodsSum": 2,
+        "sub_order_list": [],
+        "combined_shipped_flag": "1",
+        "cod_reject_fillable": 1,
+        "reject_reason_id": -1,
+        "isLocalCurrency": 0,
+        "currency_code": "BRL",
+        "localCodPrice": {
+          "amount": "0.00",
+          "amountWithSymbol": "$0.00",
+          "priceShowStyle": "0"
+        },
+        "confirm_receipt_time": "0",
+        "mall_list": [
+          {
+            "origin_shipping_desc": null,
+            "origin_delivery_desc": null,
+            "supple_desc": null,
+            "origin_desc_quick_ship_time": null,
+            "quick_ship_time_type": null,
+            "mall_code": "2",
+            "mall_name": "Envio Nacional",
+            "site_uid": "iosshbr",
+            "transport_type": "expedited_shipping",
+            "store_code": "4365665480",
+            "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+            "store_name": "Pixel E Fenix rubi",
+            "handling_desc": null,
+            "transport_time": null,
+            "transport_time_type": null,
+            "date_type": null,
+            "sub_transport_time": null,
+            "delivery_day_percent_desc": null,
+            "summary_time": null,
+            "summary_time_percentage": null,
+            "shipping_method": null,
+            "business_model": "1",
+            "company_id": "75",
+            "quick_ship_desc": null,
+            "quick_ship_time": null,
+            "store_type": "1",
+            "hint": null,
+            "description": null,
+            "max_transport_time_detail": {
+              "time": "4-7",
+              "date_type": "1",
+              "type": "1",
+              "order_transport_type": "5",
+              "sub_transport_time": "1787281199-1787713199"
+            },
+            "large_transport_time_info": null,
+            "exchange_shipping_time": null,
+            "union_transport_time_info": {
+              "union_days": "5-16",
+              "union_timestamp": "1787164708-1788115108",
+              "date_type": "0",
+              "summary_time": null,
+              "summary_time_percentage": null,
+              "time_detail_list": null,
+              "is_change_flag": null
+            },
+            "shipped_transport_time_list": null,
+            "mall_agg_info_list": null
+          }
+        ],
+        "is_multi_mall": true,
+        "business_model": 1,
+        "combined_return_msg": "",
+        "enableBarcode": false,
+        "toc_perform_party": 1,
+        "stock_mode": 3,
+        "sales_area": 1,
+        "order_button": {
+          "refund_only_button_tip": "Pacote entregue, não recebido",
+          "refund_only_button_link": "https://api-shein.shein.com/h5/orders/refundApplication?billno=GSH751968624404&pageFrom=orderList",
+          "return_button_tip": "(Combinar) Retorno"
+        },
+        "shipped_status_info": {
+          "new_edit_address": 1,
+          "edit_success_tip": null,
+          "shipped_good_status": null,
+          "double_confirm_tip": null,
+          "editable_type": null,
+          "is_order_address_editable": 0,
+          "order_mark_list": null,
+          "show_address_order_mark": "Rua Exemplo, 123",
+          "order_mark_info": null
+        },
+        "is_cut_knife_order": "0",
+        "is_virtual_order": false
+      },
+      {
+        "shippingPrice": {
+          "amount": "0.00",
+          "amountWithSymbol": "R$0,00",
+          "usdAmount": "0.00",
+          "usdAmountWithSymbol": "US$0.00",
+          "priceShowStyle": "0"
+        },
+        "totalDiscountNew": {
+          "amount": "22.0",
+          "amountWithSymbol": "R$22,00",
+          "usdAmount": "4.29",
+          "usdAmountWithSymbol": "$4.29",
+          "priceShowStyle": "22"
+        },
+        "shippingCountryId": "30",
+        "isSharepay": 0,
+        "hasOnTimeInsuranceType": true,
+        "payOrder": true,
+        "insurance_type": "0",
+        "order_insurance_res_list": [
+          {
+            "insurance_fee": "0.00",
+            "insurance_fee_usd": "0.00",
+            "insurance_type": "4"
+          },
+          {
+            "insurance_fee": "0.00",
+            "insurance_fee_usd": "0.00",
+            "insurance_type": "0"
+          }
+        ],
+        "returnEffect": {
+          "title": null,
+          "desc": "​Eco de cabo: Omega de {0}",
+          "descFillTime": "1789478763",
+          "style": "normal"
+        },
+        "can_add_purchase": "0",
+        "ocb_payment_no": "PN871196794790022655",
+        "merge_buy_billno": "",
+        "merge_buy_tag": "0",
+        "could_ocb_order": "0",
+        "relationBillno": "USH0687288032342760",
+        "order_type": "1",
+        "order_package_info_list": [
+          {
+            "deliveryTime": "1787283886",
+            "signed_time": "1787664363",
+            "packageNo": "CBG65187729556288",
+            "operationProcess": 0,
+            "wrapStatus": 0,
+            "forwardStatus": 0,
+            "status": 54,
+            "package_node_time_info": null,
+            "transport_info": {
+              "relation_id": null,
+              "type": "0",
+              "days_delivery_flag": "0",
+              "transport_time_type": "1",
+              "coefficient": "",
+              "transport_time": "1787164708-1788115108",
+              "sub_transport_time": "5-16",
+              "transport_date_type": "0",
+              "title": null,
+              "origin_shipping_desc": null,
+              "origin_delivery_desc": null,
+              "supple_desc": null,
+              "delivery_day_percent_desc": null,
+              "summary_time": null,
+              "summary_time_percentage": null,
+              "time_detail_list": null,
+              "express_time_type_id": "0",
+              "is_change_flag": null
+            },
+            "reject_reason_id": null,
+            "packageCombinedFlag": "1",
+            "confluence_pkg_status": "0",
+            "package_initial_transport_time": {
+              "type": "5",
+              "transport_time_type": "1",
+              "transport_time": "4-7",
+              "sub_transport_time": "1787281199-1787713199",
+              "transport_date_type": "1"
+            },
+            "is_abnormal_delivery": "N",
+            "confluence_batch_no": ""
+          }
+        ],
+        "is_have_invoice": "0",
+        "invoiceUrl": "",
+        "show_bar_code": "0",
+        "show_mutil_package": 0,
+        "track_h5_link": "https://api-shein.shein.com/h5/orders/track?app=shein&iconColor=white&device_type=pc&language=pt-br&site_uid=br&region=br&type=immersive&billno=GSH522047596615&show_actionbar=false",
+        "orderGoodsList": [
+          {
+            "is_prime_goods": "0",
+            "status": "54",
+            "goods_name": "Vega Rubi Xenon Prisma Jade Rubi Watt Orbita Hidra Xenon Vetor",
+            "goods_sn": "si64694984033735331",
+            "goods_attr": "Vermelho",
+            "quantity": "1",
+            "goods_count": "1",
+            "goods_id": 61366705,
+            "goods_img": "https://img.ltwebstatic.com/v4/j/spmp/2026/07/14/46/2194475351902cd7c56c742a245342fe442c817742_square_thumbnail_220x293.jpg",
+            "reference_number": "CBG65187729556288",
+            "package_split": 0,
+            "pre_assign_status": "DEFAULT",
+            "goods_pkg_rel_list": [
+              {
+                "package_no": "CBG65187729556288",
+                "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                "shipping_no": "8338890891011"
+              }
+            ],
+            "cat_id": "1862",
+            "sku_attrs_contact_str": "Vermelho",
+            "store_code": "8662904471",
+            "store_name": "NA OMEGA DELTA E TANGO",
+            "business_model": "1",
+            "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/10/27/05/1698360916f2b3649e2f1b1cfc4f1a53a77dd0095b.png",
+            "mall_code": "2",
+            "goods_sn_relation_goods_list": [
+              {
+                "combined_flag": 0,
+                "price_tag": 0,
+                "is_cod_order_can_part_cancel": 0,
+                "is_common_order_can_part_refund": "0",
+                "id": "9257402963066588",
+                "is_syn_ops": "Y",
+                "inventory_shortage": "0",
+                "status": "54",
+                "tags": "",
+                "comb_pack_truck_tag": "0"
+              }
+            ]
+          }
+        ],
+        "orderGoodsListByMall": [
+          {
+            "mall_name": "Envio Nacional",
+            "mall_name_tip": null,
+            "mall_code": "2",
+            "shipping_method": "expedited_shipping",
+            "siteUid": "iosshbr",
+            "handling_desc": null,
+            "goods_quality": 1,
+            "orderGoodsListByStore": [
+              {
+                "store_trend_logo": "",
+                "store_code": "8662904471",
+                "store_name": "NA OMEGA DELTA E TANGO",
+                "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/10/27/05/1698360916f2b3649e2f1b1cfc4f1a53a77dd0095b.png",
+                "store_icon": "https://img.ltwebstatic.com/images3_ccc/2024/07/04/02/1720093868a123858c2d379709122a14a3bad8fabd.png",
+                "business_model": "1",
+                "storeRouting": "/store/home?data=%7B%22store_code%22%3A%821247912188%22%2C%22page_from%22%3A%22PageOrderList%22%2C%22top_goods_id%22%3Anull%2C%22main_goods_id%22%3A%2261366705%22%2C%22store_scene%22%3A%22order%22%2C%22cate_ids%22%3A%221862%22%2C%22main_cate_id%22%3A%221862%22%2C%22goods_ids%22%3A%2261366705%22%7D",
+                "goodList": [
+                  {
+                    "is_prime_goods": "0",
+                    "status": "54",
+                    "goods_name": "Vega Rubi Xenon Prisma Jade Rubi Watt Orbita Hidra Xenon Vetor",
+                    "goods_sn": "si64694984033735331",
+                    "goods_attr": "Vermelho",
+                    "quantity": "1",
+                    "goods_count": "1",
+                    "goods_id": 61366705,
+                    "goods_img": "https://img.ltwebstatic.com/v4/j/spmp/2026/07/14/46/2194475351902cd7c56c742a245342fe442c817742_square_thumbnail_220x293.jpg",
+                    "reference_number": "CBG65187729556288",
+                    "package_split": 0,
+                    "pre_assign_status": "DEFAULT",
+                    "goods_pkg_rel_list": [
+                      {
+                        "package_no": "CBG65187729556288",
+                        "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                        "shipping_no": "8338890891011"
+                      }
+                    ],
+                    "cat_id": "1862",
+                    "sku_attrs_contact_str": "Vermelho",
+                    "store_code": "8662904471",
+                    "store_name": "NA OMEGA DELTA E TANGO",
+                    "business_model": "1",
+                    "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/10/27/05/1698360916f2b3649e2f1b1cfc4f1a53a77dd0095b.png",
+                    "mall_code": "2",
+                    "goods_sn_relation_goods_list": [
+                      {
+                        "combined_flag": 0,
+                        "price_tag": 0,
+                        "is_cod_order_can_part_cancel": 0,
+                        "is_common_order_can_part_refund": "0",
+                        "id": "9257402963066588",
+                        "is_syn_ops": "Y",
+                        "inventory_shortage": "0",
+                        "status": "54",
+                        "tags": "",
+                        "comb_pack_truck_tag": "0"
+                      }
+                    ]
+                  }
+                ],
+                "goods_quality": 0,
+                "mall_code": "2",
+                "store_label_display": null
+              }
+            ]
+          }
+        ],
+        "show_new_good_list": "1",
+        "order_goods_model": "1",
+        "quatity": 1,
+        "addTime": 1786732708,
+        "totalPrice": "R$15,90",
+        "isCanBeHiddenByUser": 1,
+        "confirmDeliveryBonusPoints": 0,
+        "isCanComment": 1,
+        "confirmDeliveryMsg": "",
+        "orderStatus": 5,
+        "status": "6",
+        "canRepurchase": 1,
+        "marketing_type": "0",
+        "isPaid": "0",
+        "performance_system": "ops",
+        "isCanConfirmDelivery": "0",
+        "pay_time": "1786732759",
+        "site_from": "iosshbr",
+        "isReadOnly": 0,
+        "isCommonOrderCanRefund": 0,
+        "isCanRevokeByUser": 0,
+        "remark_user": "",
+        "billno": "GSH522047596615",
+        "tel_reservation": 1,
+        "payment_method": "adyen-brcardinstallment",
+        "returnItemWebUrl": "",
+        "newReturnItemWebUrl": "https://api-shein.shein.com/h5/user/order_return/GSH522047596615",
+        "isCanReturn": "1",
+        "return_and_refund_info": {
+          "button_text": "Devolução e Reembolso",
+          "popup_title": "Selecione o tipo de reembolso",
+          "return_info": {
+            "button_text": "(Combinar) Devolver e receber um reembolso",
+            "button_desc": "Após receber os produtos, você pode solicitar devolução e reembolso. O vendedor processará seu reembolso assim que os itens devolvidos forem recebidos."
+          },
+          "refund_info": {
+            "button_text": "Pacote entregue, não recebido",
+            "button_desc": "Se o rastreamento indicar que a entrega foi concluída, mas você ainda não tiver recebido o seu pacote, por favor informe isso por meio desta opção. Se apenas parte dos itens estiver faltando, entre em contato com o atendimento ao cliente para verificação.",
+            "button_text_for_single": "Pacote entregue, não recebido",
+            "button_url": "https://api-shein.shein.com/h5/orders/refundApplication?billno=GSH522047596615&pageFrom=orderList"
+          }
+        },
+        "returnButtonIsGray": "0",
+        "shippingaddr_info": {
+          "shipping_sex": "",
+          "shipping_firstname": "Comprador Exemplo",
+          "shipping_lastname": "",
+          "shipping_telephone": "11999999999",
+          "shipping_province": "Estado Exemplo",
+          "shipping_city": "Cidade Exemplo",
+          "shipping_address_1": "Rua Exemplo, 123",
+          "shipping_address_2": "Complemento Exemplo",
+          "shipping_postcode": "00000-000",
+          "tax_number": "000.000.000-00",
+          "shipping_country_id": "30",
+          "shipping_country_name": "Brazil",
+          "shipping_method": "Taxa Mínima de Envio",
+          "shipping_state_id": "1559066",
+          "shipping_city_id": "2065696",
+          "shipping_district_id": "Bairro Exemplo",
+          "shipping_father_name": "",
+          "nationalId": "",
+          "district": "Bairro Exemplo",
+          "street": "123",
+          "birthday": "",
+          "subsidiary": {
+            "issue_place": "",
+            "store_id": "",
+            "multi_package": null,
+            "address_type": "Rua Exemplo, 123",
+            "issue_date": "",
+            "father_name": "",
+            "passport_number": "",
+            "transport_type": "expedited_shipping",
+            "store_name": "",
+            "store_type": "0",
+            "middle_name": "",
+            "english_name": ""
+          },
+          "backupTelephone": "",
+          "isOrderShippingAddressEditable": 0,
+          "shipping_country_code": "BR",
+          "is_shop_transit": "0",
+          "enable_check_multi_edit": 0,
+          "company": "",
+          "store_code_list": null,
+          "short_address": ""
+        },
+        "editAddressInfo": {
+          "storeCodeList": [
+            "8662904471"
+          ]
+        },
+        "addressSyncInfo": {
+          "enableAddressSyncPopup": 1,
+          "userSyncPopupText": "Deseja atualizar esta modificação para o endereço original ou adicionar um novo endereço ao seu livro de endereços?",
+          "userSyncPopupCloseTip": "Se você não precisa de ambos, pode clicar em \"×\" para fechar."
+        },
+        "billaddr_info": {
+          "email": "comprador@exemplo.test",
+          "sex": null,
+          "firstname": null,
+          "lastname": null,
+          "address_1": null,
+          "address_2": null,
+          "city": null,
+          "country_name": null,
+          "province": null,
+          "postcode": null,
+          "country_id": null,
+          "telephone": null,
+          "district": null
+        },
+        "order_expire_time": 1786747108,
+        "reference_number": "CBG65187729556288",
+        "payment_type": 7,
+        "orderGoodsSum": 1,
+        "sub_order_list": [],
+        "combined_shipped_flag": "1",
+        "cod_reject_fillable": 1,
+        "reject_reason_id": -1,
+        "isLocalCurrency": 0,
+        "currency_code": "BRL",
+        "localCodPrice": {
+          "amount": "0.00",
+          "amountWithSymbol": "$0.00",
+          "priceShowStyle": "0"
+        },
+        "confirm_receipt_time": "0",
+        "mall_list": [
+          {
+            "origin_shipping_desc": null,
+            "origin_delivery_desc": null,
+            "supple_desc": null,
+            "origin_desc_quick_ship_time": null,
+            "quick_ship_time_type": null,
+            "mall_code": "2",
+            "mall_name": "Envio Nacional",
+            "site_uid": "iosshbr",
+            "transport_type": "expedited_shipping",
+            "store_code": "8662904471",
+            "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/10/27/05/1698360916f2b3649e2f1b1cfc4f1a53a77dd0095b.png",
+            "store_name": "NA OMEGA DELTA E TANGO",
+            "handling_desc": null,
+            "transport_time": null,
+            "transport_time_type": null,
+            "date_type": null,
+            "sub_transport_time": null,
+            "delivery_day_percent_desc": null,
+            "summary_time": null,
+            "summary_time_percentage": null,
+            "shipping_method": null,
+            "business_model": "1",
+            "company_id": "75",
+            "quick_ship_desc": null,
+            "quick_ship_time": null,
+            "store_type": "1",
+            "hint": null,
+            "description": null,
+            "max_transport_time_detail": {
+              "time": "4-7",
+              "date_type": "1",
+              "type": "1",
+              "order_transport_type": "5",
+              "sub_transport_time": "1787281199-1787713199"
+            },
+            "large_transport_time_info": null,
+            "exchange_shipping_time": null,
+            "union_transport_time_info": {
+              "union_days": "5-16",
+              "union_timestamp": "1787164708-1788115108",
+              "date_type": "0",
+              "summary_time": null,
+              "summary_time_percentage": null,
+              "time_detail_list": null,
+              "is_change_flag": null
+            },
+            "shipped_transport_time_list": null,
+            "mall_agg_info_list": null
+          }
+        ],
+        "is_multi_mall": true,
+        "business_model": 1,
+        "combined_return_msg": "",
+        "enableBarcode": false,
+        "toc_perform_party": 1,
+        "stock_mode": 3,
+        "sales_area": 1,
+        "order_button": {
+          "refund_only_button_tip": "Pacote entregue, não recebido",
+          "refund_only_button_link": "https://api-shein.shein.com/h5/orders/refundApplication?billno=GSH522047596615&pageFrom=orderList",
+          "return_button_tip": "(Combinar) Retorno"
+        },
+        "shipped_status_info": {
+          "new_edit_address": 1,
+          "edit_success_tip": null,
+          "shipped_good_status": null,
+          "double_confirm_tip": null,
+          "editable_type": null,
+          "is_order_address_editable": 0,
+          "order_mark_list": null,
+          "show_address_order_mark": "Rua Exemplo, 123",
+          "order_mark_info": null
+        },
+        "is_cut_knife_order": "0",
+        "is_virtual_order": false
+      },
+      {
+        "shippingPrice": {
+          "amount": "0.00",
+          "amountWithSymbol": "R$0,00",
+          "usdAmount": "0.00",
+          "usdAmountWithSymbol": "US$0.00",
+          "priceShowStyle": "0"
+        },
+        "totalDiscountNew": {
+          "amount": "4.91",
+          "amountWithSymbol": "R$4,91",
+          "usdAmount": "0.96",
+          "usdAmountWithSymbol": "$0.96",
+          "priceShowStyle": "4"
+        },
+        "shippingCountryId": "30",
+        "isSharepay": 0,
+        "hasOnTimeInsuranceType": true,
+        "payOrder": true,
+        "insurance_type": "0",
+        "order_insurance_res_list": [
+          {
+            "insurance_fee": "0.00",
+            "insurance_fee_usd": "0.00",
+            "insurance_type": "4"
+          },
+          {
+            "insurance_fee": "0.00",
+            "insurance_fee_usd": "0.00",
+            "insurance_type": "0"
+          }
+        ],
+        "returnEffect": {
+          "title": null,
+          "desc": "​Eco de cabo: Omega de {0}",
+          "descFillTime": "1789478763",
+          "style": "normal"
+        },
+        "can_add_purchase": "0",
+        "ocb_payment_no": "PN200025054287869928",
+        "merge_buy_billno": "",
+        "merge_buy_tag": "0",
+        "could_ocb_order": "0",
+        "relationBillno": "USH0687288032342760",
+        "order_type": "1",
+        "order_package_info_list": [
+          {
+            "deliveryTime": "1787283886",
+            "signed_time": "1787664363",
+            "packageNo": "CBG65187729556288",
+            "operationProcess": 0,
+            "wrapStatus": 0,
+            "forwardStatus": 0,
+            "status": 54,
+            "package_node_time_info": null,
+            "transport_info": {
+              "relation_id": null,
+              "type": "0",
+              "days_delivery_flag": "0",
+              "transport_time_type": "1",
+              "coefficient": "",
+              "transport_time": "1787164708-1788115108",
+              "sub_transport_time": "5-16",
+              "transport_date_type": "0",
+              "title": null,
+              "origin_shipping_desc": null,
+              "origin_delivery_desc": null,
+              "supple_desc": null,
+              "delivery_day_percent_desc": null,
+              "summary_time": null,
+              "summary_time_percentage": null,
+              "time_detail_list": null,
+              "express_time_type_id": "0",
+              "is_change_flag": null
+            },
+            "reject_reason_id": null,
+            "packageCombinedFlag": "1",
+            "confluence_pkg_status": "0",
+            "package_initial_transport_time": {
+              "type": "5",
+              "transport_time_type": "1",
+              "transport_time": "4-7",
+              "sub_transport_time": "1787281199-1787713199",
+              "transport_date_type": "1"
+            },
+            "is_abnormal_delivery": "N",
+            "confluence_batch_no": ""
+          }
+        ],
+        "is_have_invoice": "0",
+        "invoiceUrl": "",
+        "show_bar_code": "0",
+        "show_mutil_package": 0,
+        "track_h5_link": "https://api-shein.shein.com/h5/orders/track?app=shein&iconColor=white&device_type=pc&language=pt-br&site_uid=br&region=br&type=immersive&billno=GSH730695040543&show_actionbar=false",
+        "orderGoodsList": [
+          {
+            "is_prime_goods": "0",
+            "status": "54",
+            "goods_name": "Rubi Prisma Prisma Vega de Neo Rubi Delta Nano Neo Delta",
+            "goods_sn": "si1016131439688606",
+            "goods_attr": "Verde Menta/G",
+            "quantity": "1",
+            "goods_count": "1",
+            "goods_id": 30516188,
+            "goods_img": "https://img.ltwebstatic.com/v4/j/spmp/2026/03/19/42/1773921407da39cea348a06509cb6e36e73ec08882_thumbnail_220x293.jpg",
+            "reference_number": "CBG65187729556288",
+            "package_split": 0,
+            "pre_assign_status": "DEFAULT",
+            "goods_pkg_rel_list": [
+              {
+                "package_no": "CBG65187729556288",
+                "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                "shipping_no": "8338890891011"
+              }
+            ],
+            "cat_id": "1862",
+            "sku_attrs_contact_str": "Verde Menta/G",
+            "store_code": "1612173225",
+            "store_name": "gama",
+            "business_model": "1",
+            "store_logo": "https://img.ltwebstatic.com/v4/j/psrm/2026/04/10/1b/805674940425d1a1da400582c1bc40d40d056f60a1.jpg",
+            "mall_code": "2",
+            "goods_sn_relation_goods_list": [
+              {
+                "combined_flag": 0,
+                "price_tag": 0,
+                "is_cod_order_can_part_cancel": 0,
+                "is_common_order_can_part_refund": "0",
+                "id": "8581164386633155",
+                "is_syn_ops": "Y",
+                "inventory_shortage": "0",
+                "status": "54",
+                "tags": "",
+                "comb_pack_truck_tag": "0"
+              }
+            ]
+          }
+        ],
+        "orderGoodsListByMall": [
+          {
+            "mall_name": "Envio Nacional",
+            "mall_name_tip": null,
+            "mall_code": "2",
+            "shipping_method": "expedited_shipping",
+            "siteUid": "iosshbr",
+            "handling_desc": null,
+            "goods_quality": 1,
+            "orderGoodsListByStore": [
+              {
+                "store_trend_logo": "",
+                "store_code": "1612173225",
+                "store_name": "gama",
+                "store_logo": "https://img.ltwebstatic.com/v4/j/psrm/2026/04/10/1b/805674940425d1a1da400582c1bc40d40d056f60a1.jpg",
+                "store_icon": "https://img.ltwebstatic.com/images3_ccc/2024/07/04/02/1720093868a123858c2d379709122a14a3bad8fabd.png",
+                "business_model": "1",
+                "storeRouting": "/store/home?data=%7B%22store_code%22%3A%389068608038%22%2C%22page_from%22%3A%22PageOrderList%22%2C%22top_goods_id%22%3Anull%2C%22main_goods_id%22%3A%2230516188%22%2C%22store_scene%22%3A%22order%22%2C%22cate_ids%22%3A%221862%22%2C%22main_cate_id%22%3A%221862%22%2C%22goods_ids%22%3A%2230516188%22%7D",
+                "goodList": [
+                  {
+                    "is_prime_goods": "0",
+                    "status": "54",
+                    "goods_name": "Rubi Prisma Prisma Vega de Neo Rubi Delta Nano Neo Delta",
+                    "goods_sn": "si1016131439688606",
+                    "goods_attr": "Verde Menta/G",
+                    "quantity": "1",
+                    "goods_count": "1",
+                    "goods_id": 30516188,
+                    "goods_img": "https://img.ltwebstatic.com/v4/j/spmp/2026/03/19/42/1773921407da39cea348a06509cb6e36e73ec08882_thumbnail_220x293.jpg",
+                    "reference_number": "CBG65187729556288",
+                    "package_split": 0,
+                    "pre_assign_status": "DEFAULT",
+                    "goods_pkg_rel_list": [
+                      {
+                        "package_no": "CBG65187729556288",
+                        "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                        "shipping_no": "8338890891011"
+                      }
+                    ],
+                    "cat_id": "1862",
+                    "sku_attrs_contact_str": "Verde Menta/G",
+                    "store_code": "1612173225",
+                    "store_name": "gama",
+                    "business_model": "1",
+                    "store_logo": "https://img.ltwebstatic.com/v4/j/psrm/2026/04/10/1b/805674940425d1a1da400582c1bc40d40d056f60a1.jpg",
+                    "mall_code": "2",
+                    "goods_sn_relation_goods_list": [
+                      {
+                        "combined_flag": 0,
+                        "price_tag": 0,
+                        "is_cod_order_can_part_cancel": 0,
+                        "is_common_order_can_part_refund": "0",
+                        "id": "8581164386633155",
+                        "is_syn_ops": "Y",
+                        "inventory_shortage": "0",
+                        "status": "54",
+                        "tags": "",
+                        "comb_pack_truck_tag": "0"
+                      }
+                    ]
+                  }
+                ],
+                "goods_quality": 0,
+                "mall_code": "2",
+                "store_label_display": null
+              }
+            ]
+          }
+        ],
+        "show_new_good_list": "1",
+        "order_goods_model": "1",
+        "quatity": 1,
+        "addTime": 1786732708,
+        "totalPrice": "R$19,99",
+        "isCanBeHiddenByUser": 1,
+        "confirmDeliveryBonusPoints": 0,
+        "isCanComment": 1,
+        "confirmDeliveryMsg": "",
+        "orderStatus": 5,
+        "status": "6",
+        "canRepurchase": 1,
+        "marketing_type": "0",
+        "isPaid": "0",
+        "performance_system": "ops",
+        "isCanConfirmDelivery": "0",
+        "pay_time": "1786732759",
+        "site_from": "iosshbr",
+        "isReadOnly": 0,
+        "isCommonOrderCanRefund": 0,
+        "isCanRevokeByUser": 0,
+        "remark_user": "",
+        "billno": "GSH730695040543",
+        "tel_reservation": 1,
+        "payment_method": "adyen-brcardinstallment",
+        "returnItemWebUrl": "",
+        "newReturnItemWebUrl": "https://api-shein.shein.com/h5/user/order_return/GSH730695040543",
+        "isCanReturn": "1",
+        "return_and_refund_info": {
+          "button_text": "Devolução e Reembolso",
+          "popup_title": "Selecione o tipo de reembolso",
+          "return_info": {
+            "button_text": "(Combinar) Devolver e receber um reembolso",
+            "button_desc": "Após receber os produtos, você pode solicitar devolução e reembolso. O vendedor processará seu reembolso assim que os itens devolvidos forem recebidos."
+          },
+          "refund_info": {
+            "button_text": "Pacote entregue, não recebido",
+            "button_desc": "Se o rastreamento indicar que a entrega foi concluída, mas você ainda não tiver recebido o seu pacote, por favor informe isso por meio desta opção. Se apenas parte dos itens estiver faltando, entre em contato com o atendimento ao cliente para verificação.",
+            "button_text_for_single": "Pacote entregue, não recebido",
+            "button_url": "https://api-shein.shein.com/h5/orders/refundApplication?billno=GSH730695040543&pageFrom=orderList"
+          }
+        },
+        "returnButtonIsGray": "0",
+        "shippingaddr_info": {
+          "shipping_sex": "",
+          "shipping_firstname": "Comprador Exemplo",
+          "shipping_lastname": "",
+          "shipping_telephone": "11999999999",
+          "shipping_province": "Estado Exemplo",
+          "shipping_city": "Cidade Exemplo",
+          "shipping_address_1": "Rua Exemplo, 123",
+          "shipping_address_2": "Complemento Exemplo",
+          "shipping_postcode": "00000-000",
+          "tax_number": "000.000.000-00",
+          "shipping_country_id": "30",
+          "shipping_country_name": "Brazil",
+          "shipping_method": "Taxa Mínima de Envio",
+          "shipping_state_id": "1559066",
+          "shipping_city_id": "2065696",
+          "shipping_district_id": "Bairro Exemplo",
+          "shipping_father_name": "",
+          "nationalId": "",
+          "district": "Bairro Exemplo",
+          "street": "123",
+          "birthday": "",
+          "subsidiary": {
+            "issue_place": "",
+            "store_id": "",
+            "multi_package": null,
+            "address_type": "Rua Exemplo, 123",
+            "issue_date": "",
+            "father_name": "",
+            "passport_number": "",
+            "transport_type": "expedited_shipping",
+            "store_name": "",
+            "store_type": "0",
+            "middle_name": "",
+            "english_name": ""
+          },
+          "backupTelephone": "",
+          "isOrderShippingAddressEditable": 0,
+          "shipping_country_code": "BR",
+          "is_shop_transit": "0",
+          "enable_check_multi_edit": 0,
+          "company": "",
+          "store_code_list": null,
+          "short_address": ""
+        },
+        "editAddressInfo": {
+          "storeCodeList": [
+            "1612173225"
+          ]
+        },
+        "addressSyncInfo": {
+          "enableAddressSyncPopup": 1,
+          "userSyncPopupText": "Deseja atualizar esta modificação para o endereço original ou adicionar um novo endereço ao seu livro de endereços?",
+          "userSyncPopupCloseTip": "Se você não precisa de ambos, pode clicar em \"×\" para fechar."
+        },
+        "billaddr_info": {
+          "email": "comprador@exemplo.test",
+          "sex": null,
+          "firstname": null,
+          "lastname": null,
+          "address_1": null,
+          "address_2": null,
+          "city": null,
+          "country_name": null,
+          "province": null,
+          "postcode": null,
+          "country_id": null,
+          "telephone": null,
+          "district": null
+        },
+        "order_expire_time": 1786747108,
+        "reference_number": "CBG65187729556288",
+        "payment_type": 7,
+        "orderGoodsSum": 1,
+        "sub_order_list": [],
+        "combined_shipped_flag": "1",
+        "cod_reject_fillable": 1,
+        "reject_reason_id": -1,
+        "isLocalCurrency": 0,
+        "currency_code": "BRL",
+        "localCodPrice": {
+          "amount": "0.00",
+          "amountWithSymbol": "$0.00",
+          "priceShowStyle": "0"
+        },
+        "confirm_receipt_time": "0",
+        "mall_list": [
+          {
+            "origin_shipping_desc": null,
+            "origin_delivery_desc": null,
+            "supple_desc": null,
+            "origin_desc_quick_ship_time": null,
+            "quick_ship_time_type": null,
+            "mall_code": "2",
+            "mall_name": "Envio Nacional",
+            "site_uid": "iosshbr",
+            "transport_type": "expedited_shipping",
+            "store_code": "1612173225",
+            "store_logo": "https://img.ltwebstatic.com/v4/j/psrm/2026/04/10/1b/805674940425d1a1da400582c1bc40d40d056f60a1.jpg",
+            "store_name": "gama",
+            "handling_desc": null,
+            "transport_time": null,
+            "transport_time_type": null,
+            "date_type": null,
+            "sub_transport_time": null,
+            "delivery_day_percent_desc": null,
+            "summary_time": null,
+            "summary_time_percentage": null,
+            "shipping_method": null,
+            "business_model": "1",
+            "company_id": "75",
+            "quick_ship_desc": null,
+            "quick_ship_time": null,
+            "store_type": "1",
+            "hint": null,
+            "description": null,
+            "max_transport_time_detail": {
+              "time": "4-7",
+              "date_type": "1",
+              "type": "1",
+              "order_transport_type": "5",
+              "sub_transport_time": "1787281199-1787713199"
+            },
+            "large_transport_time_info": null,
+            "exchange_shipping_time": null,
+            "union_transport_time_info": {
+              "union_days": "5-16",
+              "union_timestamp": "1787164708-1788115108",
+              "date_type": "0",
+              "summary_time": null,
+              "summary_time_percentage": null,
+              "time_detail_list": null,
+              "is_change_flag": null
+            },
+            "shipped_transport_time_list": null,
+            "mall_agg_info_list": null
+          }
+        ],
+        "is_multi_mall": true,
+        "business_model": 1,
+        "combined_return_msg": "",
+        "enableBarcode": false,
+        "toc_perform_party": 1,
+        "stock_mode": 3,
+        "sales_area": 1,
+        "order_button": {
+          "refund_only_button_tip": "Pacote entregue, não recebido",
+          "refund_only_button_link": "https://api-shein.shein.com/h5/orders/refundApplication?billno=GSH730695040543&pageFrom=orderList",
+          "return_button_tip": "(Combinar) Retorno"
+        },
+        "shipped_status_info": {
+          "new_edit_address": 1,
+          "edit_success_tip": null,
+          "shipped_good_status": null,
+          "double_confirm_tip": null,
+          "editable_type": null,
+          "is_order_address_editable": 0,
+          "order_mark_list": null,
+          "show_address_order_mark": "Rua Exemplo, 123",
+          "order_mark_info": null
+        },
+        "is_cut_knife_order": "0",
+        "is_virtual_order": false
+      }
+    ],
+    "sum": 20,
+    "orderStatusList": [
+      {
+        "type": "all",
+        "name": "Tudo"
+      },
+      {
+        "type": "waiting_payment",
+        "name": "Não pago"
+      },
+      {
+        "type": "processing_order",
+        "name": "Processando"
+      },
+      {
+        "type": "waiting_receive",
+        "name": "Enviado"
+      },
+      {
+        "type": "need_review",
+        "name": "Comentar"
+      },
+      {
+        "type": "after_sale",
+        "name": "Devolução/Reembolso"
+      }
+    ],
+    "jump_pci_token": "MDEwMDE5755660831676696314708905903624704207777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777",
+    "is_have_gfcard_order": "0",
+    "sum_filed_orders": 1,
+    "isDemotion": null,
+    "demotionTip": null,
+    "order_list_tip": "",
+    "target_country_info": null,
+    "isShowPackage": "1",
+    "archive_order_tip": "Procurando pedidos de um ano atrás? Tente {0}.",
+    "archive_filter_tip": "Filtros"
+  }
+}

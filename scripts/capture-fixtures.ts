@@ -5,7 +5,7 @@ import { loadConfig } from "../src/config.js";
 import { createContext } from "../src/context.js";
 import { createHttp } from "../src/core/http.js";
 import { createMemorySessionStore } from "../src/session/store.js";
-import { API_VER, ENDPOINTS, STATUS_TYPE_ALL } from "../src/shein/api.js";
+import { API_VER, ENDPOINTS, MAX_PAGE_SIZE, STATUS_TYPE_ALL } from "../src/shein/api.js";
 import type { RawOrderListItem, RawOrderListPage } from "../src/shein/types.js";
 
 // Captures RAW responses from the real account into task/captures/ (gitignored).
@@ -19,7 +19,7 @@ import type { RawOrderListItem, RawOrderListPage } from "../src/shein/types.js";
 // Usage: SHEIN_TRANSPORT=fetch bun run scripts/capture-fixtures.ts [--write] [--max-orders N] [--max-pages N]
 
 const OUT_DIR = join(import.meta.dir, "..", "task", "captures");
-const PAGE_LIMIT = 10;
+const PAGE_LIMIT = MAX_PAGE_SIZE;
 
 type Capture = {
   name: string;
@@ -117,12 +117,10 @@ async function main(): Promise<void> {
     orders.push(...items);
     if (items.length === 0) break;
   }
-  // Does the server honour a bigger page? (decides the sync page size)
-  await capture("list-limit-20", ENDPOINTS.list, { page: 1, limit: 20, status_type: STATUS_TYPE_ALL });
+  // Evidence for the two rules the sync depends on: the server caps `limit` at
+  // 20, and it ignores `status_type` (every tab answers the same page).
   await capture("list-limit-50", ENDPOINTS.list, { page: 1, limit: 50, status_type: STATUS_TYPE_ALL });
-  for (const statusType of [1, 2, 3, 4, 5]) {
-    await capture(`list-status-${statusType}`, ENDPOINTS.list, { page: 1, limit: PAGE_LIMIT, status_type: statusType });
-  }
+  await capture("list-status-3", ENDPOINTS.list, { page: 1, limit: PAGE_LIMIT, status_type: 3 });
 
   // 2. Archived orders (older than the main window).
   let archived: RawOrderListItem[] = [];

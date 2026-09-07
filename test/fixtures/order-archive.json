@@ -1,0 +1,34 @@
+{
+  "code": "0",
+  "msg": "ok",
+  "info": {
+    "isDemotion": null,
+    "demotionTip": null,
+    "order_list": [
+      {
+        "orderGoodsList": [
+          {
+            "goods_id": 29820761,
+            "goods_img": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/3f/2566536403052c78a7819b5e1cf62ab9563c609d15_square_thumbnail_220x293.jpg",
+            "quantity": "1"
+          }
+        ],
+        "quatity": 1,
+        "confirmDeliveryMsg": "",
+        "isReadOnly": 0,
+        "addTime": 1739383427,
+        "billno": "GSH045549388921",
+        "payment_method": "adyen-brdebitcard",
+        "show_bar_code": "0",
+        "pay_time": "1739383443",
+        "isCanConfirmDelivery": "0",
+        "confirmDeliveryBonusPoints": 0,
+        "orderStatus": 5,
+        "totalPrice": "R$26,99",
+        "isCommonOrderCanRefund": 0,
+        "isCanBeHiddenByUser": 0
+      }
+    ],
+    "sum": 1
+  }
+}

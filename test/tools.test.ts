@@ -11,6 +11,7 @@ import {
   bffOk,
   fakeClock,
   htmlResponse,
+  jsonResponse,
   redirectResponse,
   response,
   scriptedFetch,
@@ -88,6 +89,13 @@ describe("auth_status", () => {
     const { ctx } = context([redirectResponse("https://br.acme.test/user/auth/login")]);
     const status = (await call("auth_status", { verify: true }, ctx)) as AuthStatus;
     expect(status.loggedIn).toBe(false);
+    expect(status.verified).toBe(false);
+    expect(status.error).toMatch(/shein login/);
+  });
+
+  test("the ambiguous 00101001 code is reported as a suspect session, not a crash", async () => {
+    const { ctx } = context([jsonResponse({ code: "00101001", msg: "Server error, please try again.", info: {} })]);
+    const status = (await call("auth_status", { verify: true }, ctx)) as AuthStatus;
     expect(status.verified).toBe(false);
     expect(status.error).toMatch(/shein login/);
   });

@@ -10,11 +10,17 @@ import type { BffEnvelope, RawOrderDetail, RawOrderListPage, RawTrackSsrData } f
 export const API_VER = "1.1.8";
 
 /**
- * `code` values the bff-api answers to a logged-out caller. Provisional until
- * the unauthenticated probe of the capture script (step 009) confirms them;
- * the HTML pages already redirect to the login page, which http.ts handles.
+ * What a logged-out caller gets from the bff-api (confirmed 2026-09-07 with a
+ * bogus session): `{"code":"00101001","msg":"Server error, please try again.","info":{}}`.
+ * The SAME code comes back for a wrong parameter or method, so it is NOT proof
+ * of an expired session: it never kills the jar, it only carries a hint, and
+ * `auth_status` is the tool that decides. Our own wrappers always send valid
+ * parameters, so in practice the hint is right.
  */
-export const LOGGED_OUT_CODES: ReadonlySet<string> = new Set(["300206", "100101"]);
+export const SESSION_SUSPECT_CODES: ReadonlySet<string> = new Set(["00101001"]);
+
+/** The list endpoints cap `limit` at 20 whatever is asked (limit=50 returns 20). */
+export const MAX_PAGE_SIZE = 20;
 
 export const ENDPOINTS = {
   list: "/bff-api/order/list",
@@ -24,7 +30,11 @@ export const ENDPOINTS = {
   track: "/orders/track",
 } as const;
 
-/** Tabs of the orders page (`orderStatusList[].id`); 0 = every order. */
+/**
+ * Tabs of the orders page (`orderStatusList[].id`); 0 = every order.
+ * The server IGNORES it: every tab answers byte-for-byte the same page
+ * (verified 2026-09-07), so filtering by status happens locally, on the cache.
+ */
 export const STATUS_TYPE_ALL = 0;
 
 export type QueryValue = string | number | boolean | undefined;
@@ -77,11 +87,15 @@ export function createSheinApi(http: Http, opts: SheinApiOptions): SheinApi {
       label,
     });
     const envelope = parseEnvelope(response.body, path);
-    if (LOGGED_OUT_CODES.has(envelope.code)) {
-      http.markAuthDead(`A Shein respondeu ${envelope.code} em ${path}: a sessão expirou.`);
-    }
     if (envelope.code !== "0") {
-      throw new SheinApiError(envelope.code, envelope.msg ?? "", path);
+      throw new SheinApiError(
+        envelope.code,
+        envelope.msg ?? "",
+        path,
+        SESSION_SUSPECT_CODES.has(envelope.code)
+          ? "pode ser sessão expirada (é o que a Shein responde a quem não está logado) ou parâmetro errado: rode `shein auth --verify`"
+          : undefined,
+      );
     }
     if (envelope.info === null || envelope.info === undefined) {
       throw new ParseError(`A Shein respondeu code 0 sem \`info\` em ${path}.`);

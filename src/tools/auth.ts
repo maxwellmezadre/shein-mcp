@@ -1,7 +1,7 @@
 import { Type } from "@sinclair/typebox";
-import { LOGIN_HINT, SheinAuthError, SheinRiskControlError } from "../core/errors.js";
+import { LOGIN_HINT, SheinApiError, SheinAuthError, SheinRiskControlError } from "../core/errors.js";
 import { memberIdFromJar } from "../session/jar.js";
-import { STATUS_TYPE_ALL } from "../shein/api.js";
+import { SESSION_SUSPECT_CODES, STATUS_TYPE_ALL } from "../shein/api.js";
 import { compactObject, defineTool } from "./define.js";
 
 // Session diagnostics. Free by default: it reads the local session file and
@@ -89,6 +89,18 @@ export const authStatus = defineTool({
     } catch (error) {
       // An expired session or an anti-bot verdict is a *status*, not a crash:
       // this tool exists to report exactly that.
+      // 00101001 is what a logged-out caller gets; it is ambiguous enough that
+      // the api layer refuses to kill the session over it, so the call that
+      // exists to answer "is my session alive" is the one that classifies it.
+      const suspect = error instanceof SheinApiError && SESSION_SUSPECT_CODES.has(error.code);
+      if (suspect) {
+        return compactObject({
+          ...base,
+          loggedIn: false,
+          verified: false,
+          error: `${error.message}. ${LOGIN_HINT}`,
+        });
+      }
       if (error instanceof SheinAuthError || error instanceof SheinRiskControlError) {
         const after = http.state();
         return compactObject({

@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test";
-import { ParseError, SheinApiError, SheinAuthError } from "../src/core/errors.js";
+import { ParseError, SheinApiError } from "../src/core/errors.js";
 import { createHttp } from "../src/core/http.js";
 import { createMemorySessionStore } from "../src/session/store.js";
-import { API_VER, LOGGED_OUT_CODES, createSheinApi } from "../src/shein/api.js";
+import { API_VER, MAX_PAGE_SIZE, SESSION_SUSPECT_CODES, createSheinApi } from "../src/shein/api.js";
 import { bffOk, fakeClock, htmlResponse, jsonResponse, scriptedFetch, sessionData, silentLogger } from "./helpers.js";
 
 const BASE = "https://br.acme.test";
@@ -27,6 +27,11 @@ function setup(script: Parameters<typeof scriptedFetch>[0]) {
 const url = (fetch: ReturnType<typeof scriptedFetch>, index = 0) => new URL(fetch.calls[index]?.url ?? "");
 
 describe("order list", () => {
+  test("the page size the server actually honours is 20", () => {
+    // limit=20 and limit=50 return the same 20 orders (observed 2026-09-07).
+    expect(MAX_PAGE_SIZE).toBe(20);
+  });
+
   test("calls bff-api/order/list with the version, language, page, limit and status tab", async () => {
     const { api, fetch } = setup([bffOk({ order_list: [{ billno: "X" }], sum: 20 })]);
     const page = await api.listOrders({ page: 2, limit: 10, statusType: 0 });
@@ -75,11 +80,17 @@ describe("envelope", () => {
     }
   });
 
-  test("a logged-out code kills the session instead of surfacing as an api error", async () => {
-    const code = [...LOGGED_OUT_CODES][0] as string;
-    const { api, http } = setup([jsonResponse({ code, msg: "not login", info: null })]);
-    await expect(api.listOrders({ page: 1, limit: 10, statusType: 0 })).rejects.toThrow(SheinAuthError);
-    expect(http.state().authDead).toBe(true);
+  test("the ambiguous session code carries a hint but never kills the session", async () => {
+    // 00101001 is what a logged-out caller gets — and also what a wrong
+    // parameter gets (observed 2026-09-07). Killing the session on it would
+    // make a transient server error look like an expired login, so it stays
+    // an api error and `auth_status` is the one that classifies it.
+    const code = [...SESSION_SUSPECT_CODES][0] as string;
+    const { api, http } = setup([jsonResponse({ code, msg: "Server error, please try again.", info: {} })]);
+    const error = await api.listOrders({ page: 1, limit: 10, statusType: 0 }).catch((caught: unknown) => caught);
+    expect(error).toBeInstanceOf(SheinApiError);
+    expect((error as Error).message).toMatch(/sess/i);
+    expect(http.state().authDead).toBe(false);
   });
 
   test("a body that is not the envelope is a ParseError", async () => {

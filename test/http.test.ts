@@ -8,7 +8,6 @@ import {
   MAX_ATTEMPTS,
   backoffMs,
   createHttp,
-  isLoginHtml,
 } from "../src/core/http.js";
 import { createMemorySessionStore } from "../src/session/store.js";
 import {
@@ -26,8 +25,13 @@ import {
 
 const BASE = "https://br.acme.test";
 const LIST = `${BASE}/bff-api/order/list?_ver=1.1.8&_lang=pt-br&page=1&limit=10`;
-const LOGIN_HTML = '<html><body><div class="login-page"><a href="/user/auth/login">Já sou cliente</a></div></body></html>';
 const ORDERS_HTML = '<html><script>var gbRawData = {"order_list":[]};</script></html>';
+// Every Shein page carries a "Já sou cliente" link in its header — including
+// the pages we want. Treating that as a login page killed the session for the
+// whole run (observed 2026-09-07 while capturing /orders/track).
+const TRACK_HTML =
+  '<html><header><a href="/user/auth/login">Já sou cliente</a></header>' +
+  '<script>var gbOrdersTrackSsrData = {"billno":"X","trackInfo":{}}</script></html>';
 
 function setup(
   script: Parameters<typeof scriptedFetch>[0],
@@ -112,11 +116,14 @@ describe("session lifecycle", () => {
     expect(http.state().authDead).toBe(true);
   });
 
-  test("a login page served with 200 to an html request is a dead session too", async () => {
-    const { http } = setup([htmlResponse(LOGIN_HTML)]);
-    await expect(getHtml(http)).rejects.toThrow(SheinAuthError);
-    expect(isLoginHtml(LOGIN_HTML)).toBe(true);
-    expect(isLoginHtml(ORDERS_HTML)).toBe(false);
+  test("a page whose header links to the login page is NOT a dead session", async () => {
+    const { http, fetch } = setup([htmlResponse(TRACK_HTML), htmlResponse(ORDERS_HTML)]);
+    const result = await getHtml(http);
+    expect(result.body).toContain("gbOrdersTrackSsrData");
+    expect(http.state().authDead).toBe(false);
+    // And the client keeps working afterwards.
+    await getHtml(http);
+    expect(fetch.calls).toHaveLength(2);
   });
 
   test("reloads the jar after the user re-logged in, without an MCP restart", async () => {

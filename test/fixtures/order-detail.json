@@ -1,0 +1,2856 @@
+{
+  "code": "0",
+  "msg": "ok",
+  "info": {
+    "orderPromotionPrice": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "amountWithSep": "0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "promotionPriceFlag": true,
+    "isSharepay": 0,
+    "sharepayMemberId": "6",
+    "customDutyMessage": null,
+    "orderAbnormalTipOfCustom": null,
+    "payOrder": true,
+    "orderGroupByInfo": null,
+    "paymentBannerInfos": null,
+    "reverse_default_fold_goods_flag": "0",
+    "supportSaverCoupon": null,
+    "is_compliance_site_for_price": "0",
+    "type": 0,
+    "order_locate": 0,
+    "shipping_lng": "0.52914851727158185",
+    "id_expire_date": "",
+    "calendar_type": "1",
+    "cancellationNotAllowedTip": null,
+    "brand_deal_refund_tip": null,
+    "no_card_bin_payable_price": {
+      "amount": "69.98",
+      "amountWithSymbol": "R$69,98",
+      "usdAmount": "13.64",
+      "usdAmountWithSymbol": "$13.64",
+      "priceShowStyle": "69"
+    },
+    "token_id": "4249699728",
+    "is_bind_pay": "0",
+    "flash_sale_ip_style": "yellow",
+    "grandTotalWithGovTax": null,
+    "is_new_customer": "0",
+    "cardBinCouponInfo": null,
+    "real_name_appointment_info": null,
+    "pay_button_text": null,
+    "business_model": 1,
+    "other_order_list": null,
+    "canShowApplePayButtonText": 1,
+    "bottom_return_coupon_info": null,
+    "resellOrdersUrl": null,
+    "carrierBlacklistUrl": "https://api-shein.shein.com/h5/orders/logisticsBlacklist",
+    "shopping_bag_head_info": null,
+    "unpaid_lure_point_info_list": null,
+    "pageHeadlineList": null,
+    "newcomer_gift_banner_info": null,
+    "guarantee_status": null,
+    "show_subscription_popup": "0",
+    "show_subscription_bar": "0",
+    "exist_merge_suggestion": "1",
+    "card_bin_discount_amount_price": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "xtra_order_scene": null,
+    "origin_shipping_desc": null,
+    "origin_delivery_desc": null,
+    "date_type": "1",
+    "sub_transport_time": null,
+    "delivery_time_info": null,
+    "first_delivery_time": null,
+    "second_delivery_time": null,
+    "club_vip_fusion": "0",
+    "benefit_guidance": {
+      "strong_guidance": []
+    },
+    "supple_desc": "",
+    "goods_actual_freight_fee": {
+      "amount": "0.0",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.0",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "goods_origin_freight_fee": {
+      "amount": "9.92",
+      "amountWithSymbol": "R$9,92",
+      "usdAmount": "1.93",
+      "usdAmountWithSymbol": "$1.93",
+      "priceShowStyle": "9"
+    },
+    "total_freight_diff_fee": {
+      "amount": "9.92",
+      "amountWithSymbol": "R$9,92",
+      "usdAmount": "1.93",
+      "usdAmountWithSymbol": "$1.93",
+      "priceShowStyle": "9"
+    },
+    "freight_group_list": [
+      {
+        "freight_group_id": "0",
+        "goods_actual_freight_fee": {
+          "amount": "0.0",
+          "amountWithSymbol": "R$0,00",
+          "usdAmount": "0.0",
+          "usdAmountWithSymbol": "$0.00",
+          "priceShowStyle": "0"
+        },
+        "goods_origin_freight_fee": {
+          "amount": "9.92",
+          "amountWithSymbol": "R$9,92",
+          "usdAmount": "1.93",
+          "usdAmountWithSymbol": "$1.93",
+          "priceShowStyle": "9"
+        },
+        "total_freight_diff_fee": {
+          "amount": "9.92",
+          "amountWithSymbol": "R$9,92",
+          "usdAmount": "1.93",
+          "usdAmountWithSymbol": "$1.93",
+          "priceShowStyle": "9"
+        }
+      }
+    ],
+    "mall_freight_group_list": [
+      {
+        "total_freight_diff_fee": {
+          "amount": "9.92",
+          "amountWithSymbol": "R$9,92",
+          "usdAmount": "1.93",
+          "usdAmountWithSymbol": "$1.93",
+          "priceShowStyle": "9"
+        },
+        "freight_group_list": [
+          {
+            "freight_group_id": "0",
+            "goods_actual_freight_fee": {
+              "amount": "0.0",
+              "amountWithSymbol": "R$0,00",
+              "usdAmount": "0.0",
+              "usdAmountWithSymbol": "$0.00",
+              "priceShowStyle": "0"
+            },
+            "goods_origin_freight_fee": {
+              "amount": "9.92",
+              "amountWithSymbol": "R$9,92",
+              "usdAmount": "1.93",
+              "usdAmountWithSymbol": "$1.93",
+              "priceShowStyle": "9"
+            }
+          }
+        ],
+        "goods_actual_freight_total_fee": {
+          "amount": "0.0",
+          "amountWithSymbol": "R$0,00",
+          "usdAmount": "0.0",
+          "usdAmountWithSymbol": "$0.00",
+          "priceShowStyle": "0"
+        },
+        "goods_origin_freight_total_fee": {
+          "amount": "9.92",
+          "amountWithSymbol": "R$9,92",
+          "usdAmount": "1.93",
+          "usdAmountWithSymbol": "$1.93",
+          "priceShowStyle": "9"
+        },
+        "mall_code": "2",
+        "mall_name": "Envio Nacional"
+      }
+    ],
+    "goods_and_freight_group": null,
+    "binDiscountTip": null,
+    "discount_type": null,
+    "bin_discount_payment_method_list": null,
+    "freight_price": {
+      "amount": "9.92",
+      "amountWithSymbol": "R$9,92",
+      "usdAmount": "1.93",
+      "usdAmountWithSymbol": "$1.93",
+      "priceShowStyle": "9"
+    },
+    "saved_total_price": {
+      "amount": "49.92",
+      "amountWithSymbol": "R$49,92",
+      "usdAmount": "9.73",
+      "usdAmountWithSymbol": "$9.73",
+      "priceShowStyle": "49"
+    },
+    "saved_total_price_text": "Salvo R$49,92",
+    "orderReturnPopupInfo": null,
+    "orderReturnCmpInfo": null,
+    "successReturnCashInfo": null,
+    "orderReturnCoupons": null,
+    "promotionDatas": null,
+    "ocb_info": {
+      "could_ocb_order": "0",
+      "biz_flag": "0",
+      "biz_good_count": "20",
+      "biz_add_count": "5",
+      "can_add_purchase": "0",
+      "min_price": "0",
+      "can_add_purchase_price": null,
+      "mall_code": null,
+      "payment_no": "PN624034677721521867",
+      "merge_buy_billno": null,
+      "merge_buy_tag": "0",
+      "inventory_lock": null,
+      "billno_for_airpark": null,
+      "billno_for_ocb_detail": null,
+      "order_detail_button": null,
+      "pay_success_button": null,
+      "account_info": null,
+      "order_list": null,
+      "ocp_recommend_info": null,
+      "sub_order_list_bury_info": null,
+      "order_detail_popup": null,
+      "airpark_landing_action": null
+    },
+    "normal_goods_total_price": {
+      "amount": "69.98",
+      "amountWithSymbol": "R$69,98",
+      "usdAmount": "13.64",
+      "usdAmountWithSymbol": "$13.64",
+      "priceShowStyle": "69"
+    },
+    "exchange_shipping_time_percents": null,
+    "shipping_day_percents": null,
+    "has_platform_goods": "1",
+    "couponPrice_without_free_shipping": null,
+    "paymentTime": "4817942194079",
+    "insured_end_time": null,
+    "insured_effectiveness": "0",
+    "orderDetailService": null,
+    "quickShipStatus": "2",
+    "quickShipMethodTitleChangeFlag": "0",
+    "origin_desc_quick_ship_time": null,
+    "quick_ship_time_type": "1",
+    "quick_ship_time": "",
+    "quickShipTimeDesc": null,
+    "quickShipMode": "2",
+    "new_qs_label_type": 3,
+    "executionProgress": null,
+    "prime_discount_price": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "prime_good_packages": null,
+    "order_type": "1",
+    "order_package_info_list": [
+      {
+        "deliveryTime": "1787283886",
+        "signed_time": "1787664363",
+        "packageNo": "CBG65187729556288",
+        "operationProcess": 0,
+        "wrapStatus": 0,
+        "forwardStatus": 0,
+        "status": null,
+        "package_node_time_info": null,
+        "transport_info": {
+          "relation_id": null,
+          "type": "0",
+          "days_delivery_flag": "0",
+          "transport_time_type": "1",
+          "coefficient": "",
+          "transport_time": "1787164708-1788115108",
+          "sub_transport_time": "5-16",
+          "transport_date_type": "0",
+          "title": null,
+          "origin_shipping_desc": null,
+          "origin_delivery_desc": null,
+          "supple_desc": null,
+          "delivery_day_percent_desc": null,
+          "summary_time": "10",
+          "summary_time_percentage": "60",
+          "time_detail_list": null,
+          "express_time_type_id": "0",
+          "is_change_flag": 0
+        },
+        "reject_reason_id": null,
+        "packageCombinedFlag": "1",
+        "confluence_pkg_status": "0",
+        "package_initial_transport_time": {
+          "type": "5",
+          "transport_time_type": "1",
+          "transport_time": "4-7",
+          "sub_transport_time": "1787281199-1787713199",
+          "transport_date_type": "1"
+        },
+        "is_abnormal_delivery": "N",
+        "confluence_batch_no": ""
+      }
+    ],
+    "relation_billno": "USH0687288032342760",
+    "p65_flag": [],
+    "order_action": {
+      "isShowAddCart": "1",
+      "cancelPath": "recommend"
+    },
+    "transportTimeShops": null,
+    "orderFulfillmentTips": "",
+    "fulfillment_explain_tip": null,
+    "is_have_invoice": "0",
+    "invoiceUrl": null,
+    "tax_war_info": {
+      "vatPrice": {
+        "amount": "0.00",
+        "amountWithSymbol": "US$0.00",
+        "usdAmount": "0.00",
+        "usdAmountWithSymbol": "US$0.00",
+        "priceShowStyle": "0"
+      },
+      "taxPrice": {
+        "amount": "0.00",
+        "amountWithSymbol": "US$0.00",
+        "usdAmount": "0.00",
+        "usdAmountWithSymbol": "US$0.00",
+        "priceShowStyle": "0"
+      },
+      "warPrice": {
+        "amount": "0.00",
+        "amountWithSymbol": "US$0.00",
+        "usdAmount": "0.00",
+        "usdAmountWithSymbol": "US$0.00",
+        "priceShowStyle": "0"
+      },
+      "taxEnabled": "0",
+      "isReachTax": "0",
+      "warDescription": "Devido à alta demanda, os produtos {} estão fora de estoque. Nós removemos este produto do seu pedido. Pedimos desculpas por qualquer inconveniente coisa causada. Se desejar, você pode fazer um novo pedido. Obrigado pela sua paciência e compreensão.",
+      "gstPrice": null,
+      "warCurrencyTotal": null
+    },
+    "shippingaddr_info": {
+      "address_id": "3660508302",
+      "shipping_sex": "",
+      "shipping_firstname": "Comprador Exemplo",
+      "shipping_lastname": "",
+      "shipping_telephone": "11999999999",
+      "mask_shipping_telephone": "11****9999",
+      "backupTelephone": "",
+      "shipping_province": "Estado Exemplo",
+      "shipping_city": "Cidade Exemplo",
+      "shipping_address_1": "Rua Exemplo, 123",
+      "shipping_address_2": "Complemento Exemplo",
+      "shipping_postcode": "00000-000",
+      "tax_number": "000.000.000-00",
+      "district": "Bairro Exemplo",
+      "street": "123",
+      "nationalId": "",
+      "shipping_country_id": "30",
+      "subsidiary": {
+        "issue_place": "",
+        "store_id": "",
+        "multi_package": "0",
+        "address_type": "Rua Exemplo, 123",
+        "issue_date": "",
+        "father_name": "",
+        "passport_number": "",
+        "transport_type": "expedited_shipping",
+        "store_name": "",
+        "store_type": "0",
+        "middle_name": "",
+        "english_name": ""
+      },
+      "shipping_country_name": "Brazil",
+      "shipping_method": "Taxa Mínima de Envio",
+      "shipping_title": null,
+      "shipping_father_name": "",
+      "shipping_country_code": "BR",
+      "isOrderShippingAddressEditable": "0",
+      "shipping_state_id": "1559066",
+      "shipping_city_id": "2065696",
+      "shipping_district_id": "Bairro Exemplo",
+      "shipping_district": "Bairro Exemplo",
+      "shipping_street": "Rua Exemplo",
+      "birthday": "",
+      "name_verified": null,
+      "is_shop_transit": "0",
+      "enable_check_multi_edit": 0,
+      "multi_edit_billno": null,
+      "real_name_authentication_tip": null,
+      "real_name_authentication": null,
+      "is_kr_style": null,
+      "notify_user": null,
+      "company": "",
+      "short_address": "",
+      "weakInterceptionTip": null
+    },
+    "addressSyncInfo": {
+      "enableAddressSyncPopup": 1,
+      "userSyncPopupText": "Deseja atualizar esta modificação para o endereço original ou adicionar um novo endereço ao seu livro de endereços?",
+      "userSyncPopupCloseTip": "Se você não precisa de ambos, pode clicar em \"×\" para fechar."
+    },
+    "shipped_status_info": {
+      "new_edit_address": 1,
+      "edit_success_tip": null,
+      "shipped_good_status": null,
+      "double_confirm_tip": null,
+      "editable_type": null,
+      "is_order_address_editable": 0,
+      "order_mark_list": null,
+      "show_address_order_mark": "Rua Exemplo, 123",
+      "order_mark_info": null
+    },
+    "billaddr_info": {
+      "sex": "",
+      "firstname": "Comprador Exemplo",
+      "lastname": "",
+      "address_1": "Rua Exemplo, 123",
+      "address_2": "Rua Exemplo, 123",
+      "city": "Cidade Exemplo",
+      "country_name": "Brazil",
+      "province": "Estado Exemplo",
+      "postcode": "00000-000",
+      "country_id": "30",
+      "telephone": "",
+      "email": "comprador@exemplo.test",
+      "district": "Bairro Exemplo",
+      "countryCode": "BR"
+    },
+    "orderGoodsList": [
+      {
+        "CONFIRM_DEVLIERY_EXCEPT_STATUS": [
+          "5",
+          "7",
+          "20",
+          "14",
+          "126",
+          "127",
+          "91",
+          "77",
+          "74",
+          "220"
+        ],
+        "daysDeliveryGoods": false,
+        "goodsNameWithBlindBox": "Vega delta jade",
+        "confirm_DEVLIERY_EXCEPT_STATUS": [
+          "5",
+          "7",
+          "20",
+          "14",
+          "126",
+          "127",
+          "91",
+          "77",
+          "74",
+          "220"
+        ],
+        "brandDealRefundGoods": false,
+        "goodsImgWithBlindBox": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/d0/1706547725a3fd10e4143db0e732434b1b9d15bea4_thumbnail_220x293.jpg",
+        "inventory_lock": "PS1880165018",
+        "freight_group_id": "0",
+        "free_freight_flag": false,
+        "quick_ship": "1",
+        "show_coefficient": "4-7",
+        "show_express_time_type_id": "3",
+        "is_prime_goods": false,
+        "is_xtra_goods": false,
+        "quickShipDesc": "QuickShip",
+        "discount_product_mark": "0",
+        "double_status": null,
+        "doubleStatusTip": "",
+        "canNotReturnedTip": "<font color=\"#959595\">Os itens desta categoria não podem ser devolvidos ou trocados, por favor consulte  <a href=\"/Return-Policy-a-281.html\" style=\"color:#2D68A8\">Política de Devolução</a></font>",
+        "cancelItemTip": null,
+        "unitPrice": {
+          "amount": "34.99",
+          "amountWithSymbol": "R$34,99",
+          "usdAmount": "6.89",
+          "usdAmountWithSymbol": "$6.89",
+          "priceShowStyle": "34"
+        },
+        "product": {
+          "retail_price_mkc": null,
+          "is_stock_enough": null,
+          "special_price_start": null,
+          "special_price_end": null,
+          "goods_url_name": "Vega delta jade",
+          "supplier_linkman": null,
+          "productRelationID": "i75205623868",
+          "cat_id": "2270",
+          "color_image": "",
+          "is_clearance": null,
+          "special_price_mkc": null,
+          "original_img": "",
+          "goods_name": "Vega delta jade",
+          "cost": null,
+          "salePrice": {
+            "amount": "34.99",
+            "amountWithSymbol": "R$34,99",
+            "usdAmount": "6.89",
+            "usdAmountWithSymbol": "$6.89",
+            "priceShowStyle": "34"
+          },
+          "unit_discount": null,
+          "attr_value_id": "0",
+          "currency_mkc": null,
+          "goods_id": "15457085",
+          "goods_sn": "si8054546734254640",
+          "weight": "235.0",
+          "flash_goods": null,
+          "size": "Vinho / GG",
+          "special_price": null,
+          "is_virtual_stock": null,
+          "skcWeight": null,
+          "special_price_old": null,
+          "limit_count": null,
+          "supplier_id": null,
+          "retailPrice": {
+            "amount": "54.99",
+            "amountWithSymbol": "R$54,99",
+            "usdAmount": "10.82",
+            "usdAmountWithSymbol": "$10.82",
+            "priceShowStyle": "54"
+          },
+          "goods_img": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/d0/1706547725a3fd10e4143db0e732434b1b9d15bea4_thumbnail_220x293.jpg",
+          "promotion": null,
+          "order_goods_discount_percent": 0.36,
+          "prime_goods_discount_price": null,
+          "blind_box_flag": 0
+        },
+        "quantity": "1",
+        "accuracyUSDPrice": null,
+        "totalPrice": {
+          "amount": "34.99",
+          "amountWithSymbol": "R$34,99",
+          "usdAmount": "6.89",
+          "usdAmountWithSymbol": "$6.89",
+          "priceShowStyle": "34"
+        },
+        "have_history_shipped_status": 1,
+        "goods_id": "15457085",
+        "is_syn_ops": "Y",
+        "inventory_shortage": "0",
+        "goods_info_id": "19603797213771786",
+        "store_type": "1",
+        "display_store_code": null,
+        "display_goods_sn": null,
+        "display_sku_code": null,
+        "display_store_name": null,
+        "display_store_logo": null,
+        "display_store_type": null,
+        "goods_attr": "Vinho / GG",
+        "reference_number": "CBG65187729556288",
+        "package_split": 0,
+        "pre_assign_status": "DEFAULT",
+        "goods_pkg_rel_list": [
+          {
+            "package_no": "CBG65187729556288",
+            "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+            "shipping_no": "8338890891011"
+          }
+        ],
+        "commentFlag": 0,
+        "isCommonOrderCanPartRefund": 0,
+        "isCodOrderCanPartCancel": false,
+        "attr_value_en": "",
+        "is_replace": "0",
+        "orderGoodsStauts": 18,
+        "id": "9693631388695305",
+        "shipping_method_real": null,
+        "order_id": "4159843767595325",
+        "shipping_no": "8338890891011",
+        "status": "18",
+        "sort_num": "A",
+        "avgPrice": {
+          "amount": "34.99",
+          "amountWithSymbol": "R$34,99",
+          "usdAmount": "6.89",
+          "usdAmountWithSymbol": "$6.89",
+          "priceShowStyle": "34"
+        },
+        "avg_handling_fee": 0,
+        "avg_handling_fee_usd": 0,
+        "refund_record_status_list": null,
+        "refund_scene": null,
+        "refund_reason": null,
+        "refund_type": null,
+        "attr_value_std_name": "",
+        "cross_order_flag": "1",
+        "sku_sale_attr": [
+          {
+            "attrValue": "Vinho",
+            "attr_id": "27",
+            "attr_name": "Cor",
+            "attr_name_en": "Color",
+            "attr_value_id": "144",
+            "attr_value_name": "Vinho",
+            "attr_value_name_en": "Burgundy",
+            "attr_std_value": "",
+            "is_main": "1",
+            "is_color": null,
+            "attribute_value_multi": null,
+            "attribute_name_multi": null
+          },
+          {
+            "attrValue": "GG",
+            "attr_id": "87",
+            "attr_name": "Tamanho",
+            "attr_name_en": "Size",
+            "attr_value_id": "1005893",
+            "attr_value_name": "GG",
+            "attr_value_name_en": "GG",
+            "attr_std_value": "",
+            "is_main": "0",
+            "is_color": null,
+            "attribute_value_multi": null,
+            "attribute_name_multi": null
+          }
+        ],
+        "attr_value_location": {
+          "category_id": 0,
+          "category_name": "",
+          "supplier_category_id": 0,
+          "skc": "si9128762141001144",
+          "country_code": "BR",
+          "goods_id": 15457085
+        },
+        "sku_code": "I76807558929",
+        "sku_attrs_display": [
+          {
+            "name": "Cor",
+            "value": "Vinho",
+            "nameEN": "Color",
+            "valueEn": "Burgundy",
+            "is_main": "1",
+            "attr_std_value": ""
+          },
+          {
+            "name": "Tamanho",
+            "value": "GG",
+            "nameEN": "Size",
+            "valueEn": "GG",
+            "is_main": "0",
+            "attr_std_value": ""
+          }
+        ],
+        "sku_attrs_contact_str": "Vinho / GG",
+        "sku_info_format": null,
+        "store_code": "4365665480",
+        "store_name": "Pixel E Fenix rubi",
+        "business_model": "1",
+        "group_flag": "0",
+        "sub_billno": null,
+        "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+        "mall_code": "2",
+        "is_present": 0,
+        "billno": "GSH751968624404",
+        "bundle_list": null,
+        "return_flag": 1,
+        "pack_detail_status": null,
+        "combine_address": null,
+        "combine_type": null,
+        "combined_flag": 0,
+        "delivery_flag": "DEFAULT",
+        "special_price_vo": {
+          "amount": "34.99",
+          "amountWithSymbol": "R$34,99",
+          "usdAmount": "6.82",
+          "usdAmountWithSymbol": "$6.82",
+          "priceShowStyle": "34"
+        },
+        "retail_price_vo": {
+          "amount": "54.99",
+          "amountWithSymbol": "R$54,99",
+          "usdAmount": "10.72",
+          "usdAmountWithSymbol": "$10.72",
+          "priceShowStyle": "54"
+        },
+        "promotion_list": null,
+        "new_promotion_list": null,
+        "customization_flag": "0",
+        "customization_info": null,
+        "refund_exchange_scene": null,
+        "large_sea_and_land": "0",
+        "is_exchange": "0",
+        "disposal_discount_price": "0.0",
+        "disposal_discount_price_usd": "0.0",
+        "disposal_type": null,
+        "comb_pack_truck_tag": "0",
+        "wrap_type": "",
+        "virtual_inventory_flag": "0",
+        "goods_operation_list": [
+          {
+            "add_time": "1786732762",
+            "order_goods_id": "9693631388695305",
+            "status": "13"
+          },
+          {
+            "add_time": "1786737139",
+            "order_goods_id": "9693631388695305",
+            "status": "23"
+          },
+          {
+            "add_time": "1786749721",
+            "order_goods_id": "9693631388695305",
+            "status": "49"
+          },
+          {
+            "add_time": "1786984444",
+            "order_goods_id": "9693631388695305",
+            "status": "180"
+          },
+          {
+            "add_time": "1786984475",
+            "order_goods_id": "9693631388695305",
+            "status": "180"
+          },
+          {
+            "add_time": "1787028912",
+            "order_goods_id": "9693631388695305",
+            "status": "206"
+          },
+          {
+            "add_time": "1787040970",
+            "order_goods_id": "9693631388695305",
+            "status": "176"
+          },
+          {
+            "add_time": "1787050293",
+            "order_goods_id": "9693631388695305",
+            "status": "207"
+          },
+          {
+            "add_time": "1787140125",
+            "order_goods_id": "9693631388695305",
+            "status": "182"
+          },
+          {
+            "add_time": "1787221167",
+            "order_goods_id": "9693631388695305",
+            "status": "177"
+          },
+          {
+            "add_time": "1787280882",
+            "order_goods_id": "9693631388695305",
+            "status": "178"
+          },
+          {
+            "add_time": "1787283886",
+            "order_goods_id": "9693631388695305",
+            "status": "16"
+          },
+          {
+            "add_time": "1787664363",
+            "order_goods_id": "9693631388695305",
+            "status": "54"
+          },
+          {
+            "add_time": "1786732760",
+            "order_goods_id": "9693631388695305",
+            "status": "1"
+          }
+        ],
+        "is_shipped": 1,
+        "compensation_datetime": "1787713199",
+        "double_compensation_datetime": "1788693690",
+        "transport_relation_id": 2260815080199352300,
+        "tags": "",
+        "itemSku": "I76807558929",
+        "is_available_quick_ship": true,
+        "is_prime_gift": "0",
+        "is_lucky_gift": "0",
+        "is_gift_new": "0",
+        "is_gift": "0",
+        "is_all_quick_ship": true,
+        "is_available_good": true,
+        "is_partial_quick_ship": false,
+        "is_physical_goods": true
+      },
+      {
+        "CONFIRM_DEVLIERY_EXCEPT_STATUS": [
+          "5",
+          "7",
+          "20",
+          "14",
+          "126",
+          "127",
+          "91",
+          "77",
+          "74",
+          "220"
+        ],
+        "daysDeliveryGoods": false,
+        "goodsNameWithBlindBox": "Vega delta jade",
+        "confirm_DEVLIERY_EXCEPT_STATUS": [
+          "5",
+          "7",
+          "20",
+          "14",
+          "126",
+          "127",
+          "91",
+          "77",
+          "74",
+          "220"
+        ],
+        "brandDealRefundGoods": false,
+        "goodsImgWithBlindBox": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/c1/01768967157790bccb59cf99bab384d90eff6afa45_thumbnail_220x293.jpg",
+        "inventory_lock": "PS1880165018",
+        "freight_group_id": "0",
+        "free_freight_flag": false,
+        "quick_ship": "1",
+        "show_coefficient": "4-7",
+        "show_express_time_type_id": "3",
+        "is_prime_goods": false,
+        "is_xtra_goods": false,
+        "quickShipDesc": "QuickShip",
+        "discount_product_mark": "0",
+        "double_status": null,
+        "doubleStatusTip": "",
+        "canNotReturnedTip": "<font color=\"#959595\">Os itens desta categoria não podem ser devolvidos ou trocados, por favor consulte  <a href=\"/Return-Policy-a-281.html\" style=\"color:#2D68A8\">Política de Devolução</a></font>",
+        "cancelItemTip": null,
+        "unitPrice": {
+          "amount": "34.99",
+          "amountWithSymbol": "R$34,99",
+          "usdAmount": "6.89",
+          "usdAmountWithSymbol": "$6.89",
+          "priceShowStyle": "34"
+        },
+        "product": {
+          "retail_price_mkc": null,
+          "is_stock_enough": null,
+          "special_price_start": null,
+          "special_price_end": null,
+          "goods_url_name": "Vega delta jade",
+          "supplier_linkman": null,
+          "productRelationID": "i75205623868",
+          "cat_id": "2270",
+          "color_image": "",
+          "is_clearance": null,
+          "special_price_mkc": null,
+          "original_img": "",
+          "goods_name": "Vega delta jade",
+          "cost": null,
+          "salePrice": {
+            "amount": "34.99",
+            "amountWithSymbol": "R$34,99",
+            "usdAmount": "6.89",
+            "usdAmountWithSymbol": "$6.89",
+            "priceShowStyle": "34"
+          },
+          "unit_discount": null,
+          "attr_value_id": "0",
+          "currency_mkc": null,
+          "goods_id": "15456503",
+          "goods_sn": "si5722937464193957",
+          "weight": "235.0",
+          "flash_goods": null,
+          "size": "Azul / GG",
+          "special_price": null,
+          "is_virtual_stock": null,
+          "skcWeight": null,
+          "special_price_old": null,
+          "limit_count": null,
+          "supplier_id": null,
+          "retailPrice": {
+            "amount": "54.99",
+            "amountWithSymbol": "R$54,99",
+            "usdAmount": "10.82",
+            "usdAmountWithSymbol": "$10.82",
+            "priceShowStyle": "54"
+          },
+          "goods_img": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/c1/01768967157790bccb59cf99bab384d90eff6afa45_thumbnail_220x293.jpg",
+          "promotion": null,
+          "order_goods_discount_percent": 0.36,
+          "prime_goods_discount_price": null,
+          "blind_box_flag": 0
+        },
+        "quantity": "1",
+        "accuracyUSDPrice": null,
+        "totalPrice": {
+          "amount": "34.99",
+          "amountWithSymbol": "R$34,99",
+          "usdAmount": "6.89",
+          "usdAmountWithSymbol": "$6.89",
+          "priceShowStyle": "34"
+        },
+        "have_history_shipped_status": 1,
+        "goods_id": "15456503",
+        "is_syn_ops": "Y",
+        "inventory_shortage": "0",
+        "goods_info_id": "57508696729311176",
+        "store_type": "1",
+        "display_store_code": null,
+        "display_goods_sn": null,
+        "display_sku_code": null,
+        "display_store_name": null,
+        "display_store_logo": null,
+        "display_store_type": null,
+        "goods_attr": "Azul / GG",
+        "reference_number": "CBG65187729556288",
+        "package_split": 0,
+        "pre_assign_status": "DEFAULT",
+        "goods_pkg_rel_list": [
+          {
+            "package_no": "CBG65187729556288",
+            "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+            "shipping_no": "8338890891011"
+          }
+        ],
+        "commentFlag": 0,
+        "isCommonOrderCanPartRefund": 0,
+        "isCodOrderCanPartCancel": false,
+        "attr_value_en": "",
+        "is_replace": "0",
+        "orderGoodsStauts": 18,
+        "id": "7733738732857776",
+        "shipping_method_real": null,
+        "order_id": "4159843767595325",
+        "shipping_no": "8338890891011",
+        "status": "18",
+        "sort_num": "B",
+        "avgPrice": {
+          "amount": "34.99",
+          "amountWithSymbol": "R$34,99",
+          "usdAmount": "6.89",
+          "usdAmountWithSymbol": "$6.89",
+          "priceShowStyle": "34"
+        },
+        "avg_handling_fee": 0,
+        "avg_handling_fee_usd": 0,
+        "refund_record_status_list": null,
+        "refund_scene": null,
+        "refund_reason": null,
+        "refund_type": null,
+        "attr_value_std_name": "",
+        "cross_order_flag": "1",
+        "sku_sale_attr": [
+          {
+            "attrValue": "Azul",
+            "attr_id": "27",
+            "attr_name": "Cor",
+            "attr_name_en": "Color",
+            "attr_value_id": "118",
+            "attr_value_name": "Azul",
+            "attr_value_name_en": "Blue",
+            "attr_std_value": "",
+            "is_main": "1",
+            "is_color": null,
+            "attribute_value_multi": null,
+            "attribute_name_multi": null
+          },
+          {
+            "attrValue": "GG",
+            "attr_id": "87",
+            "attr_name": "Tamanho",
+            "attr_name_en": "Size",
+            "attr_value_id": "1005893",
+            "attr_value_name": "GG",
+            "attr_value_name_en": "GG",
+            "attr_std_value": "",
+            "is_main": "0",
+            "is_color": null,
+            "attribute_value_multi": null,
+            "attribute_name_multi": null
+          }
+        ],
+        "attr_value_location": {
+          "category_id": 0,
+          "category_name": "",
+          "supplier_category_id": 0,
+          "skc": "si7686663896237098",
+          "country_code": "BR",
+          "goods_id": 15456503
+        },
+        "sku_code": "I20957910499",
+        "sku_attrs_display": [
+          {
+            "name": "Cor",
+            "value": "Azul",
+            "nameEN": "Color",
+            "valueEn": "Blue",
+            "is_main": "1",
+            "attr_std_value": ""
+          },
+          {
+            "name": "Tamanho",
+            "value": "GG",
+            "nameEN": "Size",
+            "valueEn": "GG",
+            "is_main": "0",
+            "attr_std_value": ""
+          }
+        ],
+        "sku_attrs_contact_str": "Azul / GG",
+        "sku_info_format": null,
+        "store_code": "4365665480",
+        "store_name": "Pixel E Fenix rubi",
+        "business_model": "1",
+        "group_flag": "0",
+        "sub_billno": null,
+        "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+        "mall_code": "2",
+        "is_present": 0,
+        "billno": "GSH751968624404",
+        "bundle_list": null,
+        "return_flag": 1,
+        "pack_detail_status": null,
+        "combine_address": null,
+        "combine_type": null,
+        "combined_flag": 0,
+        "delivery_flag": "DEFAULT",
+        "special_price_vo": {
+          "amount": "34.99",
+          "amountWithSymbol": "R$34,99",
+          "usdAmount": "6.82",
+          "usdAmountWithSymbol": "$6.82",
+          "priceShowStyle": "34"
+        },
+        "retail_price_vo": {
+          "amount": "54.99",
+          "amountWithSymbol": "R$54,99",
+          "usdAmount": "10.72",
+          "usdAmountWithSymbol": "$10.72",
+          "priceShowStyle": "54"
+        },
+        "promotion_list": null,
+        "new_promotion_list": null,
+        "customization_flag": "0",
+        "customization_info": null,
+        "refund_exchange_scene": null,
+        "large_sea_and_land": "0",
+        "is_exchange": "0",
+        "disposal_discount_price": "0.0",
+        "disposal_discount_price_usd": "0.0",
+        "disposal_type": null,
+        "comb_pack_truck_tag": "0",
+        "wrap_type": "",
+        "virtual_inventory_flag": "0",
+        "goods_operation_list": [
+          {
+            "add_time": "1786732762",
+            "order_goods_id": "7733738732857776",
+            "status": "13"
+          },
+          {
+            "add_time": "1786737139",
+            "order_goods_id": "7733738732857776",
+            "status": "23"
+          },
+          {
+            "add_time": "1786749721",
+            "order_goods_id": "7733738732857776",
+            "status": "49"
+          },
+          {
+            "add_time": "1786984444",
+            "order_goods_id": "7733738732857776",
+            "status": "180"
+          },
+          {
+            "add_time": "1786984475",
+            "order_goods_id": "7733738732857776",
+            "status": "180"
+          },
+          {
+            "add_time": "1787028912",
+            "order_goods_id": "7733738732857776",
+            "status": "206"
+          },
+          {
+            "add_time": "1787040970",
+            "order_goods_id": "7733738732857776",
+            "status": "176"
+          },
+          {
+            "add_time": "1787050293",
+            "order_goods_id": "7733738732857776",
+            "status": "207"
+          },
+          {
+            "add_time": "1787140125",
+            "order_goods_id": "7733738732857776",
+            "status": "182"
+          },
+          {
+            "add_time": "1787221167",
+            "order_goods_id": "7733738732857776",
+            "status": "177"
+          },
+          {
+            "add_time": "1787280882",
+            "order_goods_id": "7733738732857776",
+            "status": "178"
+          },
+          {
+            "add_time": "1787283886",
+            "order_goods_id": "7733738732857776",
+            "status": "16"
+          },
+          {
+            "add_time": "1787664363",
+            "order_goods_id": "7733738732857776",
+            "status": "54"
+          },
+          {
+            "add_time": "1786732760",
+            "order_goods_id": "7733738732857776",
+            "status": "1"
+          }
+        ],
+        "is_shipped": 1,
+        "compensation_datetime": "1787713199",
+        "double_compensation_datetime": "1788693690",
+        "transport_relation_id": 2260815080199352300,
+        "tags": "",
+        "itemSku": "I20957910499",
+        "is_available_quick_ship": true,
+        "is_prime_gift": "0",
+        "is_lucky_gift": "0",
+        "is_gift_new": "0",
+        "is_gift": "0",
+        "is_all_quick_ship": true,
+        "is_available_good": true,
+        "is_partial_quick_ship": false,
+        "is_physical_goods": true
+      }
+    ],
+    "notSupportCodPaymentMethodReason": null,
+    "notSupportReturnReason": null,
+    "vip_order_source": "0",
+    "isCanReturn": "1",
+    "return_and_refund_info": {
+      "button_text": "Devolução e Reembolso",
+      "popup_title": "Selecione o tipo de reembolso",
+      "return_info": {
+        "button_text": "(Combinar) Devolver e receber um reembolso",
+        "button_desc": "Após receber os produtos, você pode solicitar devolução e reembolso. O vendedor processará seu reembolso assim que os itens devolvidos forem recebidos."
+      },
+      "refund_info": {
+        "button_text": "Pacote entregue, não recebido",
+        "button_desc": "Se o rastreamento indicar que a entrega foi concluída, mas você ainda não tiver recebido o seu pacote, por favor informe isso por meio desta opção. Se apenas parte dos itens estiver faltando, entre em contato com o atendimento ao cliente para verificação.",
+        "button_text_for_single": "Pacote entregue, não recebido",
+        "button_url": "https://api-shein.shein.com/h5/orders/refundApplication?billno=GSH751968624404&pageFrom=orderDetail"
+      }
+    },
+    "returnButtonIsGray": "0",
+    "returnItemWebUrl": "",
+    "newReturnItemWebUrl": "https://api-shein.shein.com/h5/user/order_return/GSH751968624404",
+    "onlinePayDiscountValue": null,
+    "payment_discount_tips": null,
+    "paymentAbtInfo": null,
+    "pay_code_url": "",
+    "payable": null,
+    "show_pay_url": null,
+    "originShippingPrice": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "shippingPrice": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "handling_fee": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "finalShippingPrice": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "local_cod_price": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "id": "4159843767595325",
+    "transport_time_type": 1,
+    "usedWalletPrice": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "isSupportOxxo": false,
+    "arOnlinePayDiscountPercent": null,
+    "shipping_district_id": "Bairro Exemplo",
+    "paymentTitle": "Cartão de crédito local com parcelamento",
+    "pointPrice": null,
+    "billno": "GSH751968624404",
+    "recommend_param": null,
+    "paymentSuggestion": "adyen-brcardinstallment",
+    "expireCountdown": 0,
+    "pay_expire_time": null,
+    "countdownInPlaceOrder": 1786747108,
+    "expireMsg": null,
+    "isLocalCurrency": null,
+    "installmentFee": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "totalPrice": {
+      "amount": "69.98",
+      "amountWithSymbol": "R$69,98",
+      "usdAmount": "13.77",
+      "usdAmountWithSymbol": "$13.77",
+      "priceShowStyle": "69"
+    },
+    "localCodPrice": null,
+    "currency_code": "BRL",
+    "enabled": "0",
+    "googlePayDiscountInfo": null,
+    "pay_url": "",
+    "subTotalPrice": {
+      "amount": "69.98",
+      "amountWithSymbol": "R$69,98",
+      "usdAmount": "13.77",
+      "usdAmountWithSymbol": "$13.77",
+      "priceShowStyle": "69"
+    },
+    "isCanRevokeByUser": "0",
+    "isReadOnly": 0,
+    "notSupportCodTips": null,
+    "not_support_cod_reason": null,
+    "countryCode": "BR",
+    "isOts": 1,
+    "coupon": "",
+    "coupon_list": [],
+    "coupon_detail_list": [],
+    "isCanBeHiddenByUser": 1,
+    "isCanComment": 1,
+    "is_can_comment_button": "1",
+    "policyTips": {
+      "p65warning": {
+        "show": "0",
+        "tip": null,
+        "mainTip": null
+      },
+      "privacyAgreementTip": null
+    },
+    "isCommonOrderCanRefund": 0,
+    "isCanEditBillingAddressByUser": "Rua Exemplo, 123",
+    "isComplete": "1",
+    "show_bar_code": false,
+    "addTime": 1786732708,
+    "newSubTotalPrice": {
+      "amount": "69.98",
+      "amountWithSymbol": "R$69,98",
+      "usdAmount": "13.64",
+      "usdAmountWithSymbol": "$13.64",
+      "priceShowStyle": "69"
+    },
+    "icms_total_tax_price": null,
+    "no_tax_normal_goods_total_price": null,
+    "no_tax_sub_total_price": null,
+    "no_tax_shipping_price": null,
+    "confirmDeliveryBonusPoints": 0,
+    "coBrandedCardIntegral": null,
+    "orderRemindToShipStatus": 4,
+    "marketing_type": "0",
+    "isCanUpload": null,
+    "apply_id": null,
+    "share_pay_tip": null,
+    "orderExtend": {
+      "insurancePrice": {
+        "amount": "0.00",
+        "amountWithSymbol": "R$0,00",
+        "usdAmount": "0.00",
+        "usdAmountWithSymbol": "$0.00",
+        "priceShowStyle": "0"
+      },
+      "codPrice": {
+        "amount": "0.00",
+        "amountWithSymbol": "R$0,00",
+        "usdAmount": "0.00",
+        "usdAmountWithSymbol": "$0.00",
+        "priceShowStyle": "0"
+      },
+      "buyCouponAmountPrice": {
+        "amount": "0.00",
+        "amountWithSymbol": "R$0,00",
+        "usdAmount": "0.00",
+        "usdAmountWithSymbol": "$0.00",
+        "priceShowStyle": "0"
+      },
+      "buyCouponActivityTip": {
+        "show": 0,
+        "buyTip": "Obter pacote de cupons por R$0,00"
+      }
+    },
+    "isOrderSupportCod": 0,
+    "site_from": "iosshbr",
+    "extraPromotion": null,
+    "transformedPromotion": null,
+    "subOrderStatus": [
+      {
+        "firstPackageNo": "CBG65187729556288",
+        "referenceNumberList": [
+          "CBG65187729556288"
+        ],
+        "containCombineOrderGoods": true,
+        "allBillNos": [
+          "GSH751968624404"
+        ],
+        "goodsList": [
+          {
+            "seaLandLabelIcon": null,
+            "free_freight_flag": false,
+            "free_freight_label": null,
+            "pack_detail_status": "",
+            "is_prime_goods": "0",
+            "is_saver_card_goods": "0",
+            "discount_product_mark": "0",
+            "prime_good_url_flag": "",
+            "double_status": null,
+            "doubleStatusTip": "",
+            "canNotReturnedTip": "<font color=\"#959595\">Os itens desta categoria não podem ser devolvidos ou trocados, por favor consulte  <a href=\"/Return-Policy-a-281.html\" style=\"color:#2D68A8\">Política de Devolução</a></font>",
+            "cancelItemTip": null,
+            "original_price": 10.82,
+            "goods_attr": "Vinho / GG",
+            "isCommonOrderCanPartRefund": "0",
+            "isCodOrderCanPartCancel": false,
+            "is_commented": 0,
+            "price": "R$34,99",
+            "cat_id": "2270",
+            "id": "9693631388695305",
+            "is_pre_sale": null,
+            "brand": "shein",
+            "goods_name": "Vega delta jade",
+            "original_price_total": 10.82,
+            "quantity": "1",
+            "attr_value_id": "I76807558929",
+            "goods_id": "15457085",
+            "inventory_shortage": "0",
+            "goods_info_id": "19603797213771786",
+            "goods_sn": "si8054546734254640",
+            "sort": null,
+            "goods_bundle_info": null,
+            "reference_number": "CBG65187729556288",
+            "package_split": 0,
+            "goods_pkg_rel_list": [
+              {
+                "package_no": "CBG65187729556288",
+                "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                "shipping_no": "8338890891011"
+              }
+            ],
+            "multi_packages_show_info": null,
+            "repeat_package": null,
+            "goods_thumb": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/d0/1706547725a3fd10e4143db0e732434b1b9d15bea4_thumbnail_220x293.jpg",
+            "sort_num": "A",
+            "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+            "order_id": "4159843767595325",
+            "shipping_no": "8338890891011",
+            "combinedPackage": null,
+            "price_total": "R$34,99",
+            "status": 18,
+            "goods_status": "54",
+            "expired_type": null,
+            "subscribe_status": "0",
+            "grade_status": "1",
+            "attr_value_en": "",
+            "totalPrice": {
+              "amount": "34.99",
+              "amountWithSymbol": "R$34,99",
+              "usdAmount": "6.89",
+              "usdAmountWithSymbol": "$6.89",
+              "priceShowStyle": "34"
+            },
+            "stock": 999,
+            "stock_origin": 999,
+            "is_on_sale": 1,
+            "is_on_sale_origin": 1,
+            "is_virtual_stock": null,
+            "show_repurchase": 1,
+            "repurchase_lure_info": null,
+            "arrival_notice": 0,
+            "avgPrice": {
+              "amount": "34.99",
+              "amountWithSymbol": "R$34,99",
+              "usdAmount": "6.89",
+              "usdAmountWithSymbol": "$6.89",
+              "priceShowStyle": "34"
+            },
+            "retailPrice": {
+              "amount": "54.99",
+              "amountWithSymbol": "R$54,99",
+              "usdAmount": "10.82",
+              "usdAmountWithSymbol": "$10.82",
+              "priceShowStyle": "54"
+            },
+            "special_price_vo": {
+              "amount": "34.99",
+              "amountWithSymbol": "R$34,99",
+              "usdAmount": "6.82",
+              "usdAmountWithSymbol": "$6.82",
+              "priceShowStyle": "34"
+            },
+            "retail_price_vo": {
+              "amount": "54.99",
+              "amountWithSymbol": "R$54,99",
+              "usdAmount": "10.72",
+              "usdAmountWithSymbol": "$10.72",
+              "priceShowStyle": "54"
+            },
+            "is_gift": "0",
+            "is_prime_gift": "0",
+            "is_lucky_gift": "0",
+            "is_gift_new": "0",
+            "isCanComment": null,
+            "disable_origin_real_price": null,
+            "original_real_price": "R$54,99",
+            "show_pop_tip": 1,
+            "price_description_tip": null,
+            "attr_value_std_name": "",
+            "productRelationID": "i75205623868",
+            "canBeExchanged": 0,
+            "button_info": {
+              "exchange_info": {
+                "can_exchange": "0",
+                "gray_tip": null,
+                "non_exchanged_reason": null
+              }
+            },
+            "old_goods_id": null,
+            "brand_badge": null,
+            "brand_code": null,
+            "series_badge": null,
+            "has_size": 1,
+            "attr_id": "87",
+            "cross_order_flag": "1",
+            "sku_attrs_contact_str": "Vinho / GG",
+            "sku_code": "I76807558929",
+            "itemSku": "I76807558929",
+            "mall_code": "2",
+            "store_code": "4365665480",
+            "quickShipDesc": null,
+            "transport_time_label": null,
+            "quickShip": "1",
+            "customizationPopInfo": null,
+            "disable_jump": null,
+            "evoluSheinTip": null,
+            "beforeTitleTags": [],
+            "seaLandLabelTip": null,
+            "sold_out": "0",
+            "out_of_stock": "0",
+            "out_of_stock_prepare": "0",
+            "customsInterceptionInfo": null,
+            "exchangeRecommendInfo": null,
+            "combine_type": null,
+            "comb_pack_truck_tag": "0",
+            "wrap_type": "",
+            "localStockTag": {
+              "text": "Envio Nacional",
+              "icon": "https://img.ltwebstatic.com/v4/p/ccc/2025/05/13/d9/152566499112c3b2c77958d8bb3b816ad014c3266d.png"
+            },
+            "reshipmentTag": null,
+            "virtual_inventory_flag": null,
+            "belt_info": null,
+            "reverse_doc_info": null,
+            "is_available_quick_ship": true,
+            "is_exchange_good": false,
+            "is_all_quick_ship": true,
+            "is_available_good": true,
+            "is_partial_quick_ship": false,
+            "is_direct_goods": "1"
+          },
+          {
+            "seaLandLabelIcon": null,
+            "free_freight_flag": false,
+            "free_freight_label": null,
+            "pack_detail_status": "",
+            "is_prime_goods": "0",
+            "is_saver_card_goods": "0",
+            "discount_product_mark": "0",
+            "prime_good_url_flag": "",
+            "double_status": null,
+            "doubleStatusTip": "",
+            "canNotReturnedTip": "<font color=\"#959595\">Os itens desta categoria não podem ser devolvidos ou trocados, por favor consulte  <a href=\"/Return-Policy-a-281.html\" style=\"color:#2D68A8\">Política de Devolução</a></font>",
+            "cancelItemTip": null,
+            "original_price": 10.82,
+            "goods_attr": "Azul / GG",
+            "isCommonOrderCanPartRefund": "0",
+            "isCodOrderCanPartCancel": false,
+            "is_commented": 0,
+            "price": "R$34,99",
+            "cat_id": "2270",
+            "id": "7733738732857776",
+            "is_pre_sale": null,
+            "brand": "shein",
+            "goods_name": "Vega delta jade",
+            "original_price_total": 10.82,
+            "quantity": "1",
+            "attr_value_id": "I20957910499",
+            "goods_id": "15456503",
+            "inventory_shortage": "0",
+            "goods_info_id": "57508696729311176",
+            "goods_sn": "si5722937464193957",
+            "sort": null,
+            "goods_bundle_info": null,
+            "reference_number": "CBG65187729556288",
+            "package_split": 0,
+            "goods_pkg_rel_list": [
+              {
+                "package_no": "CBG65187729556288",
+                "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                "shipping_no": "8338890891011"
+              }
+            ],
+            "multi_packages_show_info": null,
+            "repeat_package": null,
+            "goods_thumb": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/c1/01768967157790bccb59cf99bab384d90eff6afa45_thumbnail_220x293.jpg",
+            "sort_num": "B",
+            "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+            "order_id": "4159843767595325",
+            "shipping_no": "8338890891011",
+            "combinedPackage": null,
+            "price_total": "R$34,99",
+            "status": 18,
+            "goods_status": "54",
+            "expired_type": null,
+            "subscribe_status": "0",
+            "grade_status": "1",
+            "attr_value_en": "",
+            "totalPrice": {
+              "amount": "34.99",
+              "amountWithSymbol": "R$34,99",
+              "usdAmount": "6.89",
+              "usdAmountWithSymbol": "$6.89",
+              "priceShowStyle": "34"
+            },
+            "stock": 999,
+            "stock_origin": 999,
+            "is_on_sale": 1,
+            "is_on_sale_origin": 1,
+            "is_virtual_stock": null,
+            "show_repurchase": 1,
+            "repurchase_lure_info": null,
+            "arrival_notice": 0,
+            "avgPrice": {
+              "amount": "34.99",
+              "amountWithSymbol": "R$34,99",
+              "usdAmount": "6.89",
+              "usdAmountWithSymbol": "$6.89",
+              "priceShowStyle": "34"
+            },
+            "retailPrice": {
+              "amount": "54.99",
+              "amountWithSymbol": "R$54,99",
+              "usdAmount": "10.82",
+              "usdAmountWithSymbol": "$10.82",
+              "priceShowStyle": "54"
+            },
+            "special_price_vo": {
+              "amount": "34.99",
+              "amountWithSymbol": "R$34,99",
+              "usdAmount": "6.82",
+              "usdAmountWithSymbol": "$6.82",
+              "priceShowStyle": "34"
+            },
+            "retail_price_vo": {
+              "amount": "54.99",
+              "amountWithSymbol": "R$54,99",
+              "usdAmount": "10.72",
+              "usdAmountWithSymbol": "$10.72",
+              "priceShowStyle": "54"
+            },
+            "is_gift": "0",
+            "is_prime_gift": "0",
+            "is_lucky_gift": "0",
+            "is_gift_new": "0",
+            "isCanComment": null,
+            "disable_origin_real_price": null,
+            "original_real_price": "R$54,99",
+            "show_pop_tip": 1,
+            "price_description_tip": null,
+            "attr_value_std_name": "",
+            "productRelationID": "i75205623868",
+            "canBeExchanged": 0,
+            "button_info": {
+              "exchange_info": {
+                "can_exchange": "0",
+                "gray_tip": null,
+                "non_exchanged_reason": null
+              }
+            },
+            "old_goods_id": null,
+            "brand_badge": null,
+            "brand_code": null,
+            "series_badge": null,
+            "has_size": 1,
+            "attr_id": "87",
+            "cross_order_flag": null,
+            "sku_attrs_contact_str": "Azul / GG",
+            "sku_code": "I20957910499",
+            "itemSku": "I20957910499",
+            "mall_code": "2",
+            "store_code": "4365665480",
+            "quickShipDesc": null,
+            "transport_time_label": null,
+            "quickShip": "1",
+            "customizationPopInfo": null,
+            "disable_jump": null,
+            "evoluSheinTip": null,
+            "beforeTitleTags": [],
+            "seaLandLabelTip": null,
+            "sold_out": "0",
+            "out_of_stock": "0",
+            "out_of_stock_prepare": "0",
+            "customsInterceptionInfo": null,
+            "exchangeRecommendInfo": null,
+            "combine_type": null,
+            "comb_pack_truck_tag": "0",
+            "wrap_type": "",
+            "localStockTag": {
+              "text": "Envio Nacional",
+              "icon": "https://img.ltwebstatic.com/v4/p/ccc/2025/05/13/d9/152566499112c3b2c77958d8bb3b816ad014c3266d.png"
+            },
+            "reshipmentTag": null,
+            "virtual_inventory_flag": null,
+            "belt_info": null,
+            "reverse_doc_info": null,
+            "is_available_quick_ship": true,
+            "is_exchange_good": false,
+            "is_all_quick_ship": true,
+            "is_available_good": true,
+            "is_partial_quick_ship": false,
+            "is_direct_goods": "1"
+          }
+        ],
+        "reshipmentTag": null,
+        "reshipmentTip": null,
+        "packageState": "shipped",
+        "return_history_link": null,
+        "refund_record_url_link": null,
+        "order_trace_id": "9693631388695305",
+        "is_show_trace_link": 1,
+        "package_title": "Enviado",
+        "package_state": "shipped",
+        "packageStateTip": null,
+        "packageStateDesc": null,
+        "fulfillmentImpactProductPop": null,
+        "hasCanBeExchangedGoods": false,
+        "hasCrossOrderGoods": "1",
+        "quickShipStatus": null,
+        "quickShipDesc": null,
+        "transport_time_label": null,
+        "returnEffect": {
+          "title": "Período de devolução",
+          "desc": "​Eco de cabo: Omega de {0}",
+          "descFillTime": "1789478763",
+          "style": "normal"
+        },
+        "reference_number": "CBG65187729556288"
+      }
+    ],
+    "processing_list": [],
+    "payment_method": "adyen-brcardinstallment",
+    "orderGoodsSum": 2,
+    "orderCurrency": {
+      "symbol_right": "",
+      "whole_place": "1",
+      "code": "BRL",
+      "thousands_sep": "",
+      "dec_point": ",",
+      "symbol_left": "R$",
+      "value": "5.129100",
+      "decimal_place": "2"
+    },
+    "onlinePayDiscountInfo": {
+      "totalAllBeforeDiscount": null,
+      "discount_price": null,
+      "discountType": 0,
+      "isEnjoyedDiscount": 0,
+      "tips": null,
+      "unPayRandomDiscountTip": null,
+      "payingRandomDiscountTip": null,
+      "payingRandomDiscountTipFirst": null,
+      "payingRandomDiscountTipSecond": null,
+      "afterPayRandomDiscountTip": null,
+      "hitRandomDiscount": "0",
+      "randomDiscountPaymentListStr": ""
+    },
+    "CoBrandedCardDiscountInfo": null,
+    "insurance_type": "0",
+    "order_insurance_res_list": [
+      {
+        "insurance_fee": "0.00",
+        "insurance_fee_usd": "0.00",
+        "insurance_type": "0"
+      },
+      {
+        "insurance_fee": "0.00",
+        "insurance_fee_usd": "0.00",
+        "insurance_type": "4"
+      }
+    ],
+    "insurance_compensation_type": 1,
+    "isPaid": "1",
+    "payment_type": 7,
+    "district": "Bairro Exemplo",
+    "is_display": 0,
+    "arOnlinePayDiscountPercentValue": null,
+    "transport_time": "1787164708-1788115108",
+    "transport_time_change_type": 2,
+    "cod_part_refund": {},
+    "shipping_district": "Bairro Exemplo",
+    "orderStatus": 5,
+    "shipping_lat": "0.52914851727158185",
+    "isCanConfirmDelivery": "0",
+    "confirm_delivery_point_banner": null,
+    "point": "0",
+    "cod_price_limit": null,
+    "primeActivityInfo": null,
+    "megaHaulActivityInfo": null,
+    "flashGrabActivityInfo": null,
+    "couponGroupPurchaseActivityInfo": null,
+    "newUserGiftsInfo": null,
+    "bottomGuideBanner": null,
+    "doublePoints": 0,
+    "order_detail_status_title": null,
+    "total_point": null,
+    "order_reward_point_info": null,
+    "subscribe_infos": null,
+    "giftcard": {
+      "amount": null,
+      "card_no": null,
+      "price": null,
+      "id": null,
+      "order_id": null,
+      "lock_start_time": null,
+      "lock_mark": null,
+      "status": null
+    },
+    "packagePrice": null,
+    "retailTotallPrice": {
+      "amount": "109.98",
+      "amountWithSymbol": "R$109,98",
+      "usdAmount": "21.64",
+      "usdAmountWithSymbol": "$21.64",
+      "priceShowStyle": "109"
+    },
+    "isOrderShippingAddressEditable": "0",
+    "isSupportEbanx": false,
+    "displayReturnInsurance": "0",
+    "arOnlinePayPayPalDiscountPercentValue": null,
+    "backupShippingTelephone": "",
+    "couponPrice": {
+      "amount": "0.00",
+      "amountWithSymbol": "R$0,00",
+      "usdAmount": "0.00",
+      "usdAmountWithSymbol": "$0.00",
+      "priceShowStyle": "0"
+    },
+    "paymentLogo": "http://img.ltwebstatic.com/v4/p/pfms/2025/11/12/b7/01176830501562185a93aa172644e4ed258d072640.png",
+    "is_appealed": null,
+    "isDisplayShippingInsurance": 0,
+    "usaPrice": {
+      "amount": "13.77",
+      "amountWithSymbol": "$13.77"
+    },
+    "notification": null,
+    "country_code": "BR",
+    "country_telephone_prefix": "11999999999",
+    "first_free_shipping": null,
+    "customs_package_link": null,
+    "customs_tip": null,
+    "customs_info_list": null,
+    "customs_interception_popup_type": 0,
+    "verification_channel": null,
+    "typeList": null,
+    "show_mutil_package": 0,
+    "newReturnRefundHistoryLink": null,
+    "track_h5_link": "https://api-shein.shein.com/h5/orders/track?app=shein&iconColor=white&device_type=pc&language=pt-br&site_uid=br&region=br&type=immersive&billno=GSH751968624404&show_actionbar=false",
+    "payEmail": "",
+    "isCanConfirmByUser": 0,
+    "confirmStatus": 0,
+    "current_payment_valid": null,
+    "current_payment_valid_msg": null,
+    "isDisabledCodPayment": null,
+    "coupon_support_payment": null,
+    "birthday": "",
+    "whatsAppSubscribeStatus": {
+      "account": "",
+      "area_code": "+55",
+      "phone": "11999999999",
+      "subscribe_state": "0"
+    },
+    "smsSubscribeStatus": null,
+    "payment_data": null,
+    "default_pay_method_pop": null,
+    "isCommonOrderCanPartRefund": "0",
+    "isCodOrderCanPartCancel": "0",
+    "show_others_sub": null,
+    "insurance_title": "SEGURO DE ENVIO",
+    "canRepurchase": 0,
+    "repurchase_lure_info": null,
+    "payment_action": null,
+    "openThirdPartyBrowser": null,
+    "new_payment_flow": null,
+    "new_payment_abt": null,
+    "pay_now_url": null,
+    "is_direct_paydomain": null,
+    "paydomain": null,
+    "is_security_card": null,
+    "orderStatusTips": null,
+    "pay_divide": null,
+    "isShippingInsuranceChecked": 2,
+    "tax": [],
+    "sorted_price": [
+      {
+        "type": "origin",
+        "local_name": "Valor Total:",
+        "price_with_symbol": "R$109,98",
+        "amount": "109.98",
+        "show": 0,
+        "show_type": [
+          "gray_show",
+          "delete_line"
+        ]
+      },
+      {
+        "type": "newSubTotal",
+        "local_name": "Subtotal:",
+        "price_with_symbol": "R$69,98",
+        "amount": "69.98",
+        "show": 1,
+        "show_type": [],
+        "tip": "Preço final do produto: Total após todos os descontos serem aplicados (inclui promoções, cupons e subsídios de ICMS)",
+        "des": "Preço final do produto: Total após todos os descontos serem aplicados (inclui promoções, cupons e subsídios de ICMS)",
+        "display_type": "1",
+        "sub_price_details": [
+          {
+            "local_name": "​Valor Total:",
+            "price_with_symbol": "R$69,98",
+            "amount": "69.98",
+            "show": 1,
+            "show_type": [],
+            "display_type": "1"
+          }
+        ]
+      },
+      {
+        "type": "PayDivide",
+        "local_name": "De",
+        "price_with_symbol": "0",
+        "amount": "0",
+        "show": 0,
+        "show_type": []
+      },
+      {
+        "type": "shipping",
+        "local_name": "Total do Frete:",
+        "price_with_symbol": "Grátis",
+        "amount": "0.00",
+        "show": 1,
+        "show_type": [
+          "green_show"
+        ],
+        "tip": "Custo de Frete sem impostos",
+        "des": "Custo de Frete sem impostos",
+        "origin_price_with_symbol": "R$9,92"
+      },
+      {
+        "type": "tax",
+        "name": "Tax",
+        "local_name": "Impostos inclusos:",
+        "price_with_symbol": "",
+        "amount": "0",
+        "show": 0,
+        "show_type": [],
+        "tip": "",
+        "des": ""
+      },
+      {
+        "type": "quickship_surcharge",
+        "local_name": "Taxa de envio rápido",
+        "price_with_symbol": "R$0,00",
+        "amount": "0.00",
+        "show": 0,
+        "show_type": []
+      },
+      {
+        "type": "retailDeliveryFee",
+        "local_name": "Taxas de entrega de varejo:",
+        "price_with_symbol": "R$0,00",
+        "amount": "0.0",
+        "show": 0,
+        "show_type": [],
+        "tip": "O estado do Colorado exige que coletemos uma taxa de entrega no varejo por pedido em todos os pedidos que entregamos em um endereço no Colorado a partir de 1º de julho de 2022.",
+        "des": "O estado do Colorado exige que coletemos uma taxa de entrega no varejo por pedido em todos os pedidos que entregamos em um endereço no Colorado a partir de 1º de julho de 2022.",
+        "price_sort": "0.0"
+      },
+      {
+        "type": "commission",
+        "local_name": "com juros:",
+        "price_with_symbol": "R$0,00",
+        "amount": "0.00",
+        "show": 0,
+        "show_type": []
+      },
+      {
+        "type": "primePrice",
+        "show": 0,
+        "show_type": []
+      },
+      {
+        "type": "primePrice",
+        "show": 0,
+        "show_type": []
+      },
+      {
+        "type": "shippingInsurance",
+        "local_name": "Garantia de Envio",
+        "price_with_symbol": "GRÁTIS",
+        "amount": "0.00",
+        "show": 1,
+        "show_type": [
+          "green_show"
+        ],
+        "tip": "A Garantia de Envio oferece proteção para a qualidade e segurança das suas mercadorias. Se o pacote for confirmado como perdido ou danificado, processaremos um reembolso para a sua conta de pagamento original."
+      },
+      {
+        "type": "onTimeInsurance",
+        "local_name": "Serviço de entrega pontual",
+        "price_with_symbol": "R$0,00",
+        "amount": "0.00",
+        "show": 1,
+        "show_type": [],
+        "tip": "O serviço gratuito de Entrega Pontual dá direito a receber 200 pontos SHEIN se a sua encomenda não chegar na data prevista. Consulte os Termos e Condições da Entrega Pontual para obter mais detalhes."
+      },
+      {
+        "type": "saf",
+        "local_name": "Programa de Contribuição SAF:",
+        "price_with_symbol": "0.00",
+        "amount": "0.00",
+        "show": 0,
+        "show_type": [],
+        "price_sort": "0.00",
+        "saf_popup": {
+          "title": "Obrigado por considerar o nosso Programa de Contribuição SAF!",
+          "coupon": {
+            "title": "Oferta Especial",
+            "coupon_tip": "20% DE DESCONTO Cupom",
+            "desc": "Yuca 20% de micro (pixel fenix) na watt xenon bravo"
+          },
+          "text": "<span style=\"font-size:13px;color:#2D7A51\"><b>Obrigado por escolher apoiar o Programa de Contribuição SAF.</b> <br><br> Ao fazer esta contribuição, você receberá um cupom com 20% de desconto (até €25 de desconto) em compras acima de €59 após o pagamento bem-sucedido do seu pedido. O cupom pode ser usado na sua próxima compra e é válido por uma semana. Observe que as contribuições ao Programa de Contribuição SAF não são reembolsáveis.</span><br><br>Se você optar por fazer uma contribuição ao Programa de Contribuição SAF, sua doação apoiará o aumento do uso de Combustível Sustentável para Aviação (SAF). <br><br>A seguinte descrição é apoiada e confirmada pela Lufthansa Cargo. Os serviços que oferecemos não devem ser interpretados como uma doação beneficente.",
+          "question_list": [
+            {
+              "icon": "https://img.ltwebstatic.com/v4/p/ccc/2026/02/06/e8/2037573114175743bb86cb20ee5ca7cd57dc4ad063.png",
+              "title": "O que é o \"Programa de Contribuição SAF\"?",
+              "text": "Na SHEIN, estamos comprometidos em reduzir nosso impacto de carbono, tanto nas nossas operações quanto ao longo da nossa cadeia de valor. <br>Estamos introduzindo o uso de \"Combustível de Aviação Sustentável\" (SAF) certificado em colaboração com nossos provedores de logística aérea, como a Lufthansa Cargo, como parte do combustível utilizado para o transporte dos produtos SHEIN."
+            },
+            {
+              "icon": "https://img.ltwebstatic.com/v4/p/ccc/2026/04/01/dd/1775046998a683df8b99b562a37d37b321c239d470.png",
+              "title": "O que é o \"Combustível de Aviação Sustentável\" (SAF)?",
+              "text": "Combustível Sustentável para Aviação (SAF, na sigla em inglês) é uma definição do setor para um combustível produzido a partir de resíduos e materiais residuais renováveis. O SAF pode reduzir significativamente as emissões de CO₂ ao longo de seu ciclo de vida em comparação com o combustível de aviação convencional.<br>Embora reconheçamos que o frete aéreo continua sendo uma forma de entrega intensiva em carbono, o SAF utilizado pelos parceiros logísticos, a partir de 10 de maio de 2026, é produzido a partir de fontes renováveis. Isso significa que, embora o SAF emita quantidades semelhantes de CO₂ durante a combustão em relação à querosene convencional, ele apresenta pelo menos 80% menos emissões ao longo de seu ciclo de vida do que a querosene convencional. O SAF está plenamente em conformidade com a Diretiva da União Europeia sobre Energias Renováveis e não compete com a produção de alimentos ou ração animal. Observamos que, atualmente, nenhum provedor logístico aéreo utiliza SAF 100% em nenhum de seus fretes. Mesmo nos casos em que o provedor logístico aéreo utiliza SAF, apenas uma pequena proporção desse combustível é atualmente misturada. A grande maioria do combustível usado pelos provedores logísticos aéreos ainda é querosene convencional. Contudo, por ser um chamado combustível \"drop-in\", o SAF é compatível com a querosene convencional e, portanto, pode ser misturado a ela sem problemas."
+            },
+            {
+              "icon": "https://img.ltwebstatic.com/v4/p/ccc/2026/02/06/3a/28929473219adca27a15bcedf1ca0193a4c6984e4e.png",
+              "title": "Como minha contribuição será usada?",
+              "text": "Com sua contribuição, você ajuda a SHEIN a comprar e utilizar SAF certificado fornecido pelos nossos provedores de logística aérea. Esse SAF faz parte do suprimento geral de SAF utilizado por esse provedor específico de logística aérea. Isso promove a comercialização do SAF em operações reais."
+            },
+            {
+              "icon": "https://img.ltwebstatic.com/v4/p/ccc/2026/02/06/ec/38377398161515f863a14516e31ccf5935ceb3dd2e.png",
+              "title": "Isso compensa as emissões da minha entrega?",
+              "text": "Não. Este programa é uma contribuição para apoiar o aumento do uso de SAF pelo nosso parceiro logístico que entrega produtos SHEIN por via aérea, sendo apenas uma das muitas formas pelas quais estamos explorando como reduzir as emissões de carbono relacionadas ao transporte. Observe que sua contribuição não é um crédito de carbono e não tem o objetivo de neutralizar ou compensar totalmente as emissões de sua entrega."
+            },
+            {
+              "icon": "https://img.ltwebstatic.com/v4/p/ccc/2026/02/06/f3/3391495626114e1be04af0536903428283533837ff.png",
+              "title": "O SAF é realmente usado?",
+              "text": "Sim. Nós trabalhamos com parceiros logísticos de companhias aéreas que nos fornecem verificação de que o SAF solicitado (incluindo o SAF adquirido por meio das suas contribuições) foi entregue fisicamente e está sendo utilizado em suas operações aéreas, e que o SAF está totalmente em conformidade com um esquema de certificação reconhecido."
+            }
+          ],
+          "conclusion_text": "Saiba mais sobre a jornada de descarbonização da SHEIN visitando sheingroup.com"
+        }
+      },
+      {
+        "type": "handlingFee",
+        "local_name": "Taxa de manuseio:",
+        "price_with_symbol": "R$0,00",
+        "amount": "0.00",
+        "priceShowStyle": "0",
+        "show": 0,
+        "show_type": [],
+        "price_sort": "0.00"
+      },
+      {
+        "type": "handlingDiscountFee",
+        "local_name": "Handling Fee Reduction",
+        "price_with_symbol": "R$0,00",
+        "amount": "0.00",
+        "priceShowStyle": "0",
+        "show": 0,
+        "show_type": [
+          "negative_price",
+          "prime_color_show"
+        ]
+      },
+      {
+        "type": "buyCoupon",
+        "local_name": "Taxa do pacote de cupom:",
+        "price_with_symbol": "R$0,00",
+        "amount": "0.00",
+        "show": 0,
+        "show_type": []
+      },
+      {
+        "type": "codCharge",
+        "local_name": "Taxa de COD:",
+        "price_with_symbol": "Grátis",
+        "amount": "0.00",
+        "show": 0,
+        "show_type": []
+      },
+      {
+        "type": "point",
+        "local_name": "Pontos de SHEIN:",
+        "price_with_symbol": "",
+        "amount": "",
+        "show": 0,
+        "show_type": [
+          "negative_price",
+          "red_show"
+        ]
+      },
+      {
+        "type": "orderPrimeDiscount",
+        "local_name": "Poupança total com desconto exclusivo SHEIN CLUB:",
+        "price_with_symbol": "R$0,00",
+        "amount": "0.00",
+        "show": 0,
+        "show_type": [
+          "negative_price",
+          "red_show"
+        ],
+        "tip": "BENEFÍCIO DO SHEIN CLUB:\\nPreço exclusivo e 5% de desconto extra economizam você.",
+        "des": "BENEFÍCIO DO SHEIN CLUB:\\nPreço exclusivo e 5% de desconto extra economizam você.",
+        "price_icon": "https://img.shein.com/images3/2022/09/22/73967726931e49e377ed6064f97d5bf7bada8097ee.png"
+      },
+      {
+        "type": "onlineDiscount",
+        "local_name": "Desconto na forma de pagamento:",
+        "price_with_symbol": "",
+        "amount": "0",
+        "show": 0,
+        "show_type": [
+          "negative_price",
+          "red_show"
+        ]
+      },
+      {
+        "type": "bank_discount",
+        "local_name": "Desconto bancário:",
+        "price_with_symbol": "R$0,00",
+        "amount": "0.00",
+        "show": 0,
+        "show_type": [
+          "negative_price",
+          "red_show"
+        ]
+      },
+      {
+        "type": "wallet",
+        "local_name": "Crédito da carteira:",
+        "price_with_symbol": "R$0,00",
+        "amount": "0.00",
+        "show": 0,
+        "show_type": [
+          "negative_price",
+          "red_show"
+        ]
+      },
+      {
+        "type": "giftCard",
+        "local_name": "dedução do cartão presente:",
+        "price_with_symbol": "",
+        "amount": "0",
+        "show": 0,
+        "show_type": [
+          "negative_price",
+          "red_show"
+        ]
+      },
+      {
+        "type": "codPartRefund",
+        "local_name": "Itens e Ofertas Canceladas:",
+        "price_with_symbol": "",
+        "amount": "",
+        "show": 0,
+        "show_type": [
+          "negative_price",
+          "red_show"
+        ]
+      },
+      {
+        "type": "marketFission",
+        "local_name": "Desconto de Afilido SHEIN:",
+        "price_with_symbol": "",
+        "amount": "",
+        "show": 0,
+        "show_type": [
+          "negative_price",
+          "red_show"
+        ]
+      }
+    ],
+    "sorted_price_style": null,
+    "bottomPrices": [],
+    "exchange_shipping_time": null,
+    "combined_shipped_flag": "1",
+    "combineOrder": {
+      "detailUrl": "https://api-shein.shein.com/h5/user/orders/combinedOrder/GSH751968624404",
+      "hasCombineOrder": true
+    },
+    "identity": {
+      "is_need_identity": 0,
+      "is_filled_identity": 0,
+      "show_entrance": null,
+      "entrance_title": null,
+      "entrance_url": null,
+      "entrance_description": null
+    },
+    "cash_unpaid_message": "",
+    "origin_service_fee": {},
+    "cod_show_type": null,
+    "cod_reject_fillable": 1,
+    "reject_reason_id": -1,
+    "cod_unpacked_desc_tip": null,
+    "reject_questionnaire": null,
+    "extraTaxInfo": {
+      "taxPriceAmount": "",
+      "govTaxTip": ""
+    },
+    "sensitiveInfo": null,
+    "receive_msg": null,
+    "delivery_time": "0",
+    "confirm_receipt_time": null,
+    "isCodOrderCanPartNewCancel": "0",
+    "only_support_all_refund_pop_tip": null,
+    "paySimpleInfo": {
+      "arrivalTimeTipTpl": null
+    },
+    "operationInfo": null,
+    "orderStatusTitle": null,
+    "product_info_view_tip": null,
+    "order_top_color": "#FFF8EB",
+    "cancelUnpaidPopup": null,
+    "default_product_info_list": null,
+    "orderGoodsListByStore": null,
+    "orderGoodsListByMall": null,
+    "orderGoodsListGroupByPackageInfoForMall": null,
+    "orderGoodsListMallByAddress": null,
+    "orderGoodsListGroupByPackage": {
+      "subOrderStatus": [
+        {
+          "sortNum": "A",
+          "packageState": "shipped",
+          "return_history_link": null,
+          "refund_record_url_link": null,
+          "order_trace_id": "9693631388695305",
+          "is_show_trace_link": 1,
+          "package_title": "Enviado",
+          "package_state": "shipped",
+          "packageStateTip": null,
+          "packageStateDesc": null,
+          "fulfillmentImpactProductPop": null,
+          "hasCanBeExchangedGoods": false,
+          "hasCrossOrderGoods": "1",
+          "reference_number": "CBG65187729556288",
+          "quickShipStatus": "2",
+          "quickShipDesc": "",
+          "transport_time_label": null,
+          "seaLandLabelTip": null,
+          "sea_land_label_icon": null,
+          "sort": 9693631388695305,
+          "is_fold": "1",
+          "delivered_effect": {
+            "tip": "Entregue: {0}",
+            "time": "1787664363",
+            "icon": "https://img.ltwebstatic.com/v4/p/ccc/2025/04/07/fb/58345979996c3021417c8ae3c798774f71093483ac.png"
+          },
+          "packageEffect": null,
+          "jointShipmentInfo": null,
+          "show_image": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/d0/1706547725a3fd10e4143db0e732434b1b9d15bea4_thumbnail_220x293.jpg",
+          "show_images": [
+            "http://img.ltwebstatic.com/images3_spmp/2024/01/30/d0/1706547725a3fd10e4143db0e732434b1b9d15bea4_thumbnail_220x293.jpg",
+            "http://img.ltwebstatic.com/images3_spmp/2024/01/30/c1/01768967157790bccb59cf99bab384d90eff6afa45_thumbnail_220x293.jpg"
+          ],
+          "goods_quantity": "2",
+          "executionProgress": null,
+          "mall_list": [
+            {
+              "mall_name": "Envio Nacional",
+              "show_mall_name": "1",
+              "mall_name_tip": null,
+              "mall_code": "2",
+              "shipping_method": "expedited_shipping",
+              "siteUid": "iosshbr",
+              "shipping_title": "Taxa Mínima de Envio",
+              "handling_desc": null,
+              "store_list": [
+                {
+                  "store_trend_logo": null,
+                  "store_code": "4365665480",
+                  "store_name": "Pixel E Fenix rubi",
+                  "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+                  "store_icon": "https://img.ltwebstatic.com/images3_ccc/2024/07/04/02/1720093868a123858c2d379709122a14a3bad8fabd.png",
+                  "business_model": "1",
+                  "storeRouting": "/store/home?data=%7B%22store_code%22%3A%540867880730%22%2C%22page_from%22%3A%22PageOrderDetail%22%2C%22top_goods_id%22%3Anull%2C%22main_goods_id%22%3A%2215456503%2C15457085%22%2C%22store_scene%22%3A%22order%22%2C%22cate_ids%22%3A%222270%22%2C%22main_cate_id%22%3A%222270%22%2C%22goods_ids%22%3A%2215456503%2C15457085%22%7D",
+                  "goodsList": [
+                    {
+                      "seaLandLabelIcon": null,
+                      "free_freight_flag": false,
+                      "free_freight_label": null,
+                      "pack_detail_status": "",
+                      "is_prime_goods": "0",
+                      "is_saver_card_goods": "0",
+                      "discount_product_mark": "0",
+                      "prime_good_url_flag": "",
+                      "double_status": null,
+                      "doubleStatusTip": "",
+                      "canNotReturnedTip": "<font color=\"#959595\">Os itens desta categoria não podem ser devolvidos ou trocados, por favor consulte  <a href=\"/Return-Policy-a-281.html\" style=\"color:#2D68A8\">Política de Devolução</a></font>",
+                      "cancelItemTip": null,
+                      "original_price": 10.82,
+                      "goods_attr": "Vinho / GG",
+                      "isCommonOrderCanPartRefund": "0",
+                      "isCodOrderCanPartCancel": false,
+                      "is_commented": 0,
+                      "price": "R$34,99",
+                      "cat_id": "2270",
+                      "id": "9693631388695305",
+                      "is_pre_sale": null,
+                      "brand": "shein",
+                      "goods_name": "Vega delta jade",
+                      "original_price_total": 10.82,
+                      "quantity": "1",
+                      "attr_value_id": "I76807558929",
+                      "goods_id": "15457085",
+                      "inventory_shortage": "0",
+                      "goods_info_id": "19603797213771786",
+                      "goods_sn": "si8054546734254640",
+                      "sort": null,
+                      "goods_bundle_info": null,
+                      "reference_number": "CBG65187729556288",
+                      "package_split": 0,
+                      "goods_pkg_rel_list": [
+                        {
+                          "package_no": "CBG65187729556288",
+                          "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                          "shipping_no": "8338890891011"
+                        }
+                      ],
+                      "multi_packages_show_info": null,
+                      "repeat_package": "0",
+                      "goods_thumb": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/d0/1706547725a3fd10e4143db0e732434b1b9d15bea4_thumbnail_220x293.jpg",
+                      "sort_num": "A",
+                      "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                      "order_id": "4159843767595325",
+                      "shipping_no": "8338890891011",
+                      "combinedPackage": null,
+                      "price_total": "R$34,99",
+                      "status": 18,
+                      "goods_status": "54",
+                      "expired_type": null,
+                      "subscribe_status": "0",
+                      "grade_status": "1",
+                      "attr_value_en": "",
+                      "totalPrice": {
+                        "amount": "34.99",
+                        "amountWithSymbol": "R$34,99",
+                        "usdAmount": "6.89",
+                        "usdAmountWithSymbol": "$6.89",
+                        "priceShowStyle": "34"
+                      },
+                      "stock": 999,
+                      "stock_origin": 999,
+                      "is_on_sale": 1,
+                      "is_on_sale_origin": 1,
+                      "is_virtual_stock": null,
+                      "show_repurchase": 1,
+                      "repurchase_lure_info": null,
+                      "arrival_notice": 0,
+                      "avgPrice": {
+                        "amount": "34.99",
+                        "amountWithSymbol": "R$34,99",
+                        "usdAmount": "6.89",
+                        "usdAmountWithSymbol": "$6.89",
+                        "priceShowStyle": "34"
+                      },
+                      "retailPrice": {
+                        "amount": "54.99",
+                        "amountWithSymbol": "R$54,99",
+                        "usdAmount": "10.82",
+                        "usdAmountWithSymbol": "$10.82",
+                        "priceShowStyle": "54"
+                      },
+                      "special_price_vo": {
+                        "amount": "34.99",
+                        "amountWithSymbol": "R$34,99",
+                        "usdAmount": "6.82",
+                        "usdAmountWithSymbol": "$6.82",
+                        "priceShowStyle": "34"
+                      },
+                      "retail_price_vo": {
+                        "amount": "54.99",
+                        "amountWithSymbol": "R$54,99",
+                        "usdAmount": "10.72",
+                        "usdAmountWithSymbol": "$10.72",
+                        "priceShowStyle": "54"
+                      },
+                      "is_gift": "0",
+                      "is_prime_gift": "0",
+                      "is_lucky_gift": "0",
+                      "is_gift_new": "0",
+                      "isCanComment": null,
+                      "disable_origin_real_price": null,
+                      "original_real_price": "R$54,99",
+                      "show_pop_tip": 1,
+                      "price_description_tip": null,
+                      "attr_value_std_name": "",
+                      "productRelationID": "i75205623868",
+                      "canBeExchanged": 0,
+                      "button_info": {
+                        "exchange_info": {
+                          "can_exchange": "0",
+                          "gray_tip": null,
+                          "non_exchanged_reason": null
+                        }
+                      },
+                      "old_goods_id": null,
+                      "brand_badge": null,
+                      "brand_code": null,
+                      "series_badge": null,
+                      "has_size": 1,
+                      "attr_id": "87",
+                      "cross_order_flag": "1",
+                      "sku_attrs_contact_str": "Vinho / GG",
+                      "sku_code": "I76807558929",
+                      "itemSku": "I76807558929",
+                      "mall_code": "2",
+                      "store_code": "4365665480",
+                      "quickShipDesc": "",
+                      "transport_time_label": null,
+                      "quickShip": "1",
+                      "customizationPopInfo": null,
+                      "disable_jump": null,
+                      "evoluSheinTip": null,
+                      "beforeTitleTags": [],
+                      "seaLandLabelTip": null,
+                      "sold_out": "0",
+                      "out_of_stock": "0",
+                      "out_of_stock_prepare": "0",
+                      "customsInterceptionInfo": null,
+                      "exchangeRecommendInfo": null,
+                      "combine_type": null,
+                      "comb_pack_truck_tag": "0",
+                      "wrap_type": "",
+                      "localStockTag": {
+                        "text": "Envio Nacional",
+                        "icon": "https://img.ltwebstatic.com/v4/p/ccc/2025/05/13/d9/152566499112c3b2c77958d8bb3b816ad014c3266d.png"
+                      },
+                      "reshipmentTag": null,
+                      "virtual_inventory_flag": null,
+                      "belt_info": null,
+                      "reverse_doc_info": null,
+                      "is_available_quick_ship": true,
+                      "is_exchange_good": false,
+                      "is_all_quick_ship": true,
+                      "is_available_good": true,
+                      "is_partial_quick_ship": false,
+                      "is_direct_goods": "1"
+                    },
+                    {
+                      "seaLandLabelIcon": null,
+                      "free_freight_flag": false,
+                      "free_freight_label": null,
+                      "pack_detail_status": "",
+                      "is_prime_goods": "0",
+                      "is_saver_card_goods": "0",
+                      "discount_product_mark": "0",
+                      "prime_good_url_flag": "",
+                      "double_status": null,
+                      "doubleStatusTip": "",
+                      "canNotReturnedTip": "<font color=\"#959595\">Os itens desta categoria não podem ser devolvidos ou trocados, por favor consulte  <a href=\"/Return-Policy-a-281.html\" style=\"color:#2D68A8\">Política de Devolução</a></font>",
+                      "cancelItemTip": null,
+                      "original_price": 10.82,
+                      "goods_attr": "Azul / GG",
+                      "isCommonOrderCanPartRefund": "0",
+                      "isCodOrderCanPartCancel": false,
+                      "is_commented": 0,
+                      "price": "R$34,99",
+                      "cat_id": "2270",
+                      "id": "7733738732857776",
+                      "is_pre_sale": null,
+                      "brand": "shein",
+                      "goods_name": "Vega delta jade",
+                      "original_price_total": 10.82,
+                      "quantity": "1",
+                      "attr_value_id": "I20957910499",
+                      "goods_id": "15456503",
+                      "inventory_shortage": "0",
+                      "goods_info_id": "57508696729311176",
+                      "goods_sn": "si5722937464193957",
+                      "sort": null,
+                      "goods_bundle_info": null,
+                      "reference_number": "CBG65187729556288",
+                      "package_split": 0,
+                      "goods_pkg_rel_list": [
+                        {
+                          "package_no": "CBG65187729556288",
+                          "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                          "shipping_no": "8338890891011"
+                        }
+                      ],
+                      "multi_packages_show_info": null,
+                      "repeat_package": "0",
+                      "goods_thumb": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/c1/01768967157790bccb59cf99bab384d90eff6afa45_thumbnail_220x293.jpg",
+                      "sort_num": "B",
+                      "shipping_method_real": "IMbGUAFOUR-DGD-PA-BN-Na",
+                      "order_id": "4159843767595325",
+                      "shipping_no": "8338890891011",
+                      "combinedPackage": null,
+                      "price_total": "R$34,99",
+                      "status": 18,
+                      "goods_status": "54",
+                      "expired_type": null,
+                      "subscribe_status": "0",
+                      "grade_status": "1",
+                      "attr_value_en": "",
+                      "totalPrice": {
+                        "amount": "34.99",
+                        "amountWithSymbol": "R$34,99",
+                        "usdAmount": "6.89",
+                        "usdAmountWithSymbol": "$6.89",
+                        "priceShowStyle": "34"
+                      },
+                      "stock": 999,
+                      "stock_origin": 999,
+                      "is_on_sale": 1,
+                      "is_on_sale_origin": 1,
+                      "is_virtual_stock": null,
+                      "show_repurchase": 1,
+                      "repurchase_lure_info": null,
+                      "arrival_notice": 0,
+                      "avgPrice": {
+                        "amount": "34.99",
+                        "amountWithSymbol": "R$34,99",
+                        "usdAmount": "6.89",
+                        "usdAmountWithSymbol": "$6.89",
+                        "priceShowStyle": "34"
+                      },
+                      "retailPrice": {
+                        "amount": "54.99",
+                        "amountWithSymbol": "R$54,99",
+                        "usdAmount": "10.82",
+                        "usdAmountWithSymbol": "$10.82",
+                        "priceShowStyle": "54"
+                      },
+                      "special_price_vo": {
+                        "amount": "34.99",
+                        "amountWithSymbol": "R$34,99",
+                        "usdAmount": "6.82",
+                        "usdAmountWithSymbol": "$6.82",
+                        "priceShowStyle": "34"
+                      },
+                      "retail_price_vo": {
+                        "amount": "54.99",
+                        "amountWithSymbol": "R$54,99",
+                        "usdAmount": "10.72",
+                        "usdAmountWithSymbol": "$10.72",
+                        "priceShowStyle": "54"
+                      },
+                      "is_gift": "0",
+                      "is_prime_gift": "0",
+                      "is_lucky_gift": "0",
+                      "is_gift_new": "0",
+                      "isCanComment": null,
+                      "disable_origin_real_price": null,
+                      "original_real_price": "R$54,99",
+                      "show_pop_tip": 1,
+                      "price_description_tip": null,
+                      "attr_value_std_name": "",
+                      "productRelationID": "i75205623868",
+                      "canBeExchanged": 0,
+                      "button_info": {
+                        "exchange_info": {
+                          "can_exchange": "0",
+                          "gray_tip": null,
+                          "non_exchanged_reason": null
+                        }
+                      },
+                      "old_goods_id": null,
+                      "brand_badge": null,
+                      "brand_code": null,
+                      "series_badge": null,
+                      "has_size": 1,
+                      "attr_id": "87",
+                      "cross_order_flag": null,
+                      "sku_attrs_contact_str": "Azul / GG",
+                      "sku_code": "I20957910499",
+                      "itemSku": "I20957910499",
+                      "mall_code": "2",
+                      "store_code": "4365665480",
+                      "quickShipDesc": "",
+                      "transport_time_label": null,
+                      "quickShip": "1",
+                      "customizationPopInfo": null,
+                      "disable_jump": null,
+                      "evoluSheinTip": null,
+                      "beforeTitleTags": [],
+                      "seaLandLabelTip": null,
+                      "sold_out": "0",
+                      "out_of_stock": "0",
+                      "out_of_stock_prepare": "0",
+                      "customsInterceptionInfo": null,
+                      "exchangeRecommendInfo": null,
+                      "combine_type": null,
+                      "comb_pack_truck_tag": "0",
+                      "wrap_type": "",
+                      "localStockTag": {
+                        "text": "Envio Nacional",
+                        "icon": "https://img.ltwebstatic.com/v4/p/ccc/2025/05/13/d9/152566499112c3b2c77958d8bb3b816ad014c3266d.png"
+                      },
+                      "reshipmentTag": null,
+                      "virtual_inventory_flag": null,
+                      "belt_info": null,
+                      "reverse_doc_info": null,
+                      "is_available_quick_ship": true,
+                      "is_exchange_good": false,
+                      "is_all_quick_ship": true,
+                      "is_available_good": true,
+                      "is_partial_quick_ship": false,
+                      "is_direct_goods": "1"
+                    }
+                  ],
+                  "merchant_info": null,
+                  "localWareHouseTag": null,
+                  "store_label_display": {
+                    "store_code": "4365665480",
+                    "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+                    "style": "new",
+                    "store_title": null,
+                    "order_detail_store_logo": null,
+                    "order_detail_store_title": [],
+                    "store_sub_title_list": [
+                      {
+                        "icon": null,
+                        "text": "229 Itens"
+                      },
+                      {
+                        "icon": null,
+                        "text": "8.5K seguidores"
+                      }
+                    ]
+                  },
+                  "transport_time": {
+                    "effectGroupInfo": {
+                      "entry": null,
+                      "popup": null,
+                      "goodsGroupList": [
+                        {
+                          "effect": {
+                            "shippingTimeDesc": "{0}-{1}",
+                            "shippingPercentDesc": "5-16 dias.<font color=\"#007D49\">60% de probabilidade de entrega em até <b style=\"\">10</b>dias</font>",
+                            "timeForFillDesc": [
+                              "1787164708",
+                              "1788115108"
+                            ],
+                            "leftTitle": "Entrega"
+                          },
+                          "goodsList": [
+                            {
+                              "id": "9693631388695305"
+                            },
+                            {
+                              "id": "7733738732857776"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "has_exchange_goods": false
+                }
+              ],
+              "has_exchange_goods": false
+            }
+          ],
+          "returnEffect": {
+            "title": "Período de devolução",
+            "desc": "​Eco de cabo: Omega de {0}",
+            "descFillTime": "1789478763",
+            "style": "normal"
+          },
+          "order_track_logistic_info": {
+            "name": "Imile Brazil",
+            "logo": "https://file.ltwebstatic.com/pcspfile/file/central_p1_dc/6569309120528620726.jpg",
+            "title": null,
+            "status": null,
+            "time": "1787664363",
+            "desc": "<p>Nano vega, kilo hidra já omega hidra. Kilo em \"Zeta orbita\", na jade \"Hidra indigo\", neo alfa kilo ECO.</p>",
+            "status_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/17/43454524419fb6b0fbbd1e1c6380a493caa7221844.png",
+            "status_desc": "Assinado por"
+          },
+          "order_track_points": [
+            {
+              "track_name": "Preparando",
+              "is_current_state": "0",
+              "complete_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/17/20651995475085a9464d731f2152fafd331add6e40.png",
+              "big_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/17/20651995475085a9464d731f2152fafd331add6e40.png",
+              "movie_logo": "https://video.ltwebstatic.com/video/2023/05/24/70981348388rh74gr377408pack.mp4",
+              "disable_logo": "",
+              "sort": 1
+            },
+            {
+              "track_name": "Enviado",
+              "is_current_state": "0",
+              "complete_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/17/360011683617e8ffb41a6d934677796c8c21ba03b3.png",
+              "big_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/24/1684895698cb470c1640ab1a1af349969f24acf96e.png",
+              "movie_logo": "https://video.ltwebstatic.com/video/2023/05/24/9201097082338nfh374hrhe33psp.mp4",
+              "disable_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/17/1684293386ae429fce18d27640118be603cc8edcf4.png",
+              "sort": 2
+            },
+            {
+              "track_name": "Entregando",
+              "is_current_state": "0",
+              "complete_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/17/546074203875a4d5ed00f9eac579a2c8e58409eca9.png",
+              "big_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/24/47560211294eb67a79b2d8abbb3754a1aac5fa2ebb.png",
+              "movie_logo": "https://video.ltwebstatic.com/video/2023/05/24/164bfh4947bf4094jfkemd03t4.mp4",
+              "disable_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/17/1684293402e55a7a12aaaa4c8cbefb574235f0dc07.png",
+              "sort": 3
+            },
+            {
+              "track_name": "Entregue",
+              "is_current_state": "1",
+              "complete_logo": "",
+              "big_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/24/15760954948c0db2841f59fabe268c45e3edc32edb.png",
+              "movie_logo": "https://video.ltwebstatic.com/video/2023/05/24/17307nrnf340849bry4b4brsr.mp4",
+              "disable_logo": "https://img.ltwebstatic.com/images3_acp/2023/05/17/1684293417c2c65eb952314bb821247f97fa970041.png",
+              "sort": 4
+            }
+          ],
+          "signing_code": null,
+          "signing_code_style": null,
+          "reshipmentTag": null,
+          "reshipmentTip": null
+        }
+      ],
+      "processing_list": [],
+      "processing_package_info": null
+    },
+    "package_display_info": null,
+    "return_order_entrance_info": null,
+    "return_order_entrance_tip": null,
+    "is_paid_exceeded_deadline": "0",
+    "mall_list": [
+      {
+        "origin_shipping_desc": null,
+        "origin_delivery_desc": null,
+        "supple_desc": null,
+        "origin_desc_quick_ship_time": null,
+        "quick_ship_time_type": "1",
+        "mall_code": "2",
+        "mall_name": "Envio Nacional",
+        "site_uid": "iosshbr",
+        "transport_type": "expedited_shipping",
+        "store_code": "4365665480",
+        "store_logo": "https://img.ltwebstatic.com/images3_srm/2023/04/18/13292626760d31a55b9b4a9b10bed3ca0dab84f0b9.jpg",
+        "store_name": "Pixel E Fenix rubi",
+        "handling_desc": null,
+        "transport_time": "1787164707-1788115107",
+        "transport_time_type": "1",
+        "date_type": "1",
+        "sub_transport_time": "5-16",
+        "delivery_day_percent_desc": null,
+        "summary_time": "10",
+        "summary_time_percentage": "60",
+        "shipping_method": "Taxa Mínima de Envio",
+        "business_model": "1",
+        "company_id": "75",
+        "quick_ship_desc": null,
+        "quick_ship_time": "",
+        "store_type": "1",
+        "hint": "Serviço de entrega pontual",
+        "description": "O serviço gratuito de Entrega Pontual dá direito a receber 200 pontos SHEIN se a sua encomenda não chegar na data prevista. Consulte os Termos e Condições da Entrega Pontual para obter mais detalhes.",
+        "max_transport_time_detail": null,
+        "large_transport_time_info": null,
+        "exchange_shipping_time": null,
+        "union_transport_time_info": {
+          "union_days": "5-16",
+          "union_timestamp": "1787164708-1788115108",
+          "date_type": "0",
+          "summary_time": "10",
+          "summary_time_percentage": "60",
+          "time_detail_list": [],
+          "is_change_flag": 0
+        },
+        "shipped_transport_time_list": [
+          {
+            "relation_id": null,
+            "type": "0",
+            "days_delivery_flag": "0",
+            "transport_time_type": "1",
+            "coefficient": "",
+            "transport_time": "1787164708-1788115108",
+            "sub_transport_time": "5-16",
+            "transport_date_type": "0",
+            "title": null,
+            "origin_shipping_desc": null,
+            "origin_delivery_desc": null,
+            "supple_desc": null,
+            "delivery_day_percent_desc": null,
+            "summary_time": "10",
+            "summary_time_percentage": "60",
+            "time_detail_list": null,
+            "express_time_type_id": "0",
+            "is_change_flag": 0
+          }
+        ],
+        "mall_agg_info_list": [
+          {
+            "billno": "GSH751968624404",
+            "mall_code": "2",
+            "store_code": "4365665480"
+          }
+        ]
+      }
+    ],
+    "is_multi_mall": true,
+    "sub_billno": null,
+    "use_new_order_good": null,
+    "order_goods_model": null,
+    "order_error_jump": null,
+    "primeInfo": {
+      "totalDiscountForPrime": {
+        "amount": "0.00",
+        "amountWithSymbol": "R$0,00",
+        "usdAmount": "0.00",
+        "usdAmountWithSymbol": "$0.00",
+        "priceShowStyle": "0"
+      },
+      "primeImgUrl": "https://img.shein.com/images3/2022/09/23/8345873282372455378b64775ef1c1feac1cbbef2c.png",
+      "newPrimeImgUrl": "https://img.ltwebstatic.com/images3_acp/2023/11/17/0d/061836704407d699914b24232e6b269ea469ccff02.png"
+    },
+    "saveCardInfo": {
+      "imgUrl": "https://img.ltwebstatic.com/images3_acp/2023/08/22/d8/79987950314b13cf8c7638c80cbd83b64c8dda9a7f.png"
+    },
+    "goodsWeightTotal": 470,
+    "quickShipFreight": {
+      "quick_shipping_freight_price": {
+        "amount": "0.00",
+        "amountWithSymbol": "R$0,00",
+        "usdAmount": "0.00",
+        "usdAmountWithSymbol": "$0.00",
+        "priceShowStyle": "0"
+      },
+      "quick_shipping_freight_tips": null
+    },
+    "faqInfo": null,
+    "enableBarcode": false,
+    "toc_perform_party": 1,
+    "stock_mode": 3,
+    "sales_area": 1,
+    "csp_abnormal_notices": null,
+    "codAuditNotice": null,
+    "codAuditNoticePopup": null,
+    "orderGoodsListByGoodsSn": [
+      {
+        "goods_sn": "si8054546734254640",
+        "goods_img": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/d0/1706547725a3fd10e4143db0e732434b1b9d15bea4_thumbnail_220x293.jpg",
+        "goods_count": "1"
+      },
+      {
+        "goods_sn": "si5722937464193957",
+        "goods_img": "http://img.ltwebstatic.com/images3_spmp/2024/01/30/c1/01768967157790bccb59cf99bab384d90eff6afa45_thumbnail_220x293.jpg",
+        "goods_count": "1"
+      }
+    ],
+    "announcement": null,
+    "riskClass": null,
+    "tw_address_tip": null,
+    "order_button": {
+      "refund_only_button_tip": "Pacote entregue, não recebido",
+      "refund_only_button_link": "https://api-shein.shein.com/h5/orders/refundApplication?billno=GSH751968624404&pageFrom=orderDetail",
+      "return_button_tip": "(Combinar) Retorno"
+    },
+    "card_button": null,
+    "lurePointInfoList": [],
+    "retentionInfo": {
+      "showFrequency": 3
+    },
+    "payRetentionInfo": null,
+    "cancelItemSelectAllTip": null,
+    "hold_order_shipping_method_names": "Taxa Mínima de Envio",
+    "cod_payment_voucher": null,
+    "localWarehouseTip": null,
+    "order_mark_info": null,
+    "show_order_mark": null,
+    "order_mark_list": null,
+    "rewardFloor": null,
+    "order_address_supplier_info": null,
+    "distinct_all_stock_mode_list": [
+      "3"
+    ],
+    "distinct_all_biz_mode_list": [
+      "1"
+    ],
+    "relevantOrderInfo": null,
+    "paymentSuccessPopOrderList": null,
+    "paymentSuccessPopupSortedList": null,
+    "share_follow_buy_button": null,
+    "showEffectStandard": "1",
+    "effectGroupStyle": "typeA",
+    "editAddressCheckPopup": null,
+    "editAddressInfo": {
+      "storeCodeList": [
+        "4365665480"
+      ]
+    },
+    "payment_success_notice_info": {
+      "csp_goods_delay_notice": null,
+      "codNoticeText": null
+    },
+    "shipping_address_change_info": null,
+    "order_cancel_reason": null,
+    "delete_button_info": {
+      "pop_up_info": {
+        "main_title": "Confirmar para excluir este pedido?",
+        "main_content": "Para encontrar pedidos excluídos, siga os passos abaixo : « Meus pedidos » → « Acesso rápido » (localizado no canto superior direito) → « Carrinho »",
+        "content_icon_url": "https://img.ltwebstatic.com/v4/p/ccc/2026/01/08/65/51726855494303ac5cab87ab9c1422ffec9376cc6f.png",
+        "confirm_btn_text": "Continuar",
+        "cancel_btn_text": "Cancelar"
+      }
+    },
+    "moreInfo": {
+      "title": "Mais",
+      "moreInfoList": []
+    },
+    "is_cut_knife_order": "0",
+    "channelSession": "{\"orderDetails\":[{\"businessModel\":\"1\",\"companyId\":\"75\"}]}",
+    "is_virtual_order": false
+  }
+}

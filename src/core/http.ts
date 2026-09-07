@@ -13,7 +13,9 @@ import type { Logger } from "./logger.js";
 //     that survives the process on the second, so a retry loop cannot deepen
 //     an anti-bot block;
 //   - `redirect: "manual"`, because a 302 to the login page is a dead session,
-//     not a page worth downloading;
+//     not a page worth downloading (that redirect is the ONLY reliable
+//     logged-out signal: the JSON code is ambiguous and every page links to
+//     the login page from its header);
 //   - Set-Cookie absorption, so renewed cookies go back to the encrypted jar.
 // It knows nothing about the bff-api envelope — that lives in src/shein. Every
 // temporal collaborator (fetch, sleep, now, random) is injectable so the tests
@@ -118,11 +120,6 @@ export const RISK_MESSAGE =
 
 const LOGIN_PATH = /\/user\/(auth\/)?login/i;
 const CHALLENGE_PATH = /captcha|challenge|risk|verify/i;
-
-/** The login page rendered instead of the requested page (no SSR blob, login form). */
-export function isLoginHtml(body: string): boolean {
-  return !body.includes("var gbRawData") && (LOGIN_PATH.test(body) || body.includes('class="login-page"'));
-}
 
 /** Cloudflare / risk-control interstitials come as HTML whatever was requested. */
 export function isChallengeHtml(body: string): boolean {
@@ -330,9 +327,11 @@ export function createHttp(opts: HttpOptions, deps: HttpDeps = {}): Http {
         verdict("challenge page");
         continue;
       }
-      if (request.kind === "html" && isLoginHtml(body)) {
-        markAuthDead("A Shein serviu a página de login no lugar da página pedida: a sessão expirou.");
-      }
+      // Deliberately NO body-based login detection: every Shein page carries a
+      // "Já sou cliente" link in its header, and matching it flagged the real
+      // tracking page as a login page, killing the session for a whole run
+      // (2026-09-07). A logged-out caller is redirected (302), which is caught
+      // above; a 200 that is missing its SSR blob is the parser's business.
 
       if (isTransient(status)) {
         throw new SheinHttpError(
