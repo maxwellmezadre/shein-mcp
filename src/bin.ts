@@ -16,10 +16,7 @@ if (arg === "mcp") {
     import("./mcp/server.js"),
   ]);
   await startMcpServer(createContext(loadConfig()), pkg.version);
-} else if (arg === "--version" || arg === "-V") {
-  console.log(pkg.version);
 } else {
-  // ponytail: the commander CLI lands in a later step; until then only `mcp` runs.
-  console.error("shein: o CLI ainda está em construção — use `shein mcp` ou `shein --version`.");
-  process.exit(1);
+  const { runCli } = await import("./cli/index.js");
+  await runCli(process.argv, pkg.version);
 }
