@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-import { chmodSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 
@@ -20,12 +20,12 @@ const say = (message: string) => console.error(message);
 async function build(): Promise<void> {
   say("Compilando o binário…");
   if (dry) return;
-  const proc = Bun.spawn(["bun", "build", "--compile", "src/bin.ts", "--outfile", BIN], {
-    cwd: ROOT,
-    stdout: "inherit",
-    stderr: "inherit",
-  });
-  if ((await proc.exited) !== 0) throw new Error("bun build --compile falhou");
+  // `bun run build:binary`, não um comando próprio: as flags do compile (hoje
+  // `--external chromium-bidi`) precisam existir num lugar só, ou o instalador
+  // quebra sempre que a de lá mudar.
+  const proc = Bun.spawn(["bun", "run", "build:binary"], { cwd: ROOT, stdout: "inherit", stderr: "inherit" });
+  if ((await proc.exited) !== 0) throw new Error("bun run build:binary falhou");
+  renameSync(join(ROOT, "shein"), BIN);
   chmodSync(BIN, 0o755);
 }
 
