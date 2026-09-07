@@ -1,0 +1,18 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+
+# Single-binary build artifacts
+/shein
+/shein-*
+
+# Env
+.env
+.env.*
+
+# Private planning artifacts: the spec and the steps carry real account data
+task/
+
+# Raw payload captures (before anonymization) never leave the machine
+/captures/
