@@ -1,4 +1,5 @@
 import { type Config, loadConfig } from "./config.js";
+import { type LaunchBrowser, createBrowserFetch, launchWithPlaywright } from "./core/browser-transport.js";
 import { type FetchLike, type Http, createHttp } from "./core/http.js";
 import { type Logger, createLogger } from "./core/logger.js";
 import { type SessionStore, createSessionStore } from "./session/store.js";
@@ -11,6 +12,8 @@ import { type SheinApi, createSheinApi } from "./shein/api.js";
 export type ContextDeps = {
   fetch?: FetchLike;
   fallbackFetch?: FetchLike;
+  /** Fake Chrome in tests; the real one is Playwright over the installed Chrome. */
+  launchBrowser?: LaunchBrowser;
   sleep?: (ms: number) => Promise<void>;
   now?: () => number;
   random?: () => number;
@@ -41,8 +44,28 @@ export function createContext(config: Config, deps: ContextDeps = {}): Ctx {
       secrets: () => session.peekSecrets(),
     });
 
-  // ponytail: the browser transport (SHEIN_TRANSPORT=browser|auto) is wired
-  // here in a later step; until then every transport is plain fetch.
+  // Transport: `fetch` is plain HTTP; `browser` runs every request inside a
+  // headless Chrome; `auto` starts plain and switches to the browser for the
+  // rest of the process on the first anti-bot verdict (see core/http.ts).
+  let fetch = deps.fetch;
+  let fallbackFetch = deps.fallbackFetch;
+  let dispose = async (): Promise<void> => undefined;
+  if (config.transport !== "fetch") {
+    const browserFetch = createBrowserFetch({
+      session,
+      launch: deps.launchBrowser ?? launchWithPlaywright,
+      baseUrl: config.baseUrl,
+      profileDir: config.browserProfileDir,
+      channel: config.browserChannel,
+      log,
+      ...(deps.sleep ? { sleep: deps.sleep } : {}),
+      now,
+    });
+    if (config.transport === "browser") fetch = browserFetch;
+    else fallbackFetch = fallbackFetch ?? browserFetch;
+    dispose = browserFetch.close;
+  }
+
   const http = createHttp(
     {
       session,
@@ -53,8 +76,8 @@ export function createContext(config: Config, deps: ContextDeps = {}): Ctx {
       log,
     },
     {
-      ...(deps.fetch ? { fetch: deps.fetch } : {}),
-      ...(deps.fallbackFetch ? { fallbackFetch: deps.fallbackFetch } : {}),
+      ...(fetch ? { fetch } : {}),
+      ...(fallbackFetch ? { fallbackFetch } : {}),
       ...(deps.sleep ? { sleep: deps.sleep } : {}),
       ...(deps.random ? { random: deps.random } : {}),
       now,
@@ -63,15 +86,7 @@ export function createContext(config: Config, deps: ContextDeps = {}): Ctx {
 
   const api = createSheinApi(http, { baseUrl: config.baseUrl, lang: config.lang });
 
-  return {
-    config,
-    log,
-    now,
-    session,
-    http,
-    api,
-    dispose: async () => undefined,
-  };
+  return { config, log, now, session, http, api, dispose };
 }
 
 /** Convenience for the entry points: load the env config and wire everything. */
