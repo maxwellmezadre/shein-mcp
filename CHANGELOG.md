@@ -5,6 +5,8 @@ versionamento [SemVer](https://semver.org/lang/pt-BR/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-07
+
 ### Changed
 
 - CLI: `shein auth` virou `shein status`, e `shein spending --group-by` virou
@@ -61,5 +63,6 @@ Primeira versão.
   "Devolução/Reembolso" do site é `/user/orders/list?status_type=4`, e é o que
   `list_returns --verify` usa.
 
-[Unreleased]: https://github.com/maxwellmezadre/shein-mcp/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/maxwellmezadre/shein-mcp/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/maxwellmezadre/shein-mcp/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/maxwellmezadre/shein-mcp/releases/tag/v0.1.0
