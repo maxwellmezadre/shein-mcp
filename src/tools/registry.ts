@@ -3,6 +3,7 @@ import { authStatus } from "./auth.js";
 import type { ToolDef } from "./define.js";
 import { login } from "./login.js";
 import { rawGet } from "./raw.js";
+import { sync } from "./sync.js";
 
 // Flat registry shared by the MCP server and the CLI: the two surfaces cannot
 // drift, because they resolve tools from this same array. The order here is the
@@ -11,6 +12,8 @@ export const allTools: ToolDef[] = [
   // Session and diagnostics
   authStatus,
   login,
+  // Cache
+  sync,
   // Escape hatch
   rawGet,
 ];

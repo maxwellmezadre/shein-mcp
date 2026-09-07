@@ -1,4 +1,7 @@
 import { describe, expect, test } from "bun:test";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { openCache } from "../src/cache/db.js";
 import { loadConfig } from "../src/config.js";
 import { type Ctx, createContext } from "../src/context.js";
 import { runTool } from "../src/tools/define.js";
@@ -22,9 +25,10 @@ import {
 export function context(
   script: Parameters<typeof scriptedFetch>[0],
   session: ReturnType<typeof sessionData> | null = sessionData({}, ".acme.test"),
+  fallback?: Parameters<typeof scriptedFetch>[1],
 ): { ctx: Ctx; fetch: ScriptedFetch } {
   const clock = fakeClock();
-  const fetch = scriptedFetch(script);
+  const fetch = scriptedFetch(script, fallback);
   const config = loadConfig({
     SHEIN_CONFIG_DIR: "/nonexistent/shein-mcp-test",
     SHEIN_BASE_URL: "https://br.acme.test",
@@ -39,6 +43,8 @@ export function context(
     random: () => 0,
     session: createMemorySessionStore(session),
     log: silentLogger(),
+    // In-memory: no tool may create a database in the user's config dir.
+    db: openCache(":memory:"),
   });
   return { ctx, fetch };
 }
@@ -164,5 +170,37 @@ describe("raw_get", () => {
     expect(result.truncated).toBe(true);
     expect(result.bytes).toBeGreaterThan(1024);
     expect(String(result.data)).toHaveLength(1025);
+  });
+});
+
+describe("sync", () => {
+  test("reports what it stored and that there is nothing left to do", async () => {
+    const list = JSON.parse(
+      readFileSync(join(import.meta.dir, "fixtures", "order-list.json"), "utf8"),
+    ) as { info: { order_list: Array<Record<string, unknown>> } };
+    const detail = JSON.parse(
+      readFileSync(join(import.meta.dir, "fixtures", "order-detail.json"), "utf8"),
+    ) as { info: Record<string, unknown> };
+    const { ctx, fetch } = context(
+      [bffOk({ ...list.info, sum: list.info.order_list.length }), bffOk({ order_list: [], sum: 0 })],
+      undefined,
+      (url: string) => bffOk({ ...detail.info, billno: new URL(url).searchParams.get("billno") }),
+    );
+    const result = (await call("sync", { mode: "full" }, ctx)) as {
+      done: boolean;
+      listed: number;
+      cache: { orders: number; spentTotal: number };
+      hint: string;
+    };
+    expect(result.done).toBe(true);
+    expect(result.listed).toBe(list.info.order_list.length);
+    expect(result.cache.orders).toBe(list.info.order_list.length);
+    expect(result.cache.spentTotal).toBeGreaterThan(0);
+    expect(result.hint).toMatch(/conclu/i);
+    expect(fetch.calls.length).toBeGreaterThan(list.info.order_list.length);
+  });
+
+  test("is absent in read-only mode: it writes to the cache", () => {
+    expect(toolByName("sync")?.readOnly).toBe(false);
   });
 });

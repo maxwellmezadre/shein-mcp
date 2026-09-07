@@ -248,7 +248,8 @@ export function createCacheRepo(db: Database, now: () => number) {
       try {
         return db
           .query(
-            `SELECT i.* FROM order_items_fts f JOIN order_items i ON i.id = f.item_id
+            `SELECT i.* FROM order_items_fts f
+             JOIN order_items i ON i.id = f.item_id AND i.billno = f.billno
              WHERE order_items_fts MATCH ? ORDER BY rank LIMIT ?`,
           )
           .all(match, limit) as ItemRow[];

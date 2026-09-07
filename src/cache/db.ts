@@ -53,7 +53,7 @@ export const MIGRATIONS: string[] = [
   );
 
   CREATE TABLE IF NOT EXISTS order_items (
-    id                TEXT PRIMARY KEY,        -- Shein's own line id
+    id                TEXT NOT NULL,           -- Shein's own line id
     billno            TEXT NOT NULL REFERENCES orders(billno) ON DELETE CASCADE,
     position          INTEGER NOT NULL DEFAULT 0,
     goods_id          TEXT,
@@ -74,7 +74,10 @@ export const MIGRATIONS: string[] = [
     tracking_number   TEXT,
     returnable        INTEGER NOT NULL DEFAULT 0,
     refund_status     TEXT,
-    image_url         TEXT
+    image_url         TEXT,
+    -- A line belongs to an order: keying on the line id alone would let one
+    -- order's item collide with another's and take the whole sync down.
+    PRIMARY KEY (billno, id)
   );
 
   CREATE TABLE IF NOT EXISTS order_price_lines (
