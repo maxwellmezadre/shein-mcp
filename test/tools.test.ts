@@ -204,3 +204,151 @@ describe("sync", () => {
     expect(toolByName("sync")?.readOnly).toBe(false);
   });
 });
+
+// ---------------------------------------------------------------------------
+// The cache-backed tools. They run against a database seeded through the real
+// sync from the real (anonymised) fixtures, so the assertions are about real
+// data shapes — and about how many requests each tool is allowed to spend.
+
+const LIST_FIXTURE = JSON.parse(
+  readFileSync(join(import.meta.dir, "fixtures", "order-list.json"), "utf8"),
+) as { info: { order_list: Array<Record<string, unknown>> } };
+const DETAIL_FIXTURE = JSON.parse(
+  readFileSync(join(import.meta.dir, "fixtures", "order-detail.json"), "utf8"),
+) as { info: Record<string, unknown> };
+const TRACK_FIXTURE = JSON.parse(readFileSync(join(import.meta.dir, "fixtures", "track.json"), "utf8")) as unknown;
+const FIRST_BILLNO = LIST_FIXTURE.info.order_list[0]?.billno as string;
+
+/**
+ * A cache filled through the real sync. The fallback answers by URL, so a test
+ * can ask for anything afterwards without counting script entries.
+ */
+async function seeded(options: { track?: unknown } = {}) {
+  const track = options.track ?? TRACK_FIXTURE;
+  const { ctx, fetch } = context(
+    [
+      bffOk({ ...LIST_FIXTURE.info, sum: LIST_FIXTURE.info.order_list.length }),
+      bffOk({ order_list: [], sum: 0 }),
+    ],
+    undefined,
+    (url: string) =>
+      url.includes("/orders/track")
+        ? htmlResponse(`<html><script>var gbOrdersTrackSsrData = ${JSON.stringify(track)}</script></html>`)
+        : bffOk({ ...DETAIL_FIXTURE.info, billno: new URL(url).searchParams.get("billno") }),
+  );
+  await call("sync", { mode: "full" }, ctx);
+  return { ctx, fetch };
+}
+
+describe("list_orders", () => {
+  test("answers from the cache with no network at all", async () => {
+    const { ctx, fetch } = await seeded();
+    const before = fetch.calls.length;
+    const result = (await call("list_orders", {}, ctx)) as {
+      total: number;
+      returned: number;
+      orders: Array<{ billno: string; total: number; currency: string; status: string }>;
+    };
+    expect(fetch.calls.length).toBe(before);
+    expect(result.total).toBe(LIST_FIXTURE.info.order_list.length);
+    expect(result.orders[0]?.total).toBe(69.98);
+    expect(result.orders[0]?.currency).toBe("BRL");
+    expect(result.orders[0]?.status).toBe("delivered");
+  });
+
+  test("filters and paginates the way the description promises", async () => {
+    const { ctx } = await seeded();
+    expect(((await call("list_orders", { status: "cancelled" }, ctx)) as { returned: number }).returned).toBe(0);
+    expect(((await call("list_orders", { limit: 1 }, ctx)) as { returned: number }).returned).toBe(1);
+    const byDay = (await call("list_orders", { from: "2030-01-01" }, ctx)) as { returned: number };
+    expect(byDay.returned).toBe(0);
+  });
+
+  test("compact drops the fields a model rarely needs", async () => {
+    const { ctx } = await seeded();
+    const full = (await call("list_orders", { limit: 1 }, ctx)) as { orders: Array<Record<string, unknown>> };
+    const compact = (await call("list_orders", { limit: 1, compact: true }, ctx)) as {
+      orders: Array<Record<string, unknown>>;
+    };
+    expect(full.orders[0]).toHaveProperty("malls");
+    expect(compact.orders[0]).not.toHaveProperty("malls");
+    expect(compact.orders[0]).toHaveProperty("total");
+  });
+
+  test("tells the model to sync when the cache is empty", async () => {
+    const { ctx } = context([]);
+    const result = (await call("list_orders", {}, ctx)) as { total: number; note?: string };
+    expect(result.total).toBe(0);
+    expect(result.note).toMatch(/sync/);
+  });
+});
+
+describe("get_order", () => {
+  test("reads from the cache without spending a request", async () => {
+    const { ctx, fetch } = await seeded();
+    const before = fetch.calls.length;
+    const order = (await call("get_order", { billno: FIRST_BILLNO }, ctx)) as {
+      source: string;
+      total: number;
+      priceLines: Array<{ type: string; amount: number }>;
+      items: Array<{ name: string; unitPrice: number }>;
+      installments: null;
+      address?: unknown;
+    };
+    expect(fetch.calls.length).toBe(before);
+    expect(order.source).toBe("cache");
+    expect(order.total).toBe(69.98);
+    // The breakdown still adds up once it is decimals for the caller.
+    const sum = order.priceLines.reduce((total, line) => total + line.amount, 0);
+    expect(Math.round(sum * 100)).toBe(Math.round(order.total * 100));
+    expect(order.items[0]?.unitPrice).toBe(34.99);
+    expect(order.installments).toBeNull();
+    // The address is private: absent unless asked for.
+    expect(order.address).toBeUndefined();
+  });
+
+  test("returns the address only when asked", async () => {
+    const { ctx } = await seeded();
+    const order = (await call("get_order", { billno: FIRST_BILLNO, include_address: true }, ctx)) as {
+      address: { city: string } | null;
+    };
+    expect(order.address?.city).toBe("Cidade Exemplo");
+  });
+
+  test("fetches once for an order the cache never saw, then serves it from cache", async () => {
+    const { ctx, fetch } = await seeded();
+    const before = fetch.calls.length;
+    const first = (await call("get_order", { billno: "GSH000000000000" }, ctx)) as { source: string };
+    expect(first.source).toBe("live");
+    expect(fetch.calls.length).toBe(before + 1);
+    const second = (await call("get_order", { billno: "GSH000000000000" }, ctx)) as { source: string };
+    expect(second.source).toBe("cache");
+    expect(fetch.calls.length).toBe(before + 1);
+  });
+});
+
+describe("track_order", () => {
+  test("always goes to the network and caches what it got", async () => {
+    const { ctx, fetch } = await seeded();
+    const before = fetch.calls.length;
+    const result = (await call("track_order", { billno: FIRST_BILLNO }, ctx)) as {
+      packageCount: number;
+      packages: Array<{ carrier: string; events: Array<{ description: string }> }>;
+    };
+    expect(fetch.calls.length).toBe(before + 1);
+    expect(result.packageCount).toBe(1);
+    expect(result.packages[0]?.carrier).toBe("Imile Brazil");
+    expect(result.packages[0]?.events.length).toBeGreaterThan(0);
+    expect(ctx.cache().getPackages(FIRST_BILLNO)).toHaveLength(1);
+  });
+
+  test("an order that never shipped reports no parcels, not an error", async () => {
+    const { ctx } = await seeded({ track: { packageMap: { "0": {} } } });
+    const result = (await call("track_order", { billno: FIRST_BILLNO }, ctx)) as {
+      packageCount: number;
+      note?: string;
+    };
+    expect(result.packageCount).toBe(0);
+    expect(result.note).toMatch(/enviad|rastre/i);
+  });
+});

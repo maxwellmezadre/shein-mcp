@@ -2,8 +2,10 @@ import type { Config } from "../config.js";
 import { authStatus } from "./auth.js";
 import type { ToolDef } from "./define.js";
 import { login } from "./login.js";
+import { getOrder, listOrders } from "./orders.js";
 import { rawGet } from "./raw.js";
 import { sync } from "./sync.js";
+import { trackOrder } from "./tracking.js";
 
 // Flat registry shared by the MCP server and the CLI: the two surfaces cannot
 // drift, because they resolve tools from this same array. The order here is the
@@ -14,6 +16,11 @@ export const allTools: ToolDef[] = [
   login,
   // Cache
   sync,
+  // Orders
+  listOrders,
+  getOrder,
+  // Logistics
+  trackOrder,
   // Escape hatch
   rawGet,
 ];
