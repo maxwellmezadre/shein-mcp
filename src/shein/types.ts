@@ -159,6 +159,9 @@ export type RawOrderDetail = RawOrderListItem & {
   retailTotallPrice?: RawPrice;
   saved_total_price?: RawPrice;
   originShippingPrice?: RawPrice;
+  /** What shipping would have cost before the free-shipping threshold. */
+  goods_origin_freight_fee?: RawPrice;
+  goods_actual_freight_fee?: RawPrice;
   freight_price?: RawPrice;
   couponPrice?: RawPrice;
   pointPrice?: RawPrice;

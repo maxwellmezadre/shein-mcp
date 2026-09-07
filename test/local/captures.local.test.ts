@@ -1,7 +1,9 @@
 import { describe, expect, test } from "bun:test";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import { normalizeOrder, normalizePackages, normalizeSummary } from "../../src/domain/normalize.js";
 import { extractTrackSsrData } from "../../src/shein/gbdata.js";
+import type { RawOrderDetail, RawOrderListItem, RawTrackSsrData } from "../../src/shein/types.js";
 
 // Golden corpus over the RAW captures (task/captures/, gitignored). It asserts
 // against the untouched payloads, so it catches anything the anonymiser might
@@ -89,5 +91,68 @@ gated("raw captures", () => {
     expect([...groups.values()].some((billnos) => billnos.length > 1)).toBe(true);
     const packages = list.info.order_list.map((order) => order.order_package_info_list?.[0]?.packageNo).filter(Boolean);
     expect(new Set(packages).size).toBeLessThan(packages.length);
+  });
+
+  test("the normalizer survives the whole corpus, and every order still adds up", () => {
+    const summaries = new Map<string, RawOrderListItem>();
+    const archivedBillnos = new Set<string>();
+    for (const name of readdirSync(DIR).filter((file) => /^(list|archive)-p\d+\.json$/.test(file))) {
+      for (const order of load<Envelope<{ order_list?: RawOrderListItem[] }>>(name).info.order_list ?? []) {
+        if (!order.billno) continue;
+        summaries.set(order.billno, order);
+        if (name.startsWith("archive")) archivedBillnos.add(order.billno);
+      }
+    }
+    expect(summaries.size).toBeGreaterThan(0);
+    expect(archivedBillnos.size).toBeGreaterThan(0);
+
+    let checked = 0;
+    for (const file of detailFiles()) {
+      const detail = load<Envelope<RawOrderDetail>>(file).info;
+      const billno = detail?.billno;
+      if (!billno) continue;
+      const archived = archivedBillnos.has(billno);
+      const order = normalizeOrder({ detail, summary: summaries.get(billno), archived });
+      expect(order.billno).toBe(billno);
+      // Every order has a total, a status and a currency — no silent zeroes.
+      expect(order.money.total).toBeGreaterThan(0);
+      expect(order.status).not.toBe("unknown");
+      expect(order.currency).toBe("BRL");
+      // The breakdown adds up whenever the site sent one.
+      if (order.priceLines.length > 0) {
+        expect(order.priceLines.reduce((sum, line) => sum + line.cents, 0)).toBe(order.money.total);
+      }
+      // Items never lose their name or their price — except on an archived
+      // order, where Shein itself ships only an id, an image and a quantity.
+      for (const item of order.items) {
+        expect(item.quantity).toBeGreaterThan(0);
+        expect(item.goodsId).toBeTruthy();
+        if (archived) continue;
+        expect(item.name).toBeTruthy();
+        expect(item.unitPrice).toBeGreaterThan(0);
+      }
+      checked += 1;
+    }
+    expect(checked).toBe(summaries.size);
+
+    // And the summaries alone (what `list_orders` answers from) hold up too.
+    for (const summary of summaries.values()) {
+      const normalized = normalizeSummary(summary);
+      expect(normalized.money.total).toBeGreaterThan(0);
+      expect(normalized.placedAt).toMatch(/^20\d\d-/);
+    }
+  });
+
+  test("every tracking capture normalizes, and a shipped order has real events", () => {
+    let shipped = 0;
+    for (const file of readdirSync(DIR).filter((name) => name.startsWith("track-"))) {
+      const packages = normalizePackages(extractTrackSsrData(read(file)) as RawTrackSsrData);
+      for (const parcel of packages) {
+        expect(parcel.packageNo ?? parcel.trackingNumber).toBeTruthy();
+        for (const event of parcel.events) expect(event.description).not.toContain("<");
+        if (parcel.events.length > 0) shipped += 1;
+      }
+    }
+    expect(shipped).toBeGreaterThan(0);
   });
 });

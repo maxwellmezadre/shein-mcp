@@ -48,6 +48,7 @@ describe("committed fixtures", () => {
     const detail = JSON.parse(readFileSync(join(DIR, "order-detail.json"), "utf8")) as {
       info: {
         addTime: number;
+        paymentTime: string;
         totalPrice: { amount: string };
         sorted_price: Array<{ show: string | number; amount?: string }>;
       };
@@ -56,8 +57,10 @@ describe("committed fixtures", () => {
     const shown = detail.info.sorted_price.filter((row) => String(row.show) === "1");
     // The rule the normalizer relies on, proven on the committed fixture.
     expect(shown.reduce((sum, row) => sum + cents(row.amount), 0)).toBe(cents(detail.info.totalPrice.amount));
-    // A unix timestamp is 10 digits: remapping ids must never have touched it.
+    // A unix timestamp is 10 digits and a millisecond one is 13, exactly like
+    // a tracking number: remapping ids must never have touched either.
     expect(String(detail.info.addTime)).toMatch(/^1\d{9}$/);
+    expect(String(detail.info.paymentTime)).toMatch(/^1\d{12}$/);
   });
 
   test("the logged-out envelope is kept as the reference for a dead session", () => {

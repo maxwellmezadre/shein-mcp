@@ -118,8 +118,16 @@ const DROPPED = new Set([
 
 /** Order/package numbers appear inside URLs and HTML too, not just in fields. */
 const CODE_PATTERN = /\b(?:GSH|USH|CBG|W20|SHR)[A-Z0-9]{8,20}\b/g;
-/** 11+ digits is a tracking number; a unix timestamp is 10 and must survive. */
+/** 11+ digits is a tracking number; a unix timestamp in SECONDS is 10 and must survive. */
 const LONG_DIGITS = /(?<!\d)\d{11,}(?!\d)/g;
+
+/**
+ * …but a timestamp in MILLISECONDS is 13 digits, exactly like a tracking
+ * number. Fields that hold a time are never remapped, or every date in the
+ * fixtures becomes fiction (`paymentTime` was the one that caught this).
+ */
+const TIME_KEY = /(time|date|timestamp|expire|_at$)/i;
+const NUMERIC_ONLY = /^[\d.\-]+$/;
 
 const WORDS = [
   "Alfa", "Bravo", "Cabo", "Delta", "Eco", "Fenix", "Gama", "Hidra", "Indigo", "Jade",
@@ -208,6 +216,7 @@ function walk(node: Json, key = ""): Json {
   }
   if (typeof node === "string") {
     if (node === "") return node;
+    if (TIME_KEY.test(key) && NUMERIC_ONLY.test(node)) return node;
     if (ID_FIELDS.has(key)) return fakeId(node);
     if (key in REPLACEMENTS) {
       if (node.trim() !== "") remember(node, key, REPLACEMENTS[key] as string);
