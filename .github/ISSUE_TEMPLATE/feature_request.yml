@@ -1,0 +1,22 @@
+name: Ideia
+description: Sugerir uma melhoria
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qual problema isso resolve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposta
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Escrita na conta da Shein (cancelar, devolver, confirmar entrega) está
+        **fora do escopo** por decisão de projeto: este servidor é somente
+        leitura.
