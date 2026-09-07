@@ -1,3 +1,6 @@
+import type { Database } from "bun:sqlite";
+import { openCache } from "./cache/db.js";
+import { type CacheRepo, createCacheRepo } from "./cache/repo.js";
 import { type Config, loadConfig } from "./config.js";
 import { type LaunchBrowser, createBrowserFetch, launchWithPlaywright } from "./core/browser-transport.js";
 import { type FetchLike, type Http, createHttp } from "./core/http.js";
@@ -19,6 +22,8 @@ export type ContextDeps = {
   random?: () => number;
   session?: SessionStore;
   log?: Logger;
+  /** `:memory:` in tests. */
+  db?: Database;
 };
 
 export type Ctx = {
@@ -28,6 +33,11 @@ export type Ctx = {
   session: SessionStore;
   http: Http;
   api: SheinApi;
+  /**
+   * Memoised: the SQLite file is only opened (and migrated) on first use, so a
+   * tool that never touches the cache never creates it.
+   */
+  cache: () => CacheRepo;
   /** Releases what was opened (browser, database). Safe to call more than once. */
   dispose: () => Promise<void>;
 };
@@ -86,7 +96,32 @@ export function createContext(config: Config, deps: ContextDeps = {}): Ctx {
 
   const api = createSheinApi(http, { baseUrl: config.baseUrl, lang: config.lang });
 
-  return { config, log, now, session, http, api, dispose };
+  let db: Database | undefined;
+  let repo: CacheRepo | undefined;
+  const cache = (): CacheRepo => {
+    if (!repo) {
+      db = deps.db ?? openCache(config.dbPath);
+      repo = createCacheRepo(db, now);
+    }
+    return repo;
+  };
+
+  const releaseBrowser = dispose;
+  return {
+    config,
+    log,
+    now,
+    session,
+    http,
+    api,
+    cache,
+    dispose: async () => {
+      await releaseBrowser();
+      if (deps.db === undefined) db?.close();
+      db = undefined;
+      repo = undefined;
+    },
+  };
 }
 
 /** Convenience for the entry points: load the env config and wire everything. */
