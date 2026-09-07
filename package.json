@@ -19,8 +19,8 @@
     "claude"
   ],
   "bin": {
-    "shein": "./dist/bin.js",
-    "shein-mcp": "./dist/mcp-bin.js"
+    "shein": "dist/bin.js",
+    "shein-mcp": "dist/mcp-bin.js"
   },
   "files": [
     "dist",
