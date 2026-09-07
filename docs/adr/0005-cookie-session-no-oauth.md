@@ -1,8 +1,11 @@
-# ADR-0005 — Sessão por cookie, capturada do navegador
+# ADR-0005: Sessão por cookie, capturada do navegador
 
-- **Status:** Aceito
-- **Contexto:** a Shein não tem OAuth de comprador. O portal de
-  desenvolvedores é para vendedores e não expõe o histórico da própria conta.
+## Contexto
+
+Status: aceito.
+
+A Shein não tem OAuth de comprador. O portal de
+desenvolvedores é para vendedores e não expõe o histórico da própria conta.
 
 ## Decisão
 
@@ -15,4 +18,4 @@ passa pelo projeto.
 
 A sessão dura poucos dias e o conserto é refazer o login. Os cookies `HttpOnly`
 só são capturáveis pelo navegador, então copiar `document.cookie` à mão não
-funciona — e é por isso que o login existe como comando.
+funciona, e é por isso que o login existe como comando.

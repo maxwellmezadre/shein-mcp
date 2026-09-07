@@ -14,7 +14,7 @@ const NOTES: Record<SpendingGroup, string> = {
   month: "Totais por mês, pelo que foi efetivamente pago. Pedidos não pagos e cancelados ficam de fora.",
   year: "Totais por ano, pelo que foi efetivamente pago. Pedidos não pagos e cancelados ficam de fora.",
   store:
-    "Por loja, somando os itens de cada loja — um pedido com duas lojas aparece nas duas, então a " +
+    "Por loja, somando os itens de cada loja; um pedido com duas lojas aparece nas duas, então a " +
     "soma das linhas é o total gasto em itens, sem frete, imposto nem taxa de parcelamento.",
   payment: "Por meio de pagamento, pelo total do pedido.",
   breakdown:

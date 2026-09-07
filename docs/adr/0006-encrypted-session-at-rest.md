@@ -1,8 +1,11 @@
-# ADR-0006 — Sessão cifrada em repouso
+# ADR-0006: Sessão cifrada em repouso
 
-- **Status:** Aceito
-- **Contexto:** o jar de cookies **é a conta**. Deixá-lo em texto puro no
-  `$HOME` é o pior tipo de conveniência.
+## Contexto
+
+Status: aceito.
+
+O jar de cookies **é a conta**. Deixá-lo em texto puro no
+`$HOME` é o pior tipo de conveniência.
 
 ## Decisão
 

@@ -1,9 +1,8 @@
-# O modelo de dados
+# Modelo de dados
 
 Tudo que as tools respondem sai deste modelo (`src/domain/types.ts`). Por
-dentro, **dinheiro é centavo inteiro**; a conversão para reais decimais
-acontece só na borda (`src/tools/present.ts`), então nenhuma soma é feita em
-float.
+dentro, dinheiro é centavo inteiro; a conversão para reais decimais acontece
+só na borda (`src/tools/present.ts`), então nenhuma soma é feita em float.
 
 ## Pedido
 
@@ -19,21 +18,21 @@ float.
 | `items` | As linhas do pedido |
 | `packages` | Os pacotes, quando houver rastreio |
 
-Um checkout pode virar vários `billno`, e vários `billno` podem **dividir um
-pacote**. Na conta que mapeou a API havia grupos de 3, 4, 5 e 7 pedidos.
+Um checkout pode virar vários `billno`, e vários `billno` podem dividir um
+pacote. Na conta que mapeou a API havia grupos de 3, 4, 5 e 7 pedidos.
 
 ## Dinheiro: as duas coisas que não se misturam
 
-**`priceLines` é a aritmética.** São as linhas que a própria Shein mostra
-(`sorted_price` com `show: "1"`), e a soma delas é exatamente `total` — isso foi
+`priceLines` é a aritmética. São as linhas que a própria Shein mostra
+(`sorted_price` com `show: "1"`), e a soma delas é exatamente `total`. Isso foi
 verificado em 21 de 21 pedidos reais, incluindo os internacionais. Tipos
-observados: `newSubTotal`, `shipping`, `subTax` (aparece **duas** vezes:
-Imposto de Importação e ICMS), `commission` (a taxa de parcelamento),
+observados: `newSubTotal`, `shipping`, `subTax` (aparece duas vezes: Imposto
+de Importação e ICMS), `commission` (a taxa de parcelamento),
 `shippingInsurance`, `onTimeInsurance`.
 
-**`money` são rótulos.** `subtotal`, `retail`, `saved`, `shipping`, `tax`,
+`money` são rótulos. `subtotal`, `retail`, `saved`, `shipping`, `tax`,
 `installmentFee`, `coupon`, `points`, `wallet` são os campos que a Shein
-publica com esses nomes. Eles **não formam uma equação**: num pedido
+publica com esses nomes. Eles não formam uma equação: num pedido
 internacional, `money.subtotal` e a linha `newSubTotal` têm valores diferentes.
 Use `priceLines` quando precisar que feche.
 
@@ -46,13 +45,13 @@ tax   == soma das linhas subTax
 
 ## O que não existe
 
-- **O número de parcelas.** A API só carrega `installmentFee`, o quanto o
+- O número de parcelas. A API só carrega `installmentFee`, o quanto o
   parcelamento custou. A linha `PayDivide` existe, mas vem sempre zerada e
   oculta. Não invente esse número.
-- **`isPaid` não serve**: vem `"0"` até em pedido pago. Quem diz é `pay_time`.
-- **Pedido arquivado** (mais de um ano) responde o detalhe com um casco vazio:
+- `isPaid` não serve: vem `"0"` até em pedido pago. Quem diz é `pay_time`.
+- Pedido arquivado (mais de um ano) responde o detalhe com um casco vazio:
   sem itens, sem breakdown, com os valores zerados. O dinheiro dele vem da
-  listagem, e o item traz só id, imagem e quantidade — sem nome e sem preço.
+  listagem, e o item traz só id, imagem e quantidade, sem nome e sem preço.
 
 ## Item
 
@@ -63,7 +62,7 @@ tax   == soma das linhas subTax
 ## Pacote
 
 O rastreio mora em `packageMap`, indexado por `"0"`, `"1"`… `trackInfo` é uma
-cópia da primeira entrada e **some** quando o pedido nunca foi enviado (8 de 21
+cópia da primeira entrada e some quando o pedido nunca foi enviado (8 de 21
 páginas capturadas). Ler `packageMap` cobre todos os casos, inclusive o
 multi-pacote.
 
@@ -73,10 +72,10 @@ Cada evento tem `at` (ISO), `description` (o texto do site, sem HTML) e
 ## Situação
 
 O `orderStatus` da Shein é um número sem significado público, e o rótulo que
-ela manda é **a última coisa que aconteceu**, não o estado atual: um pedido
+ela manda é a última coisa que aconteceu, não o estado atual: um pedido
 entregue há meses continua com `orderStatus: 10` e o rótulo "Enviado".
 
-Por isso a situação é lida por **sinais**, não pelo código:
+Por isso a situação é lida por sinais, não pelo código:
 
 ```
 nunca pago (pay_time "0")
@@ -90,7 +89,7 @@ pago
 ```
 
 Isso foi conferido contra as abas do próprio site (2026-09-07): naquela conta,
-a Shein mostrava **0 em "Não pago", 0 em "Enviado" e 9 em "Avaliar"** entre 20
+a Shein mostrava 0 em "Não pago", 0 em "Enviado" e 9 em "Avaliar" entre 20
 pedidos. Ler o código `3` como "não pago" ou o `10` como "enviado" teria
 contradito o site em 11 deles.
 
@@ -98,4 +97,4 @@ O código cru (`statusCode`) e o rótulo (`statusLabel`) vão sempre junto na
 resposta, e o enum é aberto: um código novo é lido pelos mesmos sinais.
 
 Se precisar da verdade do site sobre uma aba específica, ela está em
-`/user/orders/list?status_type=N` — o JSON ignora esse parâmetro, o SSR não.
+`/user/orders/list?status_type=N`: o JSON ignora esse parâmetro, o SSR não.

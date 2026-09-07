@@ -7,10 +7,11 @@ import { toolByName } from "../../src/tools/registry.js";
 import type { AuthStatus } from "../../src/tools/auth.js";
 
 // Real requests to Shein, against the session on THIS machine. Opt-in and
-// self-skipping: CI has no session, so it never runs there. It spends about
-// four requests, paced by the normal client.
+// self-skipping: it runs only with SHEIN_LIVE=1 AND a saved session, so a
+// plain `bun test` (and CI) never touches the network. It spends about four
+// requests, paced by the normal client.
 //
-//   bun test test/integration
+//   SHEIN_LIVE=1 bun test test/integration
 //
 // Nothing here asserts on account data (amounts, ids, names): it checks that
 // the layers still answer the shape the parsers expect.
@@ -22,7 +23,7 @@ const config = (() => {
     return null;
   }
 })();
-const available = config !== null && existsSync(config.sessionPath);
+const available = process.env.SHEIN_LIVE === "1" && config !== null && existsSync(config.sessionPath);
 const gated = available ? describe : describe.skip;
 
 gated("live shein", () => {

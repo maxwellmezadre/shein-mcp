@@ -13,7 +13,7 @@ export const login = defineTool({
   name: "login",
   description:
     "Abre uma janela do Google Chrome para o usuário entrar na conta da Shein e guarda a sessão " +
-    "cifrada (a senha nunca passa por aqui). Bloqueia até o login terminar — até 15 minutos. " +
+    "cifrada (a senha nunca passa por aqui). Bloqueia até o login terminar, até 15 minutos. " +
     "Com from_browser (ou SHEIN_IMPORT_BROWSER), importa a sessão de um navegador já logado (Arc, Chrome… só macOS) " +
     "em vez de abrir a janela. Prefira o comando de terminal `shein login` quando o cliente MCP tiver timeout curto.",
   readOnly: false,

@@ -1,9 +1,12 @@
-# ADR-0008 — Fixtures reais anonimizadas num repositório público
+# ADR-0008: Fixtures reais anonimizadas num repositório público
 
-- **Status:** Aceito
-- **Contexto:** testar parser de API instável com payload inventado prova
-  pouco. Mas o repositório é público e as capturas vêm de uma conta real, com
-  nome, endereço, CPF e código de rastreio.
+## Contexto
+
+Status: aceito.
+
+Testar parser de API instável com payload inventado prova
+pouco. Mas o repositório é público e as capturas vêm de uma conta real, com
+nome, endereço, CPF e código de rastreio.
 
 ## Decisão
 
@@ -22,5 +25,5 @@ e um em milissegundos tem 13, como um código de rastreio.
 
 Os testes rodam sobre shapes reais e as identidades financeiras continuam
 verdadeiras nos fixtures. Em troca, uma captura nova exige uma passada de
-anonimização antes de virar commit — e `test/fixtures.test.ts` é a guarda
+anonimização antes de virar commit, e `test/fixtures.test.ts` é a guarda
 permanente.

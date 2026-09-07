@@ -5,7 +5,7 @@ import { join } from "node:path";
 import { allTools } from "../src/tools/registry.js";
 
 // The gate: type-check, tests, and the invariants of the real MCP server over
-// stdio. If this passes, the PR passes. It never touches the network — there
+// stdio. If this passes, the PR passes. It never touches the network: there
 // is no session in the throwaway config dir, so no request is even attempted.
 
 const ROOT = join(import.meta.dir, "..");
@@ -27,7 +27,10 @@ async function run(name: string, command: string[]): Promise<void> {
 
 type Rpc = { id?: number; result?: Record<string, unknown> };
 
-async function mcp(messages: object[], env: Record<string, string>): Promise<{ replies: Rpc[]; stdout: string }> {
+async function mcp(
+  messages: object[],
+  env: Record<string, string>,
+): Promise<{ replies: Rpc[]; stdout: string; stderr: string }> {
   const proc = Bun.spawn(["bun", "run", "src/bin.ts", "mcp"], {
     cwd: ROOT,
     env: { ...process.env, ...env },
@@ -37,13 +40,13 @@ async function mcp(messages: object[], env: Record<string, string>): Promise<{ r
   });
   proc.stdin.write(messages.map((message) => `${JSON.stringify(message)}\n`).join(""));
   await proc.stdin.end();
-  const stdout = await new Response(proc.stdout).text();
+  const [stdout, stderr] = await Promise.all([new Response(proc.stdout).text(), new Response(proc.stderr).text()]);
   proc.kill();
   const replies = stdout
     .split("\n")
     .filter((line) => line.trim() !== "")
     .map((line) => JSON.parse(line) as Rpc);
-  return { replies, stdout };
+  return { replies, stdout, stderr };
 }
 
 const handshake = [
@@ -77,7 +80,7 @@ console.error("\nServidor MCP real (stdio, sem rede):");
 const home = mkdtempSync(join(tmpdir(), "shein-verify-"));
 try {
   const env = { SHEIN_CONFIG_DIR: home, SHEIN_EXPORT_DIR: join(home, "export"), SHEIN_TRANSPORT: "fetch" };
-  const { replies, stdout } = await mcp(
+  const { replies, stdout, stderr } = await mcp(
     [
       ...handshake,
       { jsonrpc: "2.0", id: 2, method: "tools/list" },
@@ -98,10 +101,15 @@ try {
       .filter((line) => line.trim() !== "")
       .every((line) => (JSON.parse(line) as { jsonrpc?: string }).jsonrpc === "2.0"),
   );
-  const list = replies.find((reply) => reply.id === 2)?.result as { tools: Array<{ name: string }> } | undefined;
+  check("logs saem no stderr", stderr.includes("shein"));
+  const list = replies.find((reply) => reply.id === 2)?.result as
+    | { tools: Array<{ name: string; description: string; inputSchema: { type?: string } }> }
+    | undefined;
   check("tools/list traz o registry inteiro", list?.tools.length === allTools.length);
+  check("todo inputSchema anunciado é um objeto", list?.tools.every((tool) => tool.inputSchema.type === "object") === true);
   const status = replies.find((reply) => reply.id === 3)?.result as { isError?: boolean } | undefined;
   check("auth_status responde sem sessão e sem rede", status?.isError === undefined);
+  check("auth_status não vaza cookie", !/"cookies"|"value"\s*:/.test(JSON.stringify(status)));
   for (const [id, label] of [
     [4, "tool desconhecida vira isError"],
     [5, "raw_get recusa um path de escrita"],

@@ -1,9 +1,12 @@
-# ADR-0001 — Arquitetura em camadas, pragmática
+# ADR-0001: Arquitetura em camadas, pragmática
 
-- **Status:** Aceito
-- **Contexto:** o projeto tem duas entradas (CLI e MCP), uma API instável de
-  terceiro e um cache. Sem uma separação clara, a mudança de um nome de campo
-  no site vira uma caçada por todo o repositório.
+## Contexto
+
+Status: aceito.
+
+O projeto tem duas entradas (CLI e MCP), uma API instável de
+terceiro e um cache. Sem uma separação clara, a mudança de um nome de campo
+no site vira uma caçada por todo o repositório.
 
 ## Decisão
 
@@ -16,4 +19,4 @@ tudo, e o que depende de tempo, rede ou disco é passado como parâmetro.
 
 Testar não exige mock global: os testes injetam um `fetch` roteirizado, um
 relógio falso e um SQLite em memória. Em troca, `context.ts` é um pouco
-verboso — é o preço de não ter mágica.
+verboso: é o preço de não ter mágica.

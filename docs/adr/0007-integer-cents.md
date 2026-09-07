@@ -1,9 +1,12 @@
-# ADR-0007 — Dinheiro em centavos inteiros
+# ADR-0007: Dinheiro em centavos inteiros
 
-- **Status:** Aceito
-- **Contexto:** o projeto existe para somar dinheiro. `0.1 + 0.2` em float não
-  é `0.3`, e um relatório de gastos errado por um centavo é um relatório em que
-  não se confia.
+## Contexto
+
+Status: aceito.
+
+O projeto existe para somar dinheiro. `0.1 + 0.2` em float não
+é `0.3`, e um relatório de gastos errado por um centavo é um relatório em que
+não se confia.
 
 ## Decisão
 

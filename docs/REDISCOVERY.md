@@ -2,15 +2,14 @@
 
 Vai mudar. Este documento é o roteiro para consertar sem adivinhação.
 
-## 1. Descubra qual camada quebrou
+## 1. Pergunte ao doctor primeiro
 
 ```sh
 shein doctor
 ```
 
-Ele prova, em ordem: sessão → listagem → arquivados → detalhe → rastreio →
-cache, e diz qual delas falhou e com qual mensagem. Gasta no máximo 4
-requisições.
+Ele prova, em ordem: sessão, listagem, arquivados, detalhe, rastreio e cache,
+e diz qual delas falhou e com qual mensagem. Gasta no máximo 4 requisições.
 
 | Camada | Se falhar | Onde consertar |
 | --- | --- | --- |
@@ -37,11 +36,10 @@ tools, e recusa qualquer path que possa escrever na conta.
 SHEIN_TRANSPORT=fetch bun run scripts/capture-fixtures.ts --write
 ```
 
-Grava tudo em `task/captures/` (gitignored, 0600) — listagem, arquivados,
+Grava tudo em `task/captures/` (gitignored, 0600): listagem, arquivados,
 detalhe e rastreio de cada pedido, a busca, os probes de "não logado", e
-registra **qual transporte serviu cada captura**. Rodar com
-`SHEIN_TRANSPORT=fetch` é o que torna observável a afirmação "o replay HTTP
-puro ainda funciona".
+registra qual transporte serviu cada captura. Rodar com `SHEIN_TRANSPORT=fetch`
+é o que torna observável a afirmação "o replay HTTP puro ainda funciona".
 
 Depois:
 
@@ -51,13 +49,13 @@ bun run scripts/anonymize-fixture.ts --write
 bun test                # a suíte inteira, agora sobre os fixtures novos
 ```
 
-O anonimizador **falha** se qualquer valor original sobreviver. Ele nunca toca
-em dinheiro, quantidade ou data.
+O anonimizador falha se qualquer valor original sobreviver. Ele nunca toca em
+dinheiro, quantidade ou data.
 
 ## 4. Se mudou o parser
 
 Incremente `PARSER_VERSION` em `src/cache/sync.ts`. O próximo `sync` reprocessa
-todo o histórico a partir do payload salvo, **sem rede**:
+todo o histórico a partir do payload salvo, sem rede:
 
 ```sh
 shein sync --reparse
@@ -73,7 +71,7 @@ SHEIN_TRANSPORT=browser shein sync
 ```
 
 que executa as mesmas requisições dentro de um Chrome headless com a sua
-sessão — a assinatura é do próprio site. Com `auto` (o padrão), essa troca
+sessão; a assinatura é do próprio site. Com `auto` (o padrão), essa troca
 acontece sozinha na primeira negativa.
 
 ## 6. Se precisar filtrar por aba
@@ -89,7 +87,18 @@ shein raw /user/orders/list --query status_type=4 --kind html --max-bytes 2000
 
 ## 7. Se a resposta mudar de forma
 
-Mude `src/domain/normalize.ts` — é o único arquivo que conhece nomes de campo
-da Shein — e escreva o teste antes, sobre o fixture novo. `test/normalize.test.ts`
+Mude `src/domain/normalize.ts`, o único arquivo que conhece nomes de campo da
+Shein, e escreva o teste antes, sobre o fixture novo. `test/normalize.test.ts`
 e `test/local/captures.local.test.ts` já cobrem as identidades que precisam
 continuar verdadeiras.
+
+## Nunca automatize
+
+- O login e a verificação anti-bot. Quem digita senha, código e captcha é o
+  usuário, numa janela visível. Automatizar isso é o que faz a Shein marcar a
+  conta.
+- A assinatura `armorToken`. Se ela passar a ser exigida, o transporte
+  `browser` deixa o site assinar; reimplementá-la é frágil e chama atenção.
+- Qualquer escrita na conta: cancelar, devolver, confirmar entrega. `raw_get`
+  recusa esses paths por construção, e nenhuma tool nova deve abrir essa porta.
+- Requisições em paralelo. Um `sync` de cada vez, com o intervalo padrão.

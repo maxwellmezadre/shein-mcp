@@ -18,7 +18,7 @@ export const doctor = defineTool({
   name: "doctor",
   description:
     "Diagnostica a instalação de ponta a ponta: sessão, listagem de pedidos, pedidos arquivados, " +
-    "detalhe, rastreio e cache local. Diz qual camada quebrou quando a Shein muda alguma coisa — " +
+    "detalhe, rastreio e cache local. Diz qual camada quebrou quando a Shein muda alguma coisa: " +
     "rode antes de reportar um problema. Gasta no máximo 4 requisições.",
   readOnly: true,
   input: Type.Object({}),

@@ -16,7 +16,7 @@ export class SheinApiError extends Error {
     public readonly path: string,
     hint?: string,
   ) {
-    super(`A Shein respondeu ${code} (${apiMessage}) em ${path}` + (hint ? ` — ${hint}` : ""));
+    super(`A Shein respondeu ${code} (${apiMessage}) em ${path}` + (hint ? `: ${hint}` : ""));
     this.name = "SheinApiError";
   }
 }

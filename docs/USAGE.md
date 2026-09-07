@@ -1,6 +1,4 @@
-# Uso
-
-Do zero à primeira resposta.
+# Do zero à primeira resposta
 
 ## 1. Instalar
 
@@ -30,7 +28,7 @@ página de pedidos aparecer.
 Confira:
 
 ```sh
-shein auth --verify
+shein status --verify
 ```
 
 ## 3. Baixar o histórico
@@ -39,7 +37,7 @@ shein auth --verify
 shein sync
 ```
 
-Se responder `done: false`, rode de novo até `done: true` — o trabalho já feito
+Se responder `done: false`, rode de novo até `done: true`; o trabalho já feito
 fica salvo. Para trazer o rastreio junto:
 
 ```sh
@@ -49,8 +47,8 @@ shein sync --with-tracking
 ## 4. Perguntar
 
 ```sh
-shein spending --group-by month
-shein spending --group-by breakdown       # produto, frete, imposto, parcelamento
+shein spending --by month
+shein spending --by breakdown             # produto, frete, imposto, parcelamento
 shein orders --status delivered --limit 5
 shein search "camisola"
 shein product-history "camisola"
@@ -63,10 +61,10 @@ shein export --format csv                 # para planilha
 
 Com o servidor MCP registrado (o `setup` já fez isso), pergunte em português:
 
-- *"quanto gastei na Shein este ano?"*
-- *"onde está meu último pedido?"*
-- *"quanto eu já paguei de frete?"*
-- *"já comprei esse conjunto antes? por quanto?"*
+- "quanto gastei na Shein este ano?"
+- "onde está meu último pedido?"
+- "quanto eu já paguei de frete?"
+- "já comprei esse conjunto antes? por quanto?"
 
 ## Manutenção
 

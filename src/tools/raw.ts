@@ -29,7 +29,7 @@ export const rawGet = defineTool({
   description:
     "Faz um GET autenticado em uma superfície de pedidos da Shein (bff-api/order/*, leituras de " +
     "bff-api/order-api/order/*, páginas SSR /user/orders/* e /orders/track), com o mesmo limite de " +
-    "taxa das outras tools. Serve para redescobrir um endpoint quando o site muda — use com parcimônia " +
+    "taxa das outras tools. Serve para redescobrir um endpoint quando o site muda; use com parcimônia " +
     "e nunca em rajada. Qualquer path que possa alterar a conta é recusado: este servidor é somente leitura.",
   readOnly: true,
   input: Type.Object({

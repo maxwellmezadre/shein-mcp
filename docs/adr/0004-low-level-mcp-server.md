@@ -1,8 +1,11 @@
-# ADR-0004 — `Server` de baixo nível do SDK do MCP
+# ADR-0004: `Server` de baixo nível do SDK do MCP
 
-- **Status:** Aceito
-- **Contexto:** o SDK oferece `McpServer.registerTool`, que quer schemas no
-  padrão Standard Schema (Zod e afins). Os nossos já são JSON Schema.
+## Contexto
+
+Status: aceito.
+
+O SDK oferece `McpServer.registerTool`, que quer schemas no
+padrão Standard Schema (Zod e afins). Os nossos já são JSON Schema.
 
 ## Decisão
 

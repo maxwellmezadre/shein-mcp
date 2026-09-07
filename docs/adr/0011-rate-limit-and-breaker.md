@@ -1,9 +1,12 @@
-# ADR-0011 — Fila serial, backoff e breaker com cooldown persistido
+# ADR-0011: Fila serial, backoff e breaker com cooldown persistido
 
-- **Status:** Aceito
-- **Contexto:** os projetos irmãos desta família levaram bloqueio anti-bot por
-  rajadas de requisições paralelas. Um agente que insiste depois da primeira
-  negativa é exatamente o que aprofunda o bloqueio.
+## Contexto
+
+Status: aceito.
+
+Os projetos irmãos desta família levaram bloqueio anti-bot por
+rajadas de requisições paralelas. Um agente que insiste depois da primeira
+negativa é exatamente o que aprofunda o bloqueio.
 
 ## Decisão
 
@@ -18,5 +21,5 @@ o cliente pelo resto do processo e grava um cooldown de 30 minutos em
 
 Vazão de ~0,7 requisição por segundo, e por isso o `sync` é em blocos com
 cursor. Sair de um bloqueio exige ação humana (resolver a verificação no
-navegador e refazer o login) — deliberado: é a única saída que não piora a
+navegador e refazer o login). Isso é deliberado: é a única saída que não piora a
 situação.

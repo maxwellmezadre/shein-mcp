@@ -1,7 +1,9 @@
 # Código de conduta
 
-Este projeto segue o [Contributor Covenant](https://www.contributor-covenant.org/pt-br/version/2/1/code_of_conduct/).
+Este projeto adota o [Contributor Covenant 2.1](https://www.contributor-covenant.org/pt-br/version/2/1/code_of_conduct/).
 
-Comportamento inaceitável pode ser reportado pelas issues do repositório ou por
-[GitHub Security Advisories](https://github.com/maxwellmezadre/shein-mcp/security/advisories/new)
-quando envolver dado sensível.
+Em resumo: seja respeitoso, assuma boa-fé, critique ideias e não pessoas, e
+aceite feedback com a mesma disposição com que o dá.
+
+Comportamento abusivo pode ser reportado em heronpboares@gmail.com. Os relatos
+são tratados com discrição.

@@ -101,7 +101,7 @@ export function createSheinApi(http: Http, opts: SheinApiOptions): SheinApi {
         envelope.msg ?? "",
         path,
         SESSION_SUSPECT_CODES.has(envelope.code)
-          ? "pode ser sessão expirada (é o que a Shein responde a quem não está logado) ou parâmetro errado: rode `shein auth --verify`"
+          ? "pode ser sessão expirada (é o que a Shein responde a quem não está logado) ou parâmetro errado: rode `shein status --verify`"
           : undefined,
       );
     }

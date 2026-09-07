@@ -5,18 +5,16 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: Qual problema isso resolve?
+      label: Que problema isso resolve
+      description: A situação concreta, não a solução.
     validations:
       required: true
   - type: textarea
-    id: proposal
+    id: idea
     attributes:
-      label: Proposta
-    validations:
-      required: true
+      label: O que você imagina
   - type: markdown
     attributes:
       value: |
-        Escrita na conta da Shein (cancelar, devolver, confirmar entrega) está
-        **fora do escopo** por decisão de projeto: este servidor é somente
-        leitura.
+        Este projeto é somente leitura na conta: cancelar, devolver ou confirmar a entrega de um pedido estão
+        fora de escopo por decisão de projeto.

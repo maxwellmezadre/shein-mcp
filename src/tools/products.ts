@@ -159,7 +159,7 @@ export const listReturns = defineTool({
   description:
     "Lista as devoluções e reembolsos: por padrão os itens que o detalhe do pedido marca, do cache e " +
     "sem rede. Com verify=true gasta 1 requisição e lê a aba 'Devolução/Reembolso' do próprio site, " +
-    "que é a única superfície que filtra de verdade — é assim que dá para afirmar que não houve " +
+    "que é a única superfície que filtra de verdade; é assim que dá para afirmar que não houve " +
     "nenhuma devolução, em vez de só não ter achado.",
   readOnly: true,
   input: Type.Object({
@@ -184,7 +184,7 @@ export const listReturns = defineTool({
         ...fromCache,
         note:
           rows.length === 0
-            ? "Nenhuma devolução registrada no cache. Isso é o que o detalhe dos pedidos carrega — " +
+            ? "Nenhuma devolução registrada no cache. Isso é o que o detalhe dos pedidos carrega; " +
               "para conferir na aba de devoluções do próprio site, chame de novo com verify=true."
             : undefined,
       });

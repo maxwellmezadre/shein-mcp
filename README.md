@@ -5,17 +5,17 @@
 [![TypeScript: strict](https://img.shields.io/badge/typescript-strict-3178c6.svg)](tsconfig.json)
 [![CI](https://github.com/maxwellmezadre/shein-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/maxwellmezadre/shein-mcp/actions/workflows/ci.yml)
 
-CLI + servidor MCP para o **histórico de compras da sua conta na Shein**:
-pedidos, itens, o breakdown que soma o total (produtos, frete, imposto, taxa de
-parcelamento, seguros), rastreio, devoluções e resumos de gastos — com cache
+CLI + servidor MCP para o histórico de compras da sua conta na Shein: pedidos,
+itens, o breakdown que soma o total (produtos, frete, imposto, taxa de
+parcelamento, seguros), rastreio, devoluções e resumos de gastos, com cache
 local, para você perguntar quanto gastou sem bater na Shein a cada pergunta.
 
 A Shein não tem API de comprador. O portal de desenvolvedores dela é para
-vendedores e **não dá acesso ao histórico da sua própria conta**. Este projeto
+vendedores e não dá acesso ao histórico da sua própria conta. Este projeto
 fala a mesma API interna que o site usa (`/bff-api/order/*` em `br.shein.com`),
-autenticado pelos cookies da sua sessão de navegador. **Somente leitura**:
-nenhuma operação de escrita na conta é implementada, e o escape hatch recusa
-paths de escrita por construção.
+autenticado pelos cookies da sua sessão de navegador. Somente leitura: nenhuma
+operação de escrita na conta é implementada, e o escape hatch recusa paths de
+escrita por construção.
 
 ## Sumário
 
@@ -28,10 +28,12 @@ paths de escrita por construção.
 - [Como funciona](#como-funciona)
 - [Troubleshooting](#troubleshooting)
 - [Documentação](#documentação)
+- [Licença](#licença)
 
 ## Instalação
 
-Requer [Bun](https://bun.sh) ≥ 1.3 (o cache usa `bun:sqlite`).
+Requer [Bun](https://bun.sh) ≥ 1.3 (o cache usa `bun:sqlite`) e o Google
+Chrome (o `login` e o transporte de reserva abrem um Chrome de verdade).
 
 ### Tudo de uma vez (Claude Code)
 
@@ -43,7 +45,8 @@ bun run setup
 ```
 
 `setup` compila o binário para `~/.local/bin/shein`, registra o servidor MCP
-`shein` no seu `~/.claude.json` e instala a skill em `~/.claude/skills/`.
+`shein` no seu `~/.claude.json` (escopo de usuário) e instala a skill em
+`~/.claude/skills/shein-mcp/`. Rode de novo para atualizar.
 
 ### npm
 
@@ -52,12 +55,18 @@ npm i -g @maxwellmezadre/shein-mcp   # instala `shein` e `shein-mcp` no PATH
 shein --version
 ```
 
+O pacote roda com o Bun (`#!/usr/bin/env bun`, por causa do `bun:sqlite`),
+então o Bun precisa estar instalado.
+
 ### Binário único
 
 ```sh
 bun run build:binary   # gera ./shein, sem precisar de runtime instalado
 ./shein --version
 ```
+
+O binário roda tudo, inclusive o `login`: o `playwright-core` vai embutido e o
+Chrome vem do sistema.
 
 ## Login
 
@@ -76,7 +85,7 @@ abre janela nenhuma. A sessão é gravada cifrada com AES-256-GCM em
 ## Uso — CLI
 
 ```sh
-shein auth --verify                  # a Shein ainda aceita a sessão?
+shein status --verify                # a Shein ainda aceita a sessão?
 shein sync                           # baixa o histórico para o cache local
 shein orders --limit 10              # seus pedidos, do mais novo para o mais antigo
 shein order GSH…                     # um pedido inteiro, com o breakdown de preço
@@ -84,8 +93,8 @@ shein track GSH…                     # rastreio ao vivo
 shein search "conjunto"              # entre os produtos que você já comprou
 shein products --limit 20            # agregado por produto
 shein product-history "camisola"     # cada compra do produto e a evolução do preço
-shein spending --group-by month      # quanto você gastou por mês
-shein spending --group-by breakdown  # quanto foi produto, frete, imposto, parcelamento
+shein spending --by month            # quanto você gastou por mês
+shein spending --by breakdown        # quanto foi produto, frete, imposto, parcelamento
 shein export --format csv            # para planilha
 shein doctor                         # qual camada quebrou
 ```
@@ -95,7 +104,13 @@ receberia. Referência completa em [`docs/CLI.md`](docs/CLI.md).
 
 ## Uso — MCP
 
-O `setup` já registra o servidor. Manualmente, em `~/.claude.json`:
+O `setup` já registra o servidor. À mão, no Claude Code:
+
+```sh
+claude mcp add -s user shein -- /Users/voce/.local/bin/shein mcp
+```
+
+Ou direto em `~/.claude.json`:
 
 ```json
 {
@@ -105,8 +120,9 @@ O `setup` já registra o servidor. Manualmente, em `~/.claude.json`:
 }
 ```
 
-Depois é só perguntar: *"quanto gastei na Shein este ano?"*, *"onde está meu
-último pedido?"*, *"já comprei essa camisola antes?"*.
+Use o caminho absoluto: clientes MCP não herdam o `PATH` do seu shell. Depois
+é só perguntar: "quanto gastei na Shein este ano?", "onde está meu último
+pedido?", "já comprei essa camisola antes?".
 
 ## Variáveis de ambiente
 
@@ -129,7 +145,7 @@ São 14, iguais no MCP e no CLI. Referência gerada:
 
 | Tool | Comando | Rede |
 | --- | --- | --- |
-| `auth_status` | `shein auth [--verify]` | 0 (1 com `--verify`) |
+| `auth_status` | `shein status [--verify]` | 0 (1 com `--verify`) |
 | `login` | `shein login [--from-browser]` | — |
 | `doctor` | `shein doctor` | ≤ 4 |
 | `sync` | `shein sync [--full\|--reparse]` | em blocos |
@@ -140,7 +156,7 @@ São 14, iguais no MCP e no CLI. Referência gerada:
 | `list_products` | `shein products` | 0 |
 | `product_history` | `shein product-history <produto>` | 0 |
 | `list_returns` | `shein returns [--verify]` | 0 (1 com `--verify`) |
-| `spending_summary` | `shein spending` | 0 |
+| `spending_summary` | `shein spending --by <grupo>` | 0 |
 | `export` | `shein export` | 0 |
 | `raw_get` | `shein raw <path>` | 1 |
 
@@ -149,21 +165,21 @@ São 14, iguais no MCP e no CLI. Referência gerada:
 O site serve o histórico por duas superfícies: páginas SSR que trazem um bloco
 `var gbRawData = {…}` e uma API JSON interna (`/bff-api/order/*`) que responde
 só com os cookies da sessão. O `sync` percorre a listagem em blocos, guarda o
-payload cru de cada pedido e normaliza tudo para um modelo com **dinheiro em
-centavos inteiros**; as perguntas depois disso são SQL local.
+payload cru de cada pedido e normaliza tudo para um modelo com dinheiro em
+centavos inteiros; as perguntas depois disso são SQL local.
 
-Duas regras vieram da conta real e são a espinha do projeto:
+Três regras vieram da conta real e são a espinha do projeto:
 
-- **`total` é a soma das linhas de `sorted_price` com `show: "1"`** — verificado
-  em 21 de 21 pedidos. Os campos com nome (`subTotalPrice` e afins) são rótulos
-  da Shein e **não** formam uma equação.
+- `total` é a soma das linhas de `sorted_price` com `show: "1"`, verificado em
+  21 de 21 pedidos. Os campos com nome (`subTotalPrice` e afins) são rótulos
+  da Shein e não formam uma equação.
 - O rastreio mora em `packageMap`, não em `trackInfo`: em 8 de 21 páginas o
   segundo simplesmente não existe.
-- A situação do pedido é lida pelos **sinais** (pagou? expirou? o pacote foi
-  assinado?), não pelo código da Shein — o rótulo dela é a última coisa que
+- A situação do pedido é lida pelos sinais (pagou? expirou? o pacote foi
+  assinado?), não pelo código da Shein. O rótulo dela é a última coisa que
   aconteceu, não o estado de agora.
 
-O que a API **não** tem: o número de parcelas (só a taxa). Está documentado em
+O que a API não tem: o número de parcelas (só a taxa). Está documentado em
 [`docs/DATA-MODEL.md`](docs/DATA-MODEL.md) para ninguém inventar esse número.
 
 ## Troubleshooting
@@ -172,7 +188,7 @@ O que a API **não** tem: o número de parcelas (só a taxa). Está documentado 
 | --- | --- |
 | `Nenhuma sessão da Shein salva` | `shein login --from-browser chrome` |
 | A sessão expirou | Os cookies duram poucos dias: rode o login de novo |
-| `A Shein respondeu 00101001` | Pode ser sessão expirada **ou** parâmetro errado: `shein auth --verify` |
+| `A Shein respondeu 00101001` | Pode ser sessão expirada ou parâmetro errado: `shein status --verify` |
 | Bloqueio anti-bot | Pare. Abra `br.shein.com` no navegador, resolva a verificação, espere e faça login de novo |
 | O cache está vazio | `shein sync` |
 | Alguma coisa mudou no site | `shein doctor` diz qual camada quebrou; [`docs/REDISCOVERY.md`](docs/REDISCOVERY.md) diz como remapear |
@@ -194,4 +210,5 @@ O que a API **não** tem: o número de parcelas (só a taxa). Está documentado 
 
 ## Licença
 
-[MIT](LICENSE).
+[MIT](LICENSE). Uso pessoal, somente leitura, sobre a sua própria conta. Não
+redistribua os dados nem use isto como serviço multiusuário.

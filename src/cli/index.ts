@@ -66,7 +66,7 @@ export async function runCli(argv: string[], version: string): Promise<void> {
     Object.fromEntries(Object.entries(record).filter(([, value]) => value !== undefined));
 
   command(
-    "auth",
+    "status",
     "Mostra o estado da sessão salva",
     "auth_status",
     (options) => drop({ verify: options.verify }),
@@ -212,10 +212,10 @@ export async function runCli(argv: string[], version: string): Promise<void> {
     "spending",
     "Quanto foi gasto, agrupado",
     "spending_summary",
-    (options) => drop({ group_by: options.groupBy, from: day(options.from), to: day(options.to) }),
+    (options) => drop({ group_by: options.by, from: day(options.from), to: day(options.to) }),
     (cmd) =>
       cmd
-        .option("--group-by <grupo>", "month | year | store | payment | breakdown")
+        .option("--by <grupo>", "month | year | store | payment | breakdown")
         .option("--from <YYYY-MM-DD>", "Início do período")
         .option("--to <YYYY-MM-DD>", "Fim do período"),
   );

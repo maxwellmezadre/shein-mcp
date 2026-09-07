@@ -1,9 +1,12 @@
-# ADR-0010 — `billno` é a chave; `relation_billno` é a compra
+# ADR-0010: `billno` é a chave; `relation_billno` é a compra
 
-- **Status:** Aceito
-- **Contexto:** uma compra na Shein vira **vários** pedidos. Na conta que mapeou
-  a API, um mesmo `relation_billno` cobria grupos de 3, 4, 5 e 7 `billno`, e
-  vários deles dividiam **um único pacote**.
+## Contexto
+
+Status: aceito.
+
+Uma compra na Shein vira **vários** pedidos. Na conta que mapeou
+a API, um mesmo `relation_billno` cobria grupos de 3, 4, 5 e 7 `billno`, e
+vários deles dividiam **um único pacote**.
 
 ## Decisão
 

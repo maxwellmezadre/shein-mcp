@@ -10,7 +10,7 @@ export const sync = defineTool({
   name: "sync",
   description:
     "Baixa o histórico da Shein para o cache local, em blocos. Gasta no máximo `max_requests` " +
-    "requisições por chamada e devolve `done: false` quando ainda falta — nesse caso chame de novo " +
+    "requisições por chamada e devolve `done: false` quando ainda falta; nesse caso chame de novo " +
     "com os mesmos parâmetros até `done: true`. `incremental` (padrão) para no primeiro trecho sem " +
     "novidade; `full` varre tudo de novo; `reparse` reprocessa o que já está salvo sem usar a rede. " +
     "Depois disso, list_orders, get_order e spending_summary respondem sem tocar na Shein.",
