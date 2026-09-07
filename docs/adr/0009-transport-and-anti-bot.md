@@ -23,4 +23,6 @@ site.
 O caminho normal é barato (nenhum navegador, ~100 KB por página JSON contra
 1–2 MB das páginas SSR). O plano B custa uns 5 segundos na primeira chamada e
 exige o Chrome instalado. `playwright-core` é dependência normal, não opcional:
-o binário compilado também precisa do plano B.
+o binário compilado também precisa do plano B. O compile leva
+`--external chromium-bidi` — é um `require` dinâmico que o bundler não resolve,
+e o caminho que o usa (transporte BiDi) não é o nosso: o Chrome fala CDP.

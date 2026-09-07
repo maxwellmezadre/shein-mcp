@@ -42,7 +42,7 @@
     "typecheck": "tsc --noEmit",
     "test": "bun test",
     "build:dist": "bun build src/bin.ts src/mcp-bin.ts --target=bun --packages external --outdir dist",
-    "build:binary": "bun build --compile src/bin.ts --outfile shein",
+    "build:binary": "bun build --compile --external chromium-bidi src/bin.ts --outfile shein",
     "prepublishOnly": "bun run build:dist",
     "verify": "bun run scripts/verify.ts",
     "docs:tools": "bun run scripts/gen-tools-doc.ts",
